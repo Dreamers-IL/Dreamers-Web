@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /Dreamers-Site-Preview-
+Disallow: /index-V1.html
+Disallow: /design-baseline/
+Disallow: /tools/
+Disallow: /AGENTS.md
+
+Sitemap: https://www.dreamers.org.il/sitemap.xml

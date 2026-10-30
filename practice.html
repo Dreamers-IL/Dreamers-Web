@@ -280,7 +280,6 @@
         width: 44px;
         height: 44px;
         padding: 0;
-        margin-left: auto;
         background: transparent;
         border: 0;
         cursor: pointer;
@@ -1135,6 +1134,22 @@
       }
 
     </style>
+      <style>
+      /* 2026-10-30 (round 2): a call-to-action sentence never breaks across
+         two lines; on narrow screens the button is trimmed to keep it so */
+      .btn,
+      .steps-cta a,
+      .inline-link {
+        white-space: nowrap;
+      }
+      @media (max-width: 480px) {
+        .btn {
+          padding-left: 1.3rem;
+          padding-right: 1.3rem;
+          font-size: 0.95rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- ════════════ NAV ════════════ -->
@@ -1150,7 +1165,7 @@
         <ul class="nav-links">
           <li><a href="index.html#hero">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
-          <li><a href="program.html">תכנית 16 המעלות</a></li>
+          <li><a href="program.html">תוכנית 16 המעלות</a></li>
           <li class="has-dropdown">
             <a href="#activities" class="dd-trigger"
               >הפעילויות שלנו <span class="dd-arrow">▾</span></a
@@ -1189,7 +1204,7 @@
           לחיות את 16 המעלות.
         </div>
         <p class="bh-sub rev d2">
-          תכנית 16 המעלות היא תכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות.
         </p>
       </div>
@@ -1207,7 +1222,7 @@
           לחלק מהחיים שלנו.
         </p>
         <p class="ab-body rev d1">
-          במהלך שלושת שלבי התכנית אנחנו נחשפים ל-16 המעלות, חוקרים אותן
+          במהלך שלושת שלבי התוכנית אנחנו נחשפים ל-16 המעלות, חוקרים אותן
           ומתחילים להתבונן דרכן על עצמנו, על מערכות היחסים שלנו ועל הדרך
           שבה אנחנו פועלים בעולם. אבל שינוי אמיתי ועמוק דורש זמן, תרגול
           והתמדה.
@@ -1367,7 +1382,7 @@
           <form
             class="contact-form rev"
             id="practiceForm"
-            action="https://formsubmit.co/Info@dreamers.org.il"
+            action="https://formsubmit.co/laor.alon.1@gmail.com"
             method="POST"
           >
             <input type="hidden" name="_subject" value="פנייה חדשה מדף תרגול — הצטרפות לקבוצה" />
@@ -1487,7 +1502,7 @@
             <ul class="footer-nav">
               <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
-              <li><a href="program.html">תכנית 16 המעלות</a></li>
+              <li><a href="program.html">תוכנית 16 המעלות</a></li>
               <li>
                 <a href="index.html#activities">הפעילויות שלנו</a>
                 <ul class="footer-subnav">

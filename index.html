@@ -451,7 +451,7 @@
       .h-content {
         position: absolute;
         /* raised 2cm, per the site owner's 2026-09-08 request */
-        /* 2026-10-30: the line "16 המעלות - תכנית הדגל..." must sit just above
+        /* 2026-10-30: the line "16 המעלות - תוכנית הדגל..." must sit just above
            the water line. The video (object-fit: cover, then scaled 1.08)
            puts the horizon at 50% + 0.098 * 1.08 * the covered video height,
            so the block's bottom edge is anchored to that, minus a small gap */
@@ -514,7 +514,7 @@
         margin-bottom: 0;
         animation: fadU 0.9s ease 0.3s both;
       }
-      /* "16 המעלות" takes the look "תכנית הדגל..." had until 2026-09-23-2:
+      /* "16 המעלות" takes the look "תוכנית הדגל..." had until 2026-09-23-2:
          bright cyan with a bold black outline */
       .h-sub strong {
         font-weight: 900;
@@ -527,12 +527,14 @@
           0 4px 14px rgba(0, 0, 0, 0.28),
           2px 3px 0 rgba(0, 0, 0, 0.4);
       }
-      /* "תכנית הדגל של עמותת בית חולמים": same outline, blue fill, so it
+      /* "תוכנית הדגל של עמותת בית חולמים": same outline, blue fill, so it
          stands out more (2026-09-23-2 request; was bright cyan) */
       /* 2026-10-30: no outline or shadow; fill sampled from the owner's
          reference screenshot (#0e2950, the same navy as the headline) */
+      /* 2026-10-30 (round 2): a soft shadow added back to the phrase */
       .h-sub-lines {
         color: #0e2950;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
         line-height: 1.3;
       }
       .btn {
@@ -1131,7 +1133,7 @@
       /* ═══════════════════════════════
          NUMBERS
       ═══════════════════════════════ */
-      /* dark navy card, like the matching "תכנית 16 המעלות במספרים"
+      /* dark navy card, like the matching "תוכנית 16 המעלות במספרים"
          section on the program page, per the site owner's 2026-09-05
          request */
       #numbers {
@@ -1333,7 +1335,7 @@
         gap: 0 6rem;
         align-items: center;
       }
-      /* heading now sits centred above the grid, like the "תכנית 16
+      /* heading now sits centred above the grid, like the "תוכנית 16
          המעלות" heading above it, instead of squeezed beside the image */
       .mission-title {
         margin-bottom: 2rem;
@@ -1789,6 +1791,22 @@
       }
 
     </style>
+      <style>
+      /* 2026-10-30 (round 2): a call-to-action sentence never breaks across
+         two lines; on narrow screens the button is trimmed to keep it so */
+      .btn,
+      .steps-cta a,
+      .inline-link {
+        white-space: nowrap;
+      }
+      @media (max-width: 480px) {
+        .btn {
+          padding-left: 1.3rem;
+          padding-right: 1.3rem;
+          font-size: 0.95rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- ════════════ NAV ════════════ -->
@@ -1806,7 +1824,7 @@
         <ul class="nav-links">
           <li><a href="#hero">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
-          <li><a href="program.html">תכנית 16 המעלות</a></li>
+          <li><a href="program.html">תוכנית 16 המעלות</a></li>
           <li class="has-dropdown">
             <a href="#activities" class="dd-trigger"
               >הפעילויות שלנו <span class="dd-arrow">▾</span></a
@@ -1860,7 +1878,7 @@
         </h1>
         <p class="h-sub">
           <strong>16 המעלות -</strong>
-          <span class="h-sub-lines">תכנית הדגל של<br />עמותת בית חולמים</span>
+          <span class="h-sub-lines">תוכנית הדגל של<br />עמותת בית חולמים</span>
         </p>
       </div>
 
@@ -1880,14 +1898,14 @@
     <!-- ════════════ PROGRAM INTRO ════════════ -->
     <section id="intro">
       <div class="wrap">
-        <h2 class="h3d rev" style="text-align: center">תכנית 16 המעלות</h2>
+        <h2 class="h3d rev" style="text-align: center">תוכנית 16 המעלות</h2>
         <p class="program-pitch rev d1">
-          16 המעלות היא תכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות
         </p>
 
         <p class="intro-body intro-body-center intro-body-wide rev d1">
-          התכנית מבוססת על ארבעה נושאי ליבה.<br />
+          התוכנית מבוססת על ארבעה נושאי ליבה.<br />
           היא מספקת כלים מעשיים להטמעתם בחיי היומיום.<br />
           בכל נושא 4 ערכים ובסך הכל 16 מעלות אוניברסליות אשר מייצרות שפה<br />
           לקידום של שלום פנימי וחיצוני בקרב יחידים, משפחות, קהילות, ובחברה
@@ -1934,13 +1952,13 @@
 
         <div class="intro-join-box intro-join-box-bold rev d3">
           <p class="ijb-text ijb-text-bold">
-            עמותת בית חולמים היא הנציגה הרשמית של התכנית בישראל
+            עמותת בית חולמים היא הנציגה הרשמית של התוכנית בישראל
           </p>
         </div>
 
         <div style="margin-top: 1.8rem; text-align: center" class="rev d3">
           <a href="program.html" class="btn btn-blue"
-            >למידע נוסף על תכנית 16 המעלות</a
+            >למידע נוסף על תוכנית 16 המעלות</a
           >
         </div>
       </div>
@@ -2064,7 +2082,7 @@
       <div class="wrap">
         <div class="num-hdr">
           <h2 class="h3d rev" style="text-align: center">
-            תכנית 16 המעלות במספרים
+            תוכנית 16 המעלות במספרים
           </h2>
         </div>
         <div class="num-grid">
@@ -2110,11 +2128,11 @@
                 <div class="tc-q">"</div>
                 <p class="tc-text">
                   אני מאמינה שחינוך לקשב ולטיפוח ערכים אנושיים אוניברסליים הם
-                  מהיסודות החשובים ביותר של החינוך כיום. תכנית 16 המעלות
+                  מהיסודות החשובים ביותר של החינוך כיום. תוכנית 16 המעלות
                   מעניקה לצוותי החינוך, לתלמידים.ות ולקהילות כלים
                   פשוטים, מעשיים וישימים, שהופכים את הערכים האלה לחלק בלתי
                   נפרד מהעשייה היומיומית. מתוך האמונה הזו בחרנו ב-16 המעלות
-                  להיות תכנית הדגל של מנהל החינוך בעירית תל אביב-יפו.
+                  להיות תוכנית הדגל של מנהל החינוך בעירית תל אביב-יפו.
                 </p>
                 <div class="tc-author">
                   <img
@@ -2140,7 +2158,7 @@
                 </div>
                 <div class="tc-q">"</div>
                 <p class="tc-text">
-                  העבודה עם תכנית 16 המעלות מנכיחה את מימד הערכים והרוח בשיח
+                  העבודה עם תוכנית 16 המעלות מנכיחה את מימד הערכים והרוח בשיח
                   היומיומי באופן נגיש, פשוט וישים לכל אדם. בעיניי, זהו מרכיב
                   קריטי בתהליכי שיקום, הן ברמה האישית והן ברמה החברתית.
                 </p>
@@ -2171,7 +2189,7 @@
                 <p class="tc-text">
                   מהפכת ה-AI היא בעלת פוטנציאל בלתי נתפס, אך גם מייצרת מציאות
                   של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות העצומה של
-                  טיפוח המרכיב האנושי. תכנית 16 המעלות עוזרת למנהלים.ות
+                  טיפוח המרכיב האנושי. תוכנית 16 המעלות עוזרת למנהלים.ות
                   ולעובדים.ות לפתח חוסן אישי וצוותי, ולייצר מצפן ניהולי בתוך
                   ההתמודדות עם חוסר הוודאות ועם הצורך המתמיד להשתנות.
                 </p>
@@ -2198,7 +2216,7 @@
                 <div class="tc-q">"</div>
                 <p class="tc-text">
                   סדנת 16 המעלות חיזקה את תחושת השייכות, הלכידות והתקשורת בצוות
-                  רב-תרבותי. אני רואה ב-16 המעלות תכנית שמצליחה לגעת גם ברמה
+                  רב-תרבותי. אני רואה ב-16 המעלות תוכנית שמצליחה לגעת גם ברמה
                   האנושית וגם ברמה המקצועית, ולתת לצוותי חינוך שפה משותפת
                   שמחברת בין אנשים מרקעים שונים מבלי לטשטש את הייחוד של כל אחד
                   ואחת.
@@ -2243,7 +2261,7 @@
                   <div>
                     <div class="tc-name">חן וינשטיין</div>
                     <div class="tc-role">
-                      פסיכותרפיסטית ויועצת ארגונית, מנחה מוסמכת של תכנית 16
+                      פסיכותרפיסטית ויועצת ארגונית, מנחה מוסמכת של תוכנית 16
                       המעלות
                     </div>
                   </div>
@@ -2338,7 +2356,7 @@
             <ul class="footer-nav">
               <li><a href="#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
-              <li><a href="program.html">תכנית 16 המעלות</a></li>
+              <li><a href="program.html">תוכנית 16 המעלות</a></li>
               <li>
                 <a href="#activities">הפעילויות שלנו</a>
                 <ul class="footer-subnav">

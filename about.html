@@ -458,10 +458,10 @@
         );
       }
       /* 2026-10-30: the board section's background is a flat light cyan
-         (#c7fffb, sampled from the owner's reference image), no longer
+         (#e0fffd, sampled from the owner's reference image), no longer
          the pale yellow gradient */
       .ab-sec.bg-warm {
-        background: #c7fffb;
+        background: #e0fffd;
       }
       .ab-sec.bg-blue-gray {
         background: linear-gradient(160deg, #f2f8ff 0%, #eef9f9 100%);
@@ -1236,6 +1236,22 @@
       }
 
     </style>
+      <style>
+      /* 2026-10-30 (round 2): a call-to-action sentence never breaks across
+         two lines; on narrow screens the button is trimmed to keep it so */
+      .btn,
+      .steps-cta a,
+      .inline-link {
+        white-space: nowrap;
+      }
+      @media (max-width: 480px) {
+        .btn {
+          padding-left: 1.3rem;
+          padding-right: 1.3rem;
+          font-size: 0.95rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- ════════════ NAV ════════════ -->
@@ -1253,7 +1269,7 @@
         <ul class="nav-links">
           <li><a href="index.html#hero">דף הבית</a></li>
           <li><a href="about.html" class="active">אודות</a></li>
-          <li><a href="program.html">תכנית 16 המעלות</a></li>
+          <li><a href="program.html">תוכנית 16 המעלות</a></li>
           <li class="has-dropdown">
             <a href="#activities" class="dd-trigger"
               >הפעילויות שלנו <span class="dd-arrow">▾</span></a
@@ -1348,28 +1364,28 @@
       </div>
     </section>
 
-    <!-- ════════════ תכנית 16 המעלות ════════════ -->
+    <!-- ════════════ תוכנית 16 המעלות ════════════ -->
     <section class="ab-sec bg-white" id="program-16">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">תכנית 16 המעלות</h2>
+          <h2 class="h3d rev">תוכנית 16 המעלות</h2>
         </div>
         <p class="ab-body ab-body-center rev">
-          16 המעלות היא תכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות.
         </p>
         <p class="ab-body ab-body-center rev d1">
-          התכנית פותחה על ידי הארגון הבינלאומי לפיתוח חמלה וחוכמה (FDCW -
+          התוכנית פותחה על ידי הארגון הבינלאומי לפיתוח חמלה וחוכמה (FDCW -
           Foundation for Developing Compassion and Wisdom), שהוקם בשנת 2005.
-          כיום נגישה התכנית בכל העולם, עם מנחים.ות מוסמכים.ות ב-22 מדינות.
+          כיום נגישה התוכנית בכל העולם, עם מנחים.ות מוסמכים.ות ב-22 מדינות.
         </p>
         <p class="ab-body ab-body-center rev d2">
-          עמותת בית חולמים הביאה את התכנית הבינלאומית "16 המעלות" לישראל בשנת
-          2020, והפכה להיות הנציגה הרשמית של התכנית בארץ.
+          עמותת בית חולמים הביאה את התוכנית הבינלאומית "16 המעלות" לישראל בשנת
+          2020, והפכה להיות הנציגה הרשמית של התוכנית בארץ.
         </p>
         <div class="rev d3" style="margin-top: 2rem; text-align: center">
           <a href="program.html" class="btn btn-blue"
-            >למידע נוסף על תכנית 16 המעלות</a
+            >למידע נוסף על תוכנית 16 המעלות</a
           >
         </div>
       </div>
@@ -1632,15 +1648,15 @@
         <div class="contact-inner">
           <h2 class="h3d h3d-white rev">בואו נדבר</h2>
           <p class="sub rev">
-            רוצים לשמוע עוד על תכנית 16 המעלות?<br />
+            רוצים לשמוע עוד על תוכנית 16 המעלות?<br />
             השאירו פרטים ונחזור אליכם עם כל המידע על הסדנה הקרובה ועל התאמת
-            התכנית לכם ו/או לארגון שלכם.
+            התוכנית לכם ו/או לארגון שלכם.
           </p>
 
           <form
             class="contact-form rev"
             id="aboutForm"
-            action="https://formsubmit.co/Info@dreamers.org.il"
+            action="https://formsubmit.co/laor.alon.1@gmail.com"
             method="POST"
           >
             <input type="hidden" name="_subject" value="פנייה חדשה מדף אודות" />
@@ -1687,12 +1703,12 @@
                     לגבי סדנת שלב 1 הקרובה</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה היית רוצה לדעת" value="התאמת התכנית לארגון שלי" />התאמת
-                    התכנית לארגון שלי</label
+                    ><input type="checkbox" name="מה היית רוצה לדעת" value="התאמת התוכנית לארגון שלי" />התאמת
+                    התוכנית לארגון שלי</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה היית רוצה לדעת" value="מידע נוסף על שלבי התכנית" />מידע
-                    נוסף על שלבי התכנית</label
+                    ><input type="checkbox" name="מה היית רוצה לדעת" value="מידע נוסף על שלבי התוכנית" />מידע
+                    נוסף על שלבי התוכנית</label
                   >
                   <label class="ms-opt"
                     ><input type="checkbox" id="msOtherCheck" name="מה היית רוצה לדעת" value="אחר" />אחר</label
@@ -1772,7 +1788,7 @@
             <ul class="footer-nav">
               <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html" class="active">אודות</a></li>
-              <li><a href="program.html">תכנית 16 המעלות</a></li>
+              <li><a href="program.html">תוכנית 16 המעלות</a></li>
               <li>
                 <a href="index.html#activities">הפעילויות שלנו</a>
                 <ul class="footer-subnav">

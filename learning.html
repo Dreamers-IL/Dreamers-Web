@@ -280,7 +280,6 @@
         width: 44px;
         height: 44px;
         padding: 0;
-        margin-left: auto;
         background: transparent;
         border: 0;
         cursor: pointer;
@@ -1015,6 +1014,22 @@
       }
 
     </style>
+      <style>
+      /* 2026-10-30 (round 2): a call-to-action sentence never breaks across
+         two lines; on narrow screens the button is trimmed to keep it so */
+      .btn,
+      .steps-cta a,
+      .inline-link {
+        white-space: nowrap;
+      }
+      @media (max-width: 480px) {
+        .btn {
+          padding-left: 1.3rem;
+          padding-right: 1.3rem;
+          font-size: 0.95rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- ════════════ NAV ════════════ -->
@@ -1030,7 +1045,7 @@
         <ul class="nav-links">
           <li><a href="index.html#hero">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
-          <li><a href="program.html">תכנית 16 המעלות</a></li>
+          <li><a href="program.html">תוכנית 16 המעלות</a></li>
           <li class="has-dropdown">
             <a href="#activities" class="dd-trigger"
               >הפעילויות שלנו <span class="dd-arrow">▾</span></a
@@ -1066,7 +1081,7 @@
         <h1 class="h3d rev" style="margin: 0 0 1.6rem">16 המעלות</h1>
         <div class="bh-headline rev d1">לתרגל ולהטמיע את 16 המעלות</div>
         <p class="bh-sub rev d2">
-          תכנית 16 המעלות היא תכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות.
         </p>
       </div>
@@ -1088,7 +1103,7 @@
             </p>
             <p>
               המרחב פתוח גם למי שטרם השתתפו בסדנאות ומזמין להכיר ולהתנסות
-              בחלק מכלי התרגול&nbsp;של&nbsp;תכנית&nbsp;16&nbsp;המעלות.
+              בחלק מכלי התרגול&nbsp;של&nbsp;תוכנית&nbsp;16&nbsp;המעלות.
             </p>
           </div>
           <div class="li-photo rev d1">
@@ -1213,7 +1228,7 @@
             <ul class="footer-nav">
               <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
-              <li><a href="program.html">תכנית 16 המעלות</a></li>
+              <li><a href="program.html">תוכנית 16 המעלות</a></li>
               <li>
                 <a href="index.html#activities">הפעילויות שלנו</a>
                 <ul class="footer-subnav">

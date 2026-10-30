@@ -6,7 +6,7 @@
     <title>צרו איתנו קשר | בית חולמים - Dreamers Home</title>
     <meta
       name="description"
-      content="השאירו פרטים ונחזור אליכם — עמותת בית חולמים ותכנית 16 המעלות."
+      content="השאירו פרטים ונחזור אליכם — עמותת בית חולמים ותוכנית 16 המעלות."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -884,6 +884,22 @@
         text-wrap: balance;
       }
     </style>
+      <style>
+      /* 2026-10-30 (round 2): a call-to-action sentence never breaks across
+         two lines; on narrow screens the button is trimmed to keep it so */
+      .btn,
+      .steps-cta a,
+      .inline-link {
+        white-space: nowrap;
+      }
+      @media (max-width: 480px) {
+        .btn {
+          padding-left: 1.3rem;
+          padding-right: 1.3rem;
+          font-size: 0.95rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- ════════════ NAV ════════════ -->
@@ -899,7 +915,7 @@
         <ul class="nav-links">
           <li><a href="index.html#hero">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
-          <li><a href="program.html">תכנית 16 המעלות</a></li>
+          <li><a href="program.html">תוכנית 16 המעלות</a></li>
           <li class="has-dropdown">
             <a href="#activities" class="dd-trigger"
               >הפעילויות שלנו <span class="dd-arrow">▾</span></a
@@ -933,13 +949,13 @@
           <p class="sub rev">
             רוצים להביא את 16 המעלות אליכם?<br />
             מלאו את הפרטים ונחזור אליכם לשיחת היכרות, נלמד על הצרכים
-            שלכם ונבחן יחד איזו תכנית מתאימה עבורכם.
+            שלכם ונבחן יחד איזו תוכנית מתאימה עבורכם.
           </p>
 
           <form
             class="contact-form rev"
             id="bizForm"
-            action="https://formsubmit.co/Info@dreamers.org.il"
+            action="https://formsubmit.co/laor.alon.1@gmail.com"
             method="POST"
           >
             <input
@@ -1060,7 +1076,7 @@
             <ul class="footer-nav">
               <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
-              <li><a href="program.html">תכנית 16 המעלות</a></li>
+              <li><a href="program.html">תוכנית 16 המעלות</a></li>
               <li>
                 <a href="index.html#activities">הפעילויות שלנו</a>
                 <ul class="footer-subnav">
@@ -1167,8 +1183,8 @@
 
         const OPTIONS = [
           "פרטים לגבי סדנת שלב 1 הקרובה",
-          "התאמת התכנית לארגון שלי",
-          "מידע נוסף על שלבי התכנית",
+          "התאמת התוכנית לארגון שלי",
+          "מידע נוסף על שלבי התוכנית",
           "אחר",
         ];
         const msPanel = document.getElementById("msPanel");

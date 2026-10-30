@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>תוכנית 16 המעלות | בית חולמים - Dreamers Home</title>
+    <title>תכנית 16 המעלות | בית חולמים - Dreamers Home</title>
     <meta
       name="description"
-      content="16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות."
+      content="16 המעלות היא תכנית בינלאומית לפיתוח חוסן רגשי-חברתי ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -423,7 +423,7 @@
 
       /* ═══ GENERIC TEXT SECTION ═══ */
       .ab-sec {
-        padding: 6.5rem 2rem;
+        padding: 4.2rem 2rem;
       }
       .ab-sec.bg-white {
         background: var(--white);
@@ -534,7 +534,7 @@
 
       /* ═══ CONTACT ═══ */
       #contact-form {
-        padding: 6.5rem 2rem;
+        padding: 4.2rem 2rem;
         background: var(--g-main);
         position: relative;
         overflow: hidden;
@@ -832,7 +832,7 @@
         gap: 1rem;
       }
       /* ═══════════════════════════════════════════════════════════
-         תוכנית 16 המעלות — page styles
+         תכנית 16 המעלות — page styles
 
          Every section carries a living backdrop rather than flat white,
          built from the brand book palette only: deep blue #004378, teal
@@ -860,7 +860,7 @@
          at the widths a laptop and a desktop actually open at. */
       #prog-hero {
         position: relative;
-        padding: 13rem 0 7rem;
+        padding: 13rem 0 4.5rem;
         min-height: min(88vh, 820px);
         overflow: hidden;
         background: var(--blue-dk);
@@ -1035,17 +1035,17 @@
       .bg-deep .why-result li::before {
         background: var(--teal);
       }
-      /* "מקורות התוכנית" swaps the flat brand band for the night sky, held
+      /* "מקורות התכנית" swaps the flat brand band for the night sky, held
          under a deep blue scrim so the white copy keeps its contrast */
       .bg-stars {
         background:
           linear-gradient(
             180deg,
-            rgba(0, 22, 50, 0.78) 0%,
-            rgba(0, 28, 60, 0.62) 50%,
-            rgba(0, 22, 50, 0.78) 100%
+            rgba(0, 22, 50, 0.62) 0%,
+            rgba(0, 28, 60, 0.5) 50%,
+            rgba(0, 22, 50, 0.62) 100%
           ),
-          url("assets/img/Sky with Starts.jpg") center / cover no-repeat;
+          url("assets/img/מקורות התוכנית_1395 × 535.9.jpg") center / cover no-repeat;
       }
       /* a slow wave along the foot of the deep bands — the brand's water
          motif, drawn rather than photographed so it stays weightless */
@@ -1191,6 +1191,20 @@
       @media (hover: hover) and (pointer: fine) {
         .vcard:hover .vcard-inner {
           transform: rotateY(180deg);
+        }
+      }
+      /* phone only (2026-10-30): a small "tap me" hand at the bottom right
+         of every tile, 15% of the tile's width, hinting that it turns over */
+      @media (max-width: 768px) {
+        .vcard-front::after {
+          content: "";
+          position: absolute;
+          right: 4%;
+          bottom: 6%;
+          width: 15%;
+          aspect-ratio: 159 / 148;
+          background: url("assets/img/click.png") center / contain no-repeat;
+          pointer-events: none;
         }
       }
       .vcard:focus-visible .vcard-inner,
@@ -1395,6 +1409,21 @@
       .stage-stack {
         display: contents;
       }
+      .stages-photo {
+        max-width: 750px;
+        margin: 1.6rem auto 0;
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 18px 40px rgba(0, 40, 70, 0.22);
+      }
+      .stages-photo img {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 340px;
+        object-fit: cover;
+        object-position: 22% 50%;
+      }
       .stage {
         position: relative;
         max-width: 750px;
@@ -1408,7 +1437,9 @@
           0 24px 55px rgba(0, 20, 45, 0.4);
       }
       .stage-2 {
-        background: linear-gradient(150deg, #0d84c4 0%, #041b33 100%);
+        /* 2026-10-30: a mid navy, clearly darker than stage 1 and clearly
+           lighter than stage 3, so the three read as three steps */
+        background: linear-gradient(150deg, #134f82 0%, #082d50 100%);
       }
       .stage-3 {
         /* darker than stage 2, but kept a clearly saturated navy rather
@@ -1439,10 +1470,6 @@
         font-size: 2.46rem;
         font-weight: 900;
         margin: 0 auto 0.8rem;
-      }
-      .stage-badge-icon {
-        width: 53px;
-        height: 53px;
       }
       .stage h3 {
         color: #fff;
@@ -1558,7 +1585,6 @@
         display: flex;
         direction: rtl;
         gap: var(--fac-gap);
-        transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
         will-change: transform;
       }
       .fac {
@@ -1634,7 +1660,7 @@
       }
       @media (max-width: 768px) {
         #prog-hero {
-          padding: 9.5rem 0 5rem;
+          padding: 9.5rem 0 3.2rem;
           min-height: min(78vh, 620px);
         }
         .ph-content {
@@ -1673,22 +1699,8 @@
         .cta-pair .btn {
           flex: 1 1 100%;
         }
-        /* one stage card in view at a time, swiped horizontally, instead of
-           all four squeezed to the phone's width one under the other */
-        .stage-stack {
-          display: flex;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          gap: 1rem;
-          margin: 1.6rem -2rem 0;
-          padding: 0 1.2rem 0.6rem;
-        }
-        .stage-stack .stage {
-          flex: 0 0 94%;
-          max-width: none;
-          scroll-snap-align: center;
-          margin: 0;
-        }
+        /* 2026-10-30: no sideways swiping; each stage sits under the
+           previous one and the visitor just scrolls down */
         .stage {
           padding: 1.6rem 1.4rem;
         }
@@ -1827,7 +1839,7 @@
       }
       @media (max-width: 520px) {
         .ab-sec {
-          padding: 4.5rem 1.1rem;
+          padding: 3rem 1.1rem;
         }
         /* #contact-form isn't an .ab-sec, so its side padding never shrank
            on a phone like every other section's does; matched here, then
@@ -1910,7 +1922,7 @@
         <ul class="nav-links">
           <li><a href="index.html#hero">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
-          <li><a href="program.html" class="active">תוכנית 16 המעלות</a></li>
+          <li><a href="program.html" class="active">תכנית 16 המעלות</a></li>
           <li class="has-dropdown">
             <a href="#activities" class="dd-trigger"
               >הפעילויות שלנו <span class="dd-arrow">▾</span></a
@@ -1918,8 +1930,8 @@
             <ul class="dropdown-menu">
               <li><a href="education.html">16 המעלות בחינוך</a></li>
               <li><a href="mental-health.html#mh-hero">16 המעלות בבריאות הנפש</a></li>
-              <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
-              <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
+              <li><a href="business.html#biz-hero">16 המעלות בחברות וארגונים</a></li>
+              <li><a href="practice.html#prac-hero">16 המעלות לקהל הרחב</a></li>
             </ul>
           </li>
           <li><a href="learning.html#learn-hero">מרחב למידה ותרגול</a></li>
@@ -1941,24 +1953,24 @@
       <div class="ph-bg"></div>
       <div class="ph-tint"></div>
       <div class="ph-content">
-        <h1 class="ph-title rev">תוכנית 16 המעלות</h1>
+        <h1 class="ph-title rev">תכנית 16 המעלות</h1>
         <div class="ph-headline rev d1">לחיים בעלי ערך בעולם משתנה</div>
         <p class="ph-sub rev d1">
-          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          16 המעלות היא תכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות
         </p>
       </div>
     </header>
 
-    <!-- ════════════ תוכנית 16 המעלות ════════════ -->
+    <!-- ════════════ תכנית 16 המעלות ════════════ -->
     <section class="ab-sec bg-calm bleed-host" id="program">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d sr-only">תוכנית 16 המעלות</h2>
+          <h2 class="h3d sr-only">תכנית 16 המעלות</h2>
         </div>
 
         <p class="ab-body ab-body-center ab-body-lead rev">
-          התוכנית מבוססת על ארבעה נושאי ליבה<br class="core-intro-break" />
+          התכנית מבוססת על ארבעה נושאי ליבה<br class="core-intro-break" />
           אשר כוללים 16 ערכים אוניברסליים (מעלות)
         </p>
 
@@ -2001,10 +2013,10 @@
         </div>
 
         <p class="ab-body ab-body-center rev d3" style="margin-top: 2.6rem">
-          התוכנית נותנת כלים פשוטים ומעשיים לשיפור חיי היומיום שלנו. באמצעות
+          התכנית נותנת כלים פשוטים ומעשיים לשיפור חיי היומיום שלנו. באמצעות
           שילוב בין פילוסופיות מזרחיות ומדע מערבי, בין חכמה עתיקה להתפתחויות
           מודרניות,<br />
-          התוכנית מייצרת שפה משותפת וסוללת דרך לחיים שלווים, משמעותיים
+          התכנית מייצרת שפה משותפת וסוללת דרך לחיים שלווים, משמעותיים
           ומאושרים יותר ליחידים, משפחות, קהילות ולחברה כולה.
         </p>
 
@@ -2016,23 +2028,23 @@
       </div>
     </section>
 
-    <!-- ════════════ מקורות התוכנית ════════════ -->
+    <!-- ════════════ מקורות התכנית ════════════ -->
     <section class="ab-sec bg-deep bg-stars" id="origins">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">מקורות התוכנית</h2>
+          <h2 class="h3d rev">מקורות התכנית</h2>
         </div>
         <p class="ab-body ab-body-center rev">
-          התוכנית מבוססת על טקסט שכתב מלך מהמאה ה-7, שרצה להשכין שלום בממלכה
-          ולייצר קוד אתי שהאזרחים והאזרחיות יוכלו לחיות על-פיו.
+          התכנית מבוססת על טקסט שכתב מלך מהמאה ה-7, שרצה להשכין שלום בממלכה
+          ולייצר קוד אתי שהאזרחים.ות יוכלו לחיות על-פיו.
         </p>
         <p class="ab-body ab-body-center rev d1">
           בשנת 2005 הוקם הארגון הבינלאומי לפיתוח חמלה וחוכמה (FDCW - Foundation
           for Developing Compassion and Wisdom) אשר תרגם והתאים את הטקסט העתיק
-          לעולם של ימינו ופיתח את תוכנית 16 המעלות כפי שהיא פועלת כיום.
+          לעולם של ימינו ופיתח את תכנית 16 המעלות כפי שהיא פועלת כיום.
         </p>
         <p class="ab-body ab-body-center rev d2">
-          התוכנית נגישה בכל העולם עם מנחים.ות מוסמכים.ות ב-22 מדינות.
+          התכנית נגישה בכל העולם עם מנחים.ות מוסמכים.ות ב-22 מדינות.
         </p>
       </div>
       <div class="wave-foot" aria-hidden="true">
@@ -2087,7 +2099,7 @@
     <section class="ab-sec bg-calm" id="audience">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">למי מיועדת התוכנית</h2>
+          <h2 class="h3d rev">למי מיועדת התכנית</h2>
         </div>
         <p class="ab-body ab-body-center audience-text-aligned rev">
           לכולם! ליחידים, לקבוצות ולארגונים המעוניינים לחיות חיים שלווים,
@@ -2096,16 +2108,16 @@
         </p>
         <div class="aud-chips rev d1">
           <div class="aud-chip">
-            <span>אנשי ונשות חינוך</span>
+            <span>אנשי.ות חינוך</span>
           </div>
           <div class="aud-chip">
-            <span>אנשי ונשות טיפול</span>
+            <span>אנשי.ות טיפול</span>
           </div>
           <div class="aud-chip">
-            <span>אנשי ונשות עסקים</span>
+            <span>אנשי.ות עסקים</span>
           </div>
           <div class="aud-chip">
-            <span>מנהלות ומנהלים בארגונים</span>
+            <span>מנהלים.ות בארגונים</span>
           </div>
           <div class="aud-chip">
             <span>הקהל הרחב</span>
@@ -2118,17 +2130,17 @@
     <section class="ab-sec bg-deep" id="impact">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">תוכנית 16 המעלות במספרים</h2>
+          <h2 class="h3d rev">תכנית 16 המעלות במספרים</h2>
         </div>
 
         <div class="fact-grid rev d1">
           <div class="fact">
             <div class="fact-num"><span data-t="2300">0</span></div>
-            <div class="fact-label">משתתפות ומשתתפים בסדנאות</div>
+            <div class="fact-label">משתתפים.ות בסדנאות</div>
           </div>
           <div class="fact">
             <div class="fact-num"><span data-t="80">0</span></div>
-            <div class="fact-label">מנחות ומנחים שהוסמכו</div>
+            <div class="fact-label">מנחים.ות שהוסמכו</div>
           </div>
           <div class="fact">
             <div class="fact-num"><span data-t="140">0</span></div>
@@ -2138,13 +2150,13 @@
             <div class="fact-num">
               <span data-t="22" data-no-plus="true">0</span>
             </div>
-            <div class="fact-label">מדינות שבהן פועלת התוכנית</div>
+            <div class="fact-label">מדינות שבהן פועלת התכנית</div>
           </div>
         </div>
 
         <p class="ab-body ab-body-center rev d2" style="margin-top: 2.4rem">
-          תכנית 16 המעלות היא תכנית הדגל במנהל חינוך של עיריית ת"א-יפו ומוכרת
-          גם במערכת גפ"ן של משרד החינוך (תוכנית מספר 63554).
+          תכנית 16 המעלות היא תכנית הדגל במנהל חינוך של עירית ת"א-יפו ומוכרת
+          במערכת גפ"ן של משרד החינוך (תכנית מספר 63554).
         </p>
         <p class="ab-body ab-body-center rev d2">
           בנוסף, התכנית פועלת במרכז הממשלתי לבריאות הנפש בבאר-שבע, במרכז
@@ -2165,27 +2177,30 @@
       </div>
     </section>
 
-    <!-- ════════════ שלבי התוכנית והסמכה ════════════ -->
+    <!-- ════════════ שלבי התכנית והסמכה ════════════ -->
     <section class="ab-sec bg-mist" id="stages">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">שלבי התוכנית והסמכה להנחיה</h2>
+          <h2 class="h3d rev">שלבי התכנית והסמכה להנחיה</h2>
         </div>
         <p class="ab-body ab-body-center stages-intro rev">
           הלמידה בתכנית בנויה באופן מודולרי והדרגתי לפי שלבים. השלמת כל שלב
           מקנה תעודה בינלאומית מטעם בית חולמים וארגון FDCW הבינלאומי. בסיום 3
-          שלבי התכנית, יכולים/ות המתאימים/ות להמשיך להכשרת מנחים.ות.
+          שלבי התכנית, יכולים.ות המתאימים.ות להמשיך להכשרת מנחים.ות.
         </p>
+
+        <div class="stages-photo rev">
+          <img
+            src="assets/img/שלבי התוכנית להסמכה_759 × 471.89.jpg"
+            alt="ערימת אבנים מאוזנת מול נוף המדבר והים"
+            loading="lazy"
+          />
+        </div>
 
         <div class="stage-stack">
         <div class="stage rev d1">
           <span class="stage-badge"
-            ><img
-              class="stage-badge-icon"
-              src="assets/img/אייקון שלב 1.png"
-              alt=""
-              aria-hidden="true"
-            />שלב 1</span
+            >שלב 1</span
           >
           <h3>יסודות 16 המעלות</h3>
           <dl>
@@ -2215,12 +2230,7 @@
 
         <div class="stage stage-2 rev d2">
           <span class="stage-badge"
-            ><img
-              class="stage-badge-icon"
-              src="assets/img/אייקון שלב 2.png"
-              alt=""
-              aria-hidden="true"
-            />שלב 2</span
+            >שלב 2</span
           >
           <h3>העמקה והטמעה ביומיום</h3>
           <dl>
@@ -2239,12 +2249,7 @@
 
         <div class="stage stage-3 rev d3">
           <span class="stage-badge"
-            ><img
-              class="stage-badge-icon"
-              src="assets/img/אייקון שלב 3.png"
-              alt=""
-              aria-hidden="true"
-            />שלב 3</span
+            >שלב 3</span
           >
           <h3>הרחבה פילוסופית ומדעית</h3>
           <dl>
@@ -2274,7 +2279,7 @@
             <dt>מה לומדים</dt>
             <dd>
               פיתוח ביטחון בהנחיה, ארגון סדנאות, הטמעת תרגול המיינדפולנס ויתר
-              הכלים של התוכנית והיכרות עם סגנון ההנחיה ברוח תוכנית 16 המעלות.
+              הכלים של התכנית והיכרות עם סגנון ההנחיה ברוח תכנית 16 המעלות.
             </dd>
           </dl>
         </div>
@@ -2295,28 +2300,21 @@
     <section class="ab-sec bg-calm" id="facilitators">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">על המנחות והמנחים שלנו</h2>
+          <h2 class="h3d rev">על המנחים.ות שלנו</h2>
         </div>
         <p class="ab-body ab-body-center rev">
-          מנחי ומנחות תוכנית 16 המעלות בישראל עברו הכשרה והוסמכו על ידי עמותת
+          מנחים.ות בתכנית 16 המעלות בישראל עברו הכשרה והוסמכו על ידי עמותת
           בית חולמים.<br />
-          המנחים והמנחות ממשיכים ללמוד יחד במסגרת הקהילה המקומית והבינלאומית.
+          המנחים.ות ממשיכים ללמוד יחד במסגרת הקהילה המקומית והבינלאומית.
         </p>
 
         <div class="fac-outer rev d1">
-          <button class="car-arrow" id="facPrev" aria-label="הקודם">
-            &#8250;
-          </button>
           <div class="fac-viewport">
             <div class="fac-track" id="facTrack">
               <!-- cards are written in by the page script -->
             </div>
           </div>
-          <button class="car-arrow" id="facNext" aria-label="הבא">
-            &#8249;
-          </button>
         </div>
-        <div class="fac-dots" id="facDots"></div>
       </div>
     </section>
 
@@ -2326,9 +2324,9 @@
         <div class="contact-inner">
           <h2 class="h3d h3d-white rev">בואו נדבר</h2>
           <p class="sub rev">
-            רוצים לשמוע עוד על תוכנית 16 המעלות?<br />
+            רוצים לשמוע עוד על תכנית 16 המעלות?<br />
             השאירו פרטים ונחזור אליכם עם כל המידע על הסדנה הקרובה ועל התאמת
-            התוכנית לכם ו/או לארגון שלכם.
+            התכנית לכם ו/או לארגון שלכם.
           </p>
 
           <form
@@ -2337,7 +2335,7 @@
             action="https://formsubmit.co/Info@dreamers.org.il"
             method="POST"
           >
-            <input type="hidden" name="_subject" value="פנייה חדשה מדף תוכנית 16 המעלות" />
+            <input type="hidden" name="_subject" value="פנייה חדשה מדף תכנית 16 המעלות" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
@@ -2385,8 +2383,8 @@
                     התכנית לארגון שלי</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה היית רוצה לדעת" value="מידע נוסף על שלבי התוכנית" />מידע
-                    נוסף על שלבי התוכנית</label
+                    ><input type="checkbox" name="מה היית רוצה לדעת" value="מידע נוסף על שלבי התכנית" />מידע
+                    נוסף על שלבי התכנית</label
                   >
                   <label class="ms-opt"
                     ><input type="checkbox" id="msOtherCheck" name="מה היית רוצה לדעת" value="אחר" />אחר</label
@@ -2466,14 +2464,14 @@
             <ul class="footer-nav">
               <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
-              <li><a href="program.html" class="active">תוכנית 16 המעלות</a></li>
+              <li><a href="program.html" class="active">תכנית 16 המעלות</a></li>
               <li>
                 <a href="index.html#activities">הפעילויות שלנו</a>
                 <ul class="footer-subnav">
                   <li><a href="education.html">16 המעלות בחינוך</a></li>
                   <li><a href="mental-health.html#mh-hero">16 המעלות בבריאות הנפש</a></li>
-                  <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
-                  <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
+                  <li><a href="business.html#biz-hero">16 המעלות בחברות וארגונים</a></li>
+                  <li><a href="practice.html#prac-hero">16 המעלות לקהל הרחב</a></li>
                 </ul>
               </li>
               <li><a href="learning.html#learn-hero">מרחב למידה ותרגול</a></li>
@@ -2782,18 +2780,17 @@
           ["עודד אורלי", "assets/img/Faces/team/מנחים/עודד אורלי.jpg"],
           ["רונית פייגנבלט", "assets/img/Faces/team/מנחים/רונית פייגנבלט.jpg"],
           ["שירן מרדלר", "assets/img/Faces/team/מנחים/שירן מרדלר.jpg"],
-          ["תומר גביש", "assets/img/Faces/team/מנחים/תומר גביש.jpg"],
           ["תמי ליבנה", "assets/img/Faces/team/מנחים/תמי ליבנה.jpg"],
           ["תמר תשבי", "assets/img/Faces/team/מנחים/תמר תשבי.jpg"],
           ["אסתר לוקשינסקי", "assets/img/Faces/team/מנחים/אסתר לוקשינסקי.jpg"],
           ["תמי בן יקר", "assets/img/Faces/team/מנחים/תמי בן יקר.jpg"],
+          ["גילה כהן", "assets/img/Faces/team/מנחים/גילה כהן.jpg"],
+          ["נעמי לוסין", "assets/img/Faces/team/מנחים/נעמי לוסין.jpg"],
+          ["עינת אייל", "assets/img/Faces/team/מנחים/עינת אייל.jpg"],
         ].sort((a, b) => a[0].localeCompare(b[0], "he"));
 
         const facOuter = document.querySelector(".fac-outer");
         const facTrack = document.getElementById("facTrack");
-        const facPrev = document.getElementById("facPrev");
-        const facNext = document.getElementById("facNext");
-        const facDots = document.getElementById("facDots");
 
         if (facTrack) {
           FACILITATORS.forEach(([name, src]) => {
@@ -2811,66 +2808,50 @@
             facTrack.appendChild(el);
           });
 
-          const cards = Array.from(facTrack.children);
-          let page = 0;
-          let perView = 5;
-          let pages = 1;
+          /* Runs by itself, round and round, left to right (2026-10-30):
+             the track glides rightwards, one photo's width every 750ms. The
+             rightmost photo slides out, a new one slides in on the left, and
+             the card that left is moved to the back of the line so the ring
+             never ends. No arrows or dots. */
+          const STEP_MS = 750;
+          let offset = 0;
+          let last = 0;
+          let running = false;
+          const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-          function readPerView() {
-            const v = parseInt(
-              getComputedStyle(facOuter).getPropertyValue("--fac-per-view"),
-              10,
-            );
-            return Number.isFinite(v) && v > 0 ? v : 1;
+          function stepPx() {
+            const c = facTrack.children;
+            return c.length > 1
+              ? Math.abs(c[0].offsetLeft - c[1].offsetLeft)
+              : 0;
           }
-
-          function buildDots() {
-            facDots.innerHTML = "";
-            for (let i = 0; i < pages; i++) {
-              const b = document.createElement("button");
-              b.className = "fac-dot" + (i === page ? " active" : "");
-              b.setAttribute("aria-label", "עמוד " + (i + 1));
-              b.addEventListener("click", () => go(i));
-              facDots.appendChild(b);
+          function frame(now) {
+            if (!running) return;
+            const step = stepPx();
+            if (step > 0) {
+              offset += ((now - last) / STEP_MS) * step;
+              while (offset >= step) {
+                facTrack.appendChild(facTrack.firstElementChild);
+                offset -= step;
+              }
+              facTrack.style.transform = "translateX(" + offset + "px)";
             }
+            last = now;
+            requestAnimationFrame(frame);
           }
-
-          function go(p) {
-            page = Math.max(0, Math.min(p, pages - 1));
-            const first = cards[page * perView];
-            // RTL track: offsetLeft shrinks as the index grows, so shifting
-            // right by the difference brings the page into view
-            const delta = first ? cards[0].offsetLeft - first.offsetLeft : 0;
-            facTrack.style.transform = "translateX(" + delta + "px)";
-            facPrev.disabled = page === 0;
-            facNext.disabled = page === pages - 1;
-            facDots.querySelectorAll(".fac-dot").forEach((d, i) => {
-              d.classList.toggle("active", i === page);
-            });
+          function start() {
+            if (running || reduce.matches) return;
+            running = true;
+            last = performance.now();
+            requestAnimationFrame(frame);
           }
-
-          function layout() {
-            const next = readPerView();
-            const changed = next !== perView;
-            perView = next;
-            pages = Math.ceil(cards.length / perView);
-            if (page > pages - 1) page = pages - 1;
-            if (changed || facDots.children.length !== pages) buildDots();
-            const keep = facTrack.style.transition;
-            facTrack.style.transition = "none";
-            go(page);
-            void facTrack.offsetWidth;
-            facTrack.style.transition = keep;
+          function stop() {
+            running = false;
           }
-
-          facPrev.addEventListener("click", () => go(page - 1));
-          facNext.addEventListener("click", () => go(page + 1));
-          layout();
-          let t;
-          window.addEventListener("resize", () => {
-            clearTimeout(t);
-            t = setTimeout(layout, 150);
-          });
+          // only animate while the carousel is on screen
+          new IntersectionObserver((es) => {
+            es.forEach((e) => (e.isIntersecting ? start() : stop()));
+          }).observe(facOuter);
         }
       })();
     </script>

@@ -465,7 +465,7 @@
 
       /* ═══ GENERIC TEXT SECTION ═══ */
       .ab-sec {
-        padding: 6.5rem 2rem;
+        padding: 4rem 2rem;
       }
       .ab-sec.bg-white {
         background: var(--white);
@@ -526,6 +526,39 @@
       /* ═══ THE 16 VIRTUES — flip cards ═══ */
       /* the same board as the programme page: the printed chart, with every
          tile turning over on hover to show what the virtue means */
+      /* ─── the 4 value-family image cards (same as the home page) ─── */
+      .pgrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin: 2.8rem 0;
+        position: relative;
+      }
+      .pc {
+        border-radius: 26px;
+        position: relative;
+        overflow: hidden;
+      }
+      .pc-img {
+        padding: 0;
+        box-shadow: 0 22px 65px rgba(0, 30, 60, 0.35);
+      }
+      .pc-img img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 26px;
+      }
+      @media (max-width: 1024px) {
+        .pgrid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 768px) {
+        .pgrid {
+          grid-template-columns: 1fr;
+        }
+      }
       .virtues-board {
         max-width: 1080px;
         margin: 2.6rem auto 0;
@@ -1646,7 +1679,7 @@
       }
       @media (max-width: 520px) {
         .ab-sec {
-          padding: 4.5rem 1.1rem;
+          padding: 3rem 1.1rem;
         }
         .vb-grid {
           /* one family at a time: its title, then its own four tiles,
@@ -1698,7 +1731,7 @@
         <ul class="nav-links">
           <li><a href="index.html#hero">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
-          <li><a href="program.html">תוכנית 16 המעלות</a></li>
+          <li><a href="program.html">תכנית 16 המעלות</a></li>
           <li class="has-dropdown">
             <a href="#activities" class="dd-trigger"
               >הפעילויות שלנו <span class="dd-arrow">▾</span></a
@@ -1706,8 +1739,8 @@
             <ul class="dropdown-menu">
               <li><a href="education.html">16 המעלות בחינוך</a></li>
               <li><a href="mental-health.html#mh-hero" class="active">16 המעלות בבריאות הנפש</a></li>
-              <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
-              <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
+              <li><a href="business.html#biz-hero">16 המעלות בחברות וארגונים</a></li>
+              <li><a href="practice.html#prac-hero">16 המעלות לקהל הרחב</a></li>
             </ul>
           </li>
           <li><a href="learning.html#learn-hero">מרחב למידה ותרגול</a></li>
@@ -1737,7 +1770,7 @@
           מבוסס ערכים ומשמעות
         </div>
         <p class="bh-sub rev d2">
-          תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          תכנית 16 המעלות היא תכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות.
         </p>
       </div>
@@ -1753,7 +1786,7 @@
         <div class="edu-intro-grid">
           <div class="edu-intro-text">
             <p class="ab-body rev">
-              <span style="font-weight: 700;">תוכנית 16 המעלות היא תוכנית
+              <span style="font-weight: 700;">תכנית 16 המעלות היא תכנית
               בינלאומית לפיתוח חוסן רגשי-חברתי<br />ולטיפוח ערכים אוניברסליים
               וחיים בעלי משמעות.</span>
             </p>
@@ -1764,7 +1797,7 @@
               הכאב גדול, המציאות מורכבת והמשאבים הנפשיים מצטמצמים.
             </p>
             <p class="ab-body rev d2">
-              תוכנית 16 המעלות מכניסה אל המרחב הטיפולי שיח ערכי ומאפשרת ליצור
+              תכנית 16 המעלות מכניסה אל המרחב הטיפולי שיח ערכי ומאפשרת ליצור
               שפה משותפת שמסייעת לקדם חוסן, אנושיות, קשר ומשמעות בתוך הצוות,
               במפגש הטיפולי ובחיי המטופלים.
             </p>
@@ -1774,47 +1807,24 @@
           </div>
         </div>
 
-        <div class="virtues-board rev d3">
-          <img
-            class="vb-poster"
-            src="assets/img/Poster - HEADER Only.png"
-            alt="16 המעלות"
-          />
-          <div class="vb-body">
-            <div class="vb-grid">
-              <!-- ─── column titles ─── -->
-              <img
-                class="vb-col-title"
-                data-family="think"
-                src="assets/img/Poster - Box Think.png"
-                alt="הדרך בה אנו חושבת"
-              />
-              <img
-                class="vb-col-title"
-                data-family="act"
-                src="assets/img/Poster - Box Act.png"
-                alt="הדרך בה אנו פועלת"
-              />
-              <img
-                class="vb-col-title"
-                data-family="relate"
-                src="assets/img/Poster - Box Relate.png"
-                alt="הדרך בה אנו מתייחסת לזולת"
-              />
-              <img
-                class="vb-col-title"
-                data-family="meaning"
-                src="assets/img/Poster - Box Meaning.png"
-                alt="הדרך בה אנו מוצאת משמעות"
-              />
-              <!-- the 16 tiles are written in by the script at the foot -->
-            </div>
+        <div class="pgrid rev d2" id="virtues">
+          <div class="pc pc-img" id="pc0">
+            <img src="assets/img/1.png" loading="lazy" decoding="async" alt="הדרך בה אנו חושבים: ענווה, סבלנות, שביעות רצון, חדווה" />
+          </div>
+          <div class="pc pc-img" id="pc1">
+            <img src="assets/img/2.png" loading="lazy" decoding="async" alt="הדרך בה אנו פועלים: טוב לב, יושרה, נדיבות, דיבור מיטיב" />
+          </div>
+          <div class="pc pc-img" id="pc2">
+            <img src="assets/img/3.png" loading="lazy" decoding="async" alt="הדרך בה אנו מתייחסים לזולת: כבוד, סליחה, הכרת תודה, נאמנות" />
+          </div>
+          <div class="pc pc-img" id="pc3">
+            <img src="assets/img/4.png" loading="lazy" decoding="async" alt="הדרך בה אנו מוצאים משמעות: שאיפות, עקרונות, שירות, אומץ" />
           </div>
         </div>
 
         <div class="rev d3" style="margin-top: 2.4rem; text-align: center">
           <a href="program.html" class="btn btn-blue"
-            >מידע נוסף על תוכנית 16 המעלות</a
+            >למידע נוסף על תכנית 16 המעלות</a
           >
         </div>
       </div>
@@ -1911,7 +1921,7 @@
     <section class="ab-sec bg-white">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">למי מיועדת התוכנית</h2>
+          <h2 class="h3d rev">למי מיועדת התכנית</h2>
         </div>
         <div class="persona-grid">
           <div class="persona-card rev">
@@ -1921,7 +1931,7 @@
               הבריאות וצוותים רב-מקצועיים במערכות בריאות הנפש.
             </p>
             <p>
-              התוכנית מאפשרת לאנשי המקצוע לפתח בעצמם איכויות שאותן הם מבקשים
+              התכנית מאפשרת לאנשי המקצוע לפתח בעצמם איכויות שאותן הם מבקשים
               לטפח במרחב הטיפולי: קשיבות, חוסן, חמלה, גמישות, תקשורת מיטיבה
               ומשמעות.
             </p>
@@ -1930,7 +1940,7 @@
                 <strong>תוצאה:</strong>
                 <span
                   >צוותים מחוברים, מודעים וחסינים יותר, המסוגלים להביא את
-                  עקרונות התוכנית אל העבודה היומיומית ואל המפגש עם
+                  עקרונות התכנית אל העבודה היומיומית ואל המפגש עם
                   המטופלים.</span
                 >
               </div>
@@ -1943,7 +1953,7 @@
               צוותים ומובילי תחומים, הדרכה ופיתוח מקצועי.
             </p>
             <p>
-              התוכנית מספקת שפה ערכית משותפת שיכולה לחבר בין הצוות, ההנהלה והחזון
+              התכנית מספקת שפה ערכית משותפת שיכולה לחבר בין הצוות, ההנהלה והחזון
               של הארגון.
             </p>
             <div class="persona-result">
@@ -1951,13 +1961,13 @@
                 <strong>תוצאה:</strong>
                 <span
                   >תרבות אנושית וערכית יותר, חיזוק החוסן של הצוות ותשתית להטמעה
-                  רחבה של התוכנית.</span
+                  רחבה של התכנית.</span
                 >
               </div>
             </div>
           </div>
           <div class="persona-card rev">
-            <h3>מרכזים ומסגרות המעוניינים להטמיע את התוכנית בקרב מטופלים</h3>
+            <h3>מרכזים ומסגרות המעוניינים להטמיע את התכנית בקרב מטופלים</h3>
             <p>
               בתי חולים, מרכזים לבריאות הנפש, מרפאות, מסגרות אשפוז יום ומסגרות
               טיפוליות ושיקומיות המעוניינים להרחיב את המענה הניתן למטופלים
@@ -1965,7 +1975,7 @@
               וחיים בעלי משמעות.
             </p>
             <p>
-              אנשי הצוות עוברים הכשרה והתנסות בתוכנית ובהמשך יכולים להעביר אותה
+              אנשי הצוות עוברים הכשרה והתנסות בתכנית ובהמשך יכולים להעביר אותה
               למטופלים במסגרת שבה הם עובדים.
             </p>
             <div class="persona-result">
@@ -1981,7 +1991,7 @@
           <div class="persona-card rev d1">
             <h3>מטופלים ומטופלות</h3>
             <p>
-              התוכנית ניתנת להעברה לקבוצות מטופלים, בהתאמה לאוכלוסייה, למסגרת
+              התכנית ניתנת להעברה לקבוצות מטופלים, בהתאמה לאוכלוסייה, למסגרת
               ולמטרות הטיפול.
             </p>
             <div class="persona-result">
@@ -2005,7 +2015,7 @@
           <h2 class="h3d rev">איך זה עובד</h2>
         </div>
         <p class="ab-body ab-body-center rev">
-          16 המעלות בבריאות הנפש היא תוכנית מודולרית, המותאמת למאפייני
+          16 המעלות בבריאות הנפש היא תכנית מודולרית, המותאמת למאפייני
           המסגרת, לאוכלוסיית היעד ולמטרות הארגון. התהליך המלא כולל התנסות
           והעמקה של הצוות עם התכנית, מתוך חיבור לחוויה האישית והמציאות
           היומיומית ניתן להמשיך לרכוש את הידע, המיומנויות והכלים להנחיית
@@ -2023,15 +2033,15 @@
       </div>
     </section>
 
-    <!-- ════════════ אפשרויות לעבודה עם התוכנית ════════════ -->
-    <!-- echoes the programme page's "שלבי התוכנית והסמכה להנחיה" cards
+    <!-- ════════════ אפשרויות לעבודה עם התכנית ════════════ -->
+    <!-- echoes the programme page's "שלבי התכנית והסמכה להנחיה" cards
          (the stage-2 blue, the teal edge bar and pill), in a smaller 2x2 -->
     <section class="ab-sec bg-white" id="options">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">אפשרויות לעבודה עם התוכנית</h2>
+          <h2 class="h3d rev">אפשרויות לעבודה עם התכנית</h2>
           <p class="sub rev">
-            16 המעלות בבריאות הנפש היא תוכנית מודולרית הניתנת להתאמה
+            16 המעלות בבריאות הנפש היא תכנית מודולרית הניתנת להתאמה
             לאוכלוסייה, למסגרת ולמטרות ההתערבות.
           </p>
         </div>
@@ -2040,7 +2050,7 @@
             <span class="opt-badge">סדנת היכרות וחשיפה לצוות</span>
             <p>
               מפגש חווייתי המאפשר להכיר את עקרונות 16 המעלות ולהתנסות בשפה
-              ובכלים של התוכנית.
+              ובכלים של התכנית.
             </p>
             <p>מתאים לצוותים מקצועיים, הנהלה או צוותים מובילי תחומים.</p>
           </div>
@@ -2054,7 +2064,7 @@
           <div class="opt-card rev">
             <span class="opt-badge">הכשרת מנחים</span>
             <p>
-              מסלול ייעודי לאנשי מקצוע המעוניינים להוביל את התוכנית למטופלים
+              מסלול ייעודי לאנשי מקצוע המעוניינים להוביל את התכנית למטופלים
               במסגרת שבה הם עובדים.
             </p>
           </div>
@@ -2067,7 +2077,7 @@
           </div>
         </div>
         <p class="ab-body ab-body-center opt-note rev d2">
-          היקף התוכנית ואופן היישום מותאמים לצרכים, למבנה ולמטרות של כל מסגרת.
+          היקף התכנית ואופן היישום מותאמים לצרכים, למבנה ולמטרות של כל מסגרת.
         </p>
       </div>
     </section>
@@ -2081,7 +2091,7 @@
         <div class="edu-intro-grid field-grid">
           <div class="edu-intro-text">
             <p class="ab-body rev">
-              תוכנית 16 המעלות הועברה לצוות היחידה לטיפול יום במרכז לבריאות
+              תכנית 16 המעלות הועברה לצוות היחידה לטיפול יום במרכז לבריאות
               הנפש בבאר שבע ומועברת כבר מעל ל-3 שנים למטופלי ומטופלות היחידה.
               המטופלים עוברים את תכני התכנית, מתנסים בכלים ועוברים תהליך אישי
               וקבוצתי משמעותי.
@@ -2099,7 +2109,7 @@
             </p>
             <p class="ab-body rev d2">
               כיום מתפתחים תהליכים נוספים במרכזי בריאות הנפש, המבוססים על הכשרת
-              צוותים ועל שילוב התוכנית בעבודה עם מטופלים ומטופלות.
+              צוותים ועל שילוב התכנית בעבודה עם מטופלים ומטופלות.
             </p>
           </div>
           <div class="edu-intro-photo rev d1">
@@ -2127,8 +2137,8 @@
           </div>
           <div class="rev d1">
             <p class="ab-body" style="margin: 0 0 1.2rem">
-              עמותת בית חולמים היא הנציגה הרשמית של תוכנית 16 המעלות בישראל
-              מ-2020. אנו מביאים את מסגרת הערכים האוניברסליים של התוכנית למערכת
+              עמותת בית חולמים היא הנציגה הרשמית של תכנית 16 המעלות בישראל
+              מ-2020. אנו מביאים את מסגרת הערכים האוניברסליים של התכנית למערכת
               החינוך הישראלית, תוך התאמתה לתרבות המקומית ושימור עומקה והקפדתה
               הבינלאומיים.
             </p>
@@ -2151,13 +2161,13 @@
         <div class="faq-list rev">
           <div class="faq-item">
             <button class="faq-q">
-              <span>האם 16 המעלות היא תוכנית טיפולית?</span>
+              <span>האם 16 המעלות היא תכנית טיפולית?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
               <p>
                 לא. 16 המעלות אינה תחליף לטיפול נפשי, אבחון או התערבות קלינית.
-                מדובר בתוכנית לפיתוח חוסן רגשי-חברתי, טיפוח ערכים אוניברסליים
+                מדובר בתכנית לפיתוח חוסן רגשי-חברתי, טיפוח ערכים אוניברסליים
                 וחיים בעלי משמעות. במערכות בריאות הנפש היא יכולה להשתלב לצד
                 העבודה הטיפולית ולהעניק למטופלים ולצוותים שפה וכלים נוספים
                 להתמודדות ולצמיחה.
@@ -2166,26 +2176,26 @@
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>האם התוכנית מיועדת לאנשי מקצוע או למטופלים?</span>
+              <span>האם התכנית מיועדת לאנשי מקצוע או למטופלים?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
               <p>
-                המודל בבריאות הנפש מתחיל באנשי המקצוע. הצוות עובר את התוכנית
+                המודל בבריאות הנפש מתחיל באנשי המקצוע. הצוות עובר את התכנית
                 בעצמו, ובמסגרות המעוניינות בכך אנשי צוות עוברים הכשרה המאפשרת
-                להם להעביר את התוכנית בהמשך למטופלים ולמטופלות. כך נוצרת
+                להם להעביר את התכנית בהמשך למטופלים ולמטופלות. כך נוצרת
                 אפשרות לשפה משותפת בין הצוות לבין המטופלים.
               </p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>האם כל איש צוות יכול להעביר את התוכנית למטופלים?</span>
+              <span>האם כל איש צוות יכול להעביר את התכנית למטופלים?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
               <p>
-                העברת התוכנית נעשית במסגרת הכשרה ייעודית ובהתאם למודל העבודה של
+                העברת התכנית נעשית במסגרת הכשרה ייעודית ובהתאם למודל העבודה של
                 16 המעלות. ההתאמה לאוכלוסיית המטופלים, למסגרת ולמצב הקליני
                 נעשית כחלק מתהליך ההטמעה.
               </p>
@@ -2193,12 +2203,12 @@
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>לאילו מסגרות התוכנית מתאימה?</span>
+              <span>לאילו מסגרות התכנית מתאימה?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
               <p>
-                התוכנית יכולה להתאים למגוון מסגרות בתחום בריאות הנפש, ובהן
+                התכנית יכולה להתאים למגוון מסגרות בתחום בריאות הנפש, ובהן
                 מרכזים ובתי חולים לבריאות הנפש, מחלקות אשפוז, אשפוז יום,
                 מרפאות, מסגרות שיקום ומסגרות טיפוליות נוספות. אופן היישום מותאם
                 למאפייני המסגרת ולאוכלוסייה שאיתה היא עובדת.
@@ -2207,15 +2217,15 @@
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>האם התוכנית מתאימה לאוכלוסיות המתמודדות עם טראומה?</span>
+              <span>האם התכנית מתאימה לאוכלוסיות המתמודדות עם טראומה?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
               <p>
-                כן, עקרונות התוכנית יכולים להשתלב בעבודה עם אוכלוסיות
-                המתמודדות עם טראומה ומשברי חיים. עם זאת, 16 המעלות אינה תוכנית
+                כן, עקרונות התכנית יכולים להשתלב בעבודה עם אוכלוסיות
+                המתמודדות עם טראומה ומשברי חיים. עם זאת, 16 המעלות אינה תכנית
                 ייעודית לטיפול בטראומה ואינה מחליפה התערבות טיפולית מבוססת
-                טראומה. בהתאמת התוכנית למסגרות בריאות הנפש ניתן לתת תשומת לב
+                טראומה. בהתאמת התכנית למסגרות בריאות הנפש ניתן לתת תשומת לב
                 מיוחדת ליצירת אמון וביטחון, לקצב, לוויסות ולמאפיינים של
                 האוכלוסייה.
               </p>
@@ -2224,7 +2234,7 @@
           <div class="faq-item">
             <button class="faq-q">
               <span
-                >מה הערך של הכשרת הצוות אם המטרה היא להעביר את התוכנית
+                >מה הערך של הכשרת הצוות אם המטרה היא להעביר את התכנית
                 למטופלים?</span
               >
               <span class="faq-plus">+</span>
@@ -2240,7 +2250,7 @@
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>איך התוכנית שונה מהכשרות אחרות לצוותי בריאות הנפש?</span>
+              <span>איך התכנית שונה מהכשרות אחרות לצוותי בריאות הנפש?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
@@ -2256,12 +2266,12 @@
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>האם ניתן להתאים את התוכנית למסגרת שלנו?</span>
+              <span>האם ניתן להתאים את התכנית למסגרת שלנו?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
               <p>
-                כן. התוכנית מודולרית וניתנת להתאמה למבנה המסגרת, לאוכלוסייה,
+                כן. התכנית מודולרית וניתנת להתאמה למבנה המסגרת, לאוכלוסייה,
                 למטרות ולמשאבים הקיימים. תהליך ההטמעה נבנה בשיתוף עם הנהלת
                 המסגרת והצוות המקצועי.
               </p>
@@ -2275,9 +2285,9 @@
             <div class="faq-a">
               <p>
                 העמותה נמצאת בתהליך של פיתוח תשתית מחקרית לבחינת האפקטיביות של
-                התוכנית, בשיתוף הפורום האקדמי שלנו. בהמשך ניתן לשלב הערכה של
+                התכנית, בשיתוף הפורום האקדמי שלנו. בהמשך ניתן לשלב הערכה של
                 חוויית המשתתפים, שינויים בתחושת החוסן והמשמעות, וכן מדדים
-                הקשורים להטמעת התוכנית במסגרת.
+                הקשורים להטמעת התכנית במסגרת.
               </p>
             </div>
           </div>
@@ -2345,8 +2355,8 @@
                     צוותים מקצועיים</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="שילוב התוכנית בעבודה עם מטופלים" />שילוב
-                    התוכנית בעבודה עם מטופלים</label
+                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="שילוב התכנית בעבודה עם מטופלים" />שילוב
+                    התכנית בעבודה עם מטופלים</label
                   >
                   <label class="ms-opt"
                     ><input type="checkbox" name="מה הביא אתכם אלינו" value="פיתוח צוות והעמקת עבודת הצוות" />פיתוח
@@ -2438,14 +2448,14 @@
             <ul class="footer-nav">
               <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
-              <li><a href="program.html">תוכנית 16 המעלות</a></li>
+              <li><a href="program.html">תכנית 16 המעלות</a></li>
               <li>
                 <a href="index.html#activities">הפעילויות שלנו</a>
                 <ul class="footer-subnav">
                   <li><a href="education.html">16 המעלות בחינוך</a></li>
                   <li><a href="mental-health.html#mh-hero" class="active">16 המעלות בבריאות הנפש</a></li>
-                  <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
-                  <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
+                  <li><a href="business.html#biz-hero">16 המעלות בחברות וארגונים</a></li>
+                  <li><a href="practice.html#prac-hero">16 המעלות לקהל הרחב</a></li>
                 </ul>
               </li>
               <li><a href="learning.html#learn-hero">מרחב למידה ותרגול</a></li>

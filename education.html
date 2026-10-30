@@ -280,7 +280,6 @@
         width: 44px;
         height: 44px;
         padding: 0;
-        margin-left: auto;
         background: transparent;
         border: 0;
         cursor: pointer;
@@ -385,7 +384,8 @@
          copy hugging the right edge, and a tint weighted to that side */
       #edu-hero {
         position: relative;
-        padding: 12rem 0 6rem;
+        padding: 12rem 0 3.5rem;
+        min-height: 36rem;
         overflow: hidden;
         background: var(--blue-dk);
         text-align: right;
@@ -430,6 +430,25 @@
         margin: 0 auto;
         padding: 0 2rem;
       }
+      /* the education photo sits on top of the aurora, in its clear left
+         half, opposite the copy */
+      .bh-photo {
+        position: absolute;
+        z-index: 2;
+        left: max(2rem, calc((100% - 1240px) / 2 + 2rem));
+        top: 9.5rem;
+        width: min(24vw, 340px);
+        aspect-ratio: 1 / 1;
+        border-radius: 26px;
+        overflow: hidden;
+        border: 4px solid rgba(255, 255, 255, 0.9);
+        box-shadow: 0 25px 60px rgba(0, 20, 45, 0.5);
+      }
+      .bh-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
       #edu-hero .h3d {
         color: #fff;
         text-shadow:
@@ -465,7 +484,7 @@
 
       /* ═══ GENERIC TEXT SECTION ═══ */
       .ab-sec {
-        padding: 6.5rem 2rem;
+        padding: 4rem 2rem;
       }
       .ab-sec.bg-white {
         background: var(--white);
@@ -475,7 +494,7 @@
       }
       .ab-hdr {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
       }
       .ab-hdr .sub {
         margin: 0 auto;
@@ -656,6 +675,100 @@
         }
       }
 
+      /* ═══ 16 המעלות — same treatment as the home page's intro ═══ */
+      .program-pitch {
+        font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+        font-weight: 800;
+        color: var(--blue-dk);
+        text-align: center;
+        max-width: 780px;
+        line-height: 1.6;
+        margin: 1.1rem auto 3rem;
+      }
+      .intro-body {
+        font-size: 1.07rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        margin-bottom: 1.3rem;
+      }
+      .intro-body-center {
+        text-align: center;
+      }
+      .intro-body-wide {
+        max-width: 920px;
+        margin: 2.6rem auto 0;
+        text-align: center;
+      }
+      .pgrid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 2.8rem;
+        position: relative;
+      }
+      .pc {
+        border-radius: 26px;
+        position: relative;
+        overflow: hidden;
+        cursor: default;
+        transform-style: preserve-3d;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.4s ease;
+      }
+      .pc-img {
+        padding: 0;
+        box-shadow: 0 22px 65px rgba(0, 30, 60, 0.35);
+      }
+      .pc-img img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 26px;
+      }
+      .intro-join-box {
+        margin-top: 2.5rem;
+        padding: 1.8rem 2rem;
+        border-radius: 18px;
+      }
+      .intro-join-box-bold {
+        max-width: 720px;
+        margin: 2.4rem auto 0;
+        padding: 1.6rem 2.2rem;
+        text-align: center;
+        background: var(--g-main);
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.32);
+      }
+      .ijb-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text-mid);
+        font-weight: 500;
+      }
+      .ijb-text-bold {
+        color: #fff;
+        font-size: 1.18rem;
+        font-weight: 800;
+        line-height: 1.6;
+      }
+      .inline-link {
+        color: var(--blue);
+        font-weight: 700;
+        text-decoration: underline;
+      }
+      @media (max-width: 1024px) {
+        .pgrid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 768px) {
+        .pgrid {
+          grid-template-columns: 1fr;
+        }
+      }
+
       /* ═══ WHY NOW ═══ */
       /* each consequence sits on its own tile, matching the tilt-on-hover
          language used for cards on the other pages (about.html's stat
@@ -783,8 +896,9 @@
         line-height: 1.8;
         font-weight: 700;
         color: #fff;
-        background: var(--g-main);
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        /* a clearly lighter blue than the deep-navy panels around it */
+        background: linear-gradient(135deg, #2b7ab8 0%, #4aa3d6 100%);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow:
           0 2px 4px rgba(0, 67, 120, 0.28),
           0 20px 50px rgba(0, 67, 120, 0.35),
@@ -815,6 +929,17 @@
       }
       .stat-frame strong {
         color: var(--teal-lt);
+      }
+      .stat-after {
+        text-align: center;
+        margin-top: 2rem;
+      }
+      .stat-after cite {
+        display: block;
+        margin-top: 0.5rem;
+        font-style: normal;
+        font-size: 0.84rem;
+        color: var(--text-mid);
       }
       .stat-frame cite {
         display: block;
@@ -868,6 +993,19 @@
           0 6px 14px rgba(0, 67, 120, 0.1),
           0 26px 55px rgba(0, 67, 120, 0.2);
       }
+      .persona-flag {
+        max-width: 860px;
+        margin: 2.4rem auto 0;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--blue);
+      }
+      .persona-after {
+        margin-top: 1.2rem;
+        text-align: center;
+        max-width: 860px;
+      }
       .persona-card h3 {
         color: var(--blue);
         font-size: 1.12rem;
@@ -917,6 +1055,12 @@
         font-weight: 800;
         margin-bottom: 1.4rem;
       }
+      .how-line {
+        margin-bottom: 0.8rem;
+      }
+      .how-line strong {
+        color: var(--blue);
+      }
       .steps-cta {
         text-align: center;
         margin-top: 2.4rem;
@@ -924,7 +1068,7 @@
 
       /* ═══ TESTIMONIAL DUO ═══ */
       #quote-duo {
-        padding: 6.5rem 2rem;
+        padding: 4rem 2rem;
         background: var(--g-main);
         position: relative;
         overflow: hidden;
@@ -984,6 +1128,10 @@
         font-size: 0.9rem;
         color: var(--blue);
         font-weight: 800;
+      }
+      .qf-role-sub {
+        font-weight: 500;
+        color: var(--text-mid);
       }
 
       /* ═══ ABOUT / STATS ═══ */
@@ -1104,7 +1252,7 @@
 
       /* ═══ CONTACT ═══ */
       #contact-form {
-        padding: 6.5rem 2rem;
+        padding: 4rem 2rem;
         background: var(--g-main);
         position: relative;
         overflow: hidden;
@@ -1163,8 +1311,17 @@
         color: var(--gold-lt);
       }
       .form-input,
-      .form-textarea,
-      /* multi-choice dropdown for "מה הביא אתכם אלינו?" */
+      .form-textarea {
+        width: 100%;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text);
+        font-family: "Heebo", sans-serif;
+        font-size: 0.94rem;
+      }
+      /* multi-choice dropdown for "איך תרצו לשלב את התכנית?" */
       .ms-field {
         position: relative;
       }
@@ -1404,8 +1561,12 @@
 
       /* ═══ RESPONSIVE ═══ */
       @media (max-width: 1024px) {
+        .persona-grid {
+          gap: 1rem;
+        }
         .persona-card {
-          flex: 0 1 calc(50% - 0.8rem);
+          flex: 0 1 calc(33.333% - 0.67rem);
+          padding: 1.8rem 1.2rem;
         }
       }
       @media (max-width: 768px) {
@@ -1464,10 +1625,20 @@
           transform: rotate(180deg);
         }
         #edu-hero {
-          padding: 9rem 0 4rem;
+          padding: 9rem 0 2.5rem;
+          min-height: 0;
         }
         .bh-content {
           padding: 0 1.4rem;
+        }
+        .bh-photo {
+          position: relative;
+          z-index: 2;
+          left: auto;
+          top: auto;
+          transform: none;
+          width: min(78vw, 320px);
+          margin: 1.8rem auto 0;
         }
         .vb-grid {
           /* two families to a column, each still whole */
@@ -1502,7 +1673,7 @@
       }
       @media (max-width: 520px) {
         .ab-sec {
-          padding: 4.5rem 1.1rem;
+          padding: 3rem 1.1rem;
         }
         .vb-grid {
           /* one family at a time: its title, then its own four tiles,
@@ -1548,7 +1719,7 @@
         <ul class="nav-links">
           <li><a href="index.html#hero">דף הבית</a></li>
           <li><a href="about.html">אודות</a></li>
-          <li><a href="program.html">תוכנית 16 המעלות</a></li>
+          <li><a href="program.html">תכנית 16 המעלות</a></li>
           <li class="has-dropdown">
             <a href="#activities" class="dd-trigger"
               >הפעילויות שלנו <span class="dd-arrow">▾</span></a
@@ -1556,8 +1727,8 @@
             <ul class="dropdown-menu">
               <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
               <li><a href="mental-health.html#mh-hero">16 המעלות בבריאות הנפש</a></li>
-              <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
-              <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
+              <li><a href="business.html#biz-hero">16 המעלות בחברות וארגונים</a></li>
+              <li><a href="practice.html#prac-hero">16 המעלות לקהל הרחב</a></li>
             </ul>
           </li>
           <li><a href="learning.html#learn-hero">מרחב למידה ותרגול</a></li>
@@ -1587,9 +1758,12 @@
           לחיות בביטחון רגשי.
         </div>
         <p class="bh-sub rev d2">
-          תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          תכנית 16 המעלות היא תכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
           ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות.
         </p>
+      </div>
+      <div class="bh-photo">
+        <img src="assets/img/תמונת חינוך.jpg" alt="תלמידים.ות בפעילות 16 המעלות" />
       </div>
     </header>
 
@@ -1603,93 +1777,119 @@
         <div class="edu-intro-grid">
           <div class="edu-intro-text">
             <p class="ab-body rev">
-              העולם זקוק למערכת חינוך חדשה, כזו שתעניק לאנשים דרך חדשה ורחבה
-              להתבונן בעצמם ובעולם, שתטפח לא רק את המח, אלא גם את הלב.
+              תכנית 16 המעלות מוכרת בגפ״ן (תכנית 63554) והיא תכנית הדגל במנהל
+              החינוך של עירית תל אביב-יפו.<br />
+              התכנית מוכרת לגמול השתלמות במרכז פסג"ה.
             </p>
             <p class="ab-body rev d1">
-              <span style="font-weight: 700;">16 המעלות היא תוכנית בינלאומית
-              לפיתוח חוסן רגשי-חברתי<br />ולטיפוח ערכים אוניברסליים וחיים בעלי
-              משמעות.</span> התוכנית מספקת מענה עמוק ורוחבי ליעדי משרד החינוך
-              ומלמדת כישורים ומיומנויות SEEL (חינוך רגשי-חברתי-ערכי - Social
-              Emotional Ethical Learning) המותאמים לצוותי הוראה, לתלמידות
-              ותלמידים ולהורים.
-            </p>
-            <p class="ab-body rev d1">
-              באמצעות הטמעת ערכים אוניברסליים (כמו ענווה, טוב לב, סליחה
-              ושאיפות), תוכנית 16 המעלות פועלת לביסוס שפה ערכית משותפת ותרבות
-              חינוכית ערכית-קהילתית, ומסייעת לצוותי הוראה, לתלמידים ולהורים
-              לפתח קשיבות, להכיר את עצמם לעומק, לשפר את מערכות היחסים שלהם
-              ולמצוא שלוות-נפש.
+              העולם זקוק למערכת חינוך חדשה, שתטפח לא רק את המוח אלא גם את הלב.
+              תכנית 16 המעלות מלמדת צוותי הוראה, תלמידים.ות והורים מיומנויות של
+              חינוך רגשי-חברתי-ערכי (SEEL) ומספקת מענה עמוק ורחב ליעדי משרד
+              החינוך. באמצעות ערכים אוניברסליים כמו ענווה, טוב לב, סליחה
+              ושאיפות, היא בונה שפה ערכית משותפת ותרבות חינוכית קהילתית,
+              ומסייעת לכל מי שמשתתף.ת בה לפתח קשיבות, להכיר את עצמו.ה לעומק
+              ולשפר את מערכות היחסים שלו.ה.
             </p>
             <p class="ab-body rev d2">
-              תוכנית 16 המעלות מוכרת במערכת גפ"ן של משרד החינוך משנת תשפ"ג
-              (תוכנית מספר 63554). היא תוכנית הדגל של מנהל החינוך בעיריית תל
-              אביב-יפו והוכנסה גם לבתי-ספר בנתניה, במועצת מטה יהודה ועוד.
+              לצפייה במפגש על 16 המעלות בחינוך ועל נושא הליבה הראשון, "הדרך
+              שבה אנו חושבים", בהשתתפות דליה לין, מנהלת מנהל החינוך בעירית תל
+              אביב-יפו; גילת סימון, מנהלת אגף חינוך על-יסודי בעירית נתניה
+              ובהנחיית ניב אגם, מייסד ויו"ר העמותה, לחצו
+              <a
+                href="https://www.youtube.com/watch?v=KdoJdB9Vgik"
+                target="_blank"
+                rel="noopener"
+                class="inline-link"
+                >כאן</a
+              >.
             </p>
           </div>
           <div class="edu-intro-photo rev d1">
             <img src="assets/img/education2.png" alt="תלמידות ותלמידים בפעילות 16 המעלות" />
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="virtues-board rev d3">
-          <img
-            class="vb-poster"
-            src="assets/img/Poster - HEADER Only.png"
-            alt="16 המעלות"
-          />
-          <div class="vb-body">
-            <div class="vb-grid">
-              <!-- ─── column titles ─── -->
-              <img
-                class="vb-col-title"
-                data-family="think"
-                src="assets/img/Poster - Box Think.png"
-                alt="הדרך בה אנו חושבת"
-              />
-              <img
-                class="vb-col-title"
-                data-family="act"
-                src="assets/img/Poster - Box Act.png"
-                alt="הדרך בה אנו פועלת"
-              />
-              <img
-                class="vb-col-title"
-                data-family="relate"
-                src="assets/img/Poster - Box Relate.png"
-                alt="הדרך בה אנו מתייחסת לזולת"
-              />
-              <img
-                class="vb-col-title"
-                data-family="meaning"
-                src="assets/img/Poster - Box Meaning.png"
-                alt="הדרך בה אנו מוצאת משמעות"
-              />
-              <!-- the 16 tiles are written in by the script at the foot -->
-            </div>
+    <!-- ════════════ 16 המעלות (same content as the home page) ════════════ -->
+    <section class="ab-sec bg-grey" id="virtues-intro">
+      <div class="wrap">
+        <h2 class="h3d rev" style="text-align: center">תכנית 16 המעלות</h2>
+        <p class="program-pitch rev d1">
+          16 המעלות היא תכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות
+        </p>
+
+        <p class="intro-body intro-body-center intro-body-wide rev d1">
+          התכנית מבוססת על ארבעה נושאי ליבה.<br />
+          היא מספקת כלים מעשיים להטמעתם בחיי היומיום.<br />
+          בכל נושא 4 ערכים ובסך הכל 16 מעלות אוניברסליות אשר מייצרות שפה<br />
+          לקידום של שלום פנימי וחיצוני בקרב יחידים, משפחות, קהילות, ובחברה
+          כולה.
+        </p>
+
+        <div class="pgrid rev d2" id="virtues">
+          <div class="pc pc-img" id="pc0">
+            <img
+              src="assets/img/1.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו חושבים: ענווה, סבלנות, שביעות רצון, חדווה"
+            />
+          </div>
+          <div class="pc pc-img" id="pc1">
+            <img
+              src="assets/img/2.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו פועלים: טוב לב, יושרה, נדיבות, דיבור מיטיב"
+            />
+          </div>
+          <div class="pc pc-img" id="pc2">
+            <img
+              src="assets/img/3.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו מתייחסים לזולת: כבוד, סליחה, הכרת תודה, נאמנות"
+            />
+          </div>
+          <div class="pc pc-img" id="pc3">
+            <img
+              src="assets/img/4.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו מוצאים משמעות: שאיפות, עקרונות, שירות, אומץ"
+            />
           </div>
         </div>
 
-        <div class="rev d3" style="margin-top: 2.4rem; text-align: center">
+        <div class="intro-join-box intro-join-box-bold rev d3">
+          <p class="ijb-text ijb-text-bold">
+            עמותת בית חולמים היא הנציגה הרשמית של התכנית בישראל
+          </p>
+        </div>
+
+        <div style="margin-top: 1.8rem; text-align: center" class="rev d3">
           <a href="program.html" class="btn btn-blue"
-            >מידע נוסף על תוכנית 16 המעלות</a
+            >למידע נוסף על תכנית 16 המעלות</a
           >
         </div>
       </div>
     </section>
 
     <!-- ════════════ WHY NOW ════════════ -->
-    <section class="ab-sec bg-grey">
+    <section class="ab-sec bg-white">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">למה עכשיו</h2>
         </div>
         <p class="ab-body rev">
-          מערכת החינוך ניצבת מול אתגרים הולכים וגדלים: כיתות גדולות, מוסחות
-          בגלל מסכים, פערים חברתיים, ותקופה ממושכת של חירום ומלחמה.
+          מערכת החינוך ניצבת מול אתגרים הולכים וגדלים: כיתות גדולות, הסחות דעת
+          רבות, קשיי קשב וריכוז בעקבות הצפה בגירויים, פערים חברתיים ותקופה
+          ממושכת של חירום ומלחמה.
         </p>
         <p class="ab-body rev d1" style="font-weight: 700; color: var(--blue)">
-          התוצאה:
+          בעקבות כך בבתי ספר רבים רואים:
         </p>
         <div class="impact-grid rev d1">
           <div class="impact-tile">
@@ -1734,66 +1934,64 @@
           </div>
         </div>
 
+        <p class="ab-body stat-after rev d2">
+          בשנים האחרונות נרשם זינוק של עשרות אחוזים בפניות ילדים ובני נוער בשל
+          מצוקה נפשית, דיכאון וחרדה. המצוקה הרגשית בקרב תלמידים היא תופעה
+          רוחבית הדורשת מענה מובנה למניעה ולחיזוק החוסן במרחב הבית-ספרי.
+          <cite
+            >(המועצה הלאומית לשלום הילד - השנתון הסטטיסטי ילדים בישראל -
+            2025)</cite
+          >
+        </p>
+
         <p class="pill-note rev d3">
-          תוכנית 16 המעלות בחינוך מציעה כלים מעשיים שכאשר מיישמים אותם, הם
-          מביאים ליותר קשיבות, בהירות ושלווה פנימית.
+          תכנית 16 המעלות מפתחת בקהילה הבית-ספרית, בצוותי ההוראה, בתלמידים
+          ובהורים, שפה ערכית משותפת וכלים מעשיים לקשיבות, לוויסות רגשי
+          ולמערכות יחסים מיטיבות, כך שחוסן רגשי ותחושת שייכות יוכלו להיבנות
+          מתוך בית הספר עצמו.
         </p>
       </div>
     </section>
 
     <!-- ════════════ WHO IT'S FOR ════════════ -->
-    <section class="ab-sec bg-white">
+    <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">למי מיועדת התוכנית</h2>
+          <h2 class="h3d rev">למי מיועדת התכנית</h2>
           <p class="sub rev">
-            בין אם אתם בית ספר יסודי, חטיבת ביניים, תיכון או מסגרת
-            חינוכית-טיפולית, הצורך בשפה אנושית ערכית משותפת זהה. 16 המעלות
-            מתאימה את עצמה לשכבת הגיל, לאופי בית הספר וליעדים החינוכיים שלכם.
+            תכנית 16 המעלות מיועדת לכלל הקהילה הבית-ספרית ומתאימה את עצמה
+            לשכבת הגיל, לאופי בית הספר וליעדים החינוכיים שלכם
           </p>
         </div>
         <div class="persona-grid">
           <div class="persona-card rev">
-            <h3>הנהלת בית הספר</h3>
+            <h3>תלמידים.ות</h3>
             <p>
-              להוביל את בית הספר מתוך חזון ערכי ברור, גם בתקופות של אי-ודאות.
-              טיפוח אקלים בית-ספרי מיטיב לכלל הקהילה הבית-ספרית.
+              קשיבות, מודעות עצמית וחברתית, התמודדות עם לחץ, ויסות רגשי, הקשבה
+              ופתרון קונפליקטים ומערכות יחסים מיטיבות עם בני הגיל ועם מבוגרים.
             </p>
             <div class="persona-result">
               <span
-                ><strong>תוצאה:</strong> חזון חינוכי ברור ואקלים בית-ספרי
-                קהילתי מיטיב</span
+                ><strong>עם מה יוצאים:</strong> ביטחון עצמי, תחושת שייכות,
+                מערכות יחסים מיטיבות וסולם ערכים בהיר ויציב.</span
               >
             </div>
           </div>
           <div class="persona-card rev d1">
-            <h3>תלמידות ותלמידים</h3>
+            <h3>צוותי הוראה וחינוך</h3>
             <p>
-              טיפוח קשיבות, פיתוח מודעות עצמית וחברתית, התמודדות עם לחץ וויסות
-              רגשי, פיתוח יכולת הקשבה ופתרון קונפליקטים, בניית מערכות יחסים
-              מיטיבות עם קבוצת השווים והמבוגרים ועוד.
+              היכרות מעמיקה יותר עם עצמנו ועם עמיתינו, הקניית כלים ומערכי שיעור
+              לחינוך רגשי-חברתי-ערכי. כשהצוות לומד את התכנית בעצמו, נבנים חזון
+              חינוכי משותף ואקלים בית-ספרי מיטיב
             </p>
             <div class="persona-result">
               <span
-                ><strong>תוצאה:</strong> ביטחון עצמי, שייכות, מערכות יחסים
-                מיטיבות וסולם ערכים בהיר ויציב.</span
+                ><strong>עם מה יוצאים:</strong> גיבוש צוותי, תחושת משמעות
+                ומסוגלות, רווחה נפשית בעשייה החינוכית ובחיים האישיים.</span
               >
             </div>
           </div>
           <div class="persona-card rev d2">
-            <h3>צוותי הוראה וחינוך</h3>
-            <p>
-              טיפוח תחושת שייכות צוותית, היכרות מעמיקה יותר עם עצמי ועם
-              הקולגות, הקניית כלים ומערכי שיעור לחינוך חברתי-רגשי-ערכי.
-            </p>
-            <div class="persona-result">
-              <span
-                ><strong>תוצאה:</strong> גיבוש צוותי, טיפוח תחושת משמעות,
-                מסוגלות ורווחה נפשית בעשייה החינוכית ובחיים האישיים.</span
-              >
-            </div>
-          </div>
-          <div class="persona-card rev">
             <h3>הורים ומשפחות</h3>
             <p>
               שפה משותפת בין הבית לבית הספר, המאפשרת המשכיות בטיפוח הערכים גם
@@ -1801,46 +1999,126 @@
             </p>
             <div class="persona-result">
               <span
-                ><strong>תוצאה:</strong> שיח משפחתי עמוק וקרוב יותר ותחושת
-                שותפות</span
+                ><strong>עם מה יוצאים:</strong> שיח משפחתי קרוב יותר ותחושת
+                שותפות.</span
               >
             </div>
           </div>
-          <div class="persona-card rev d1">
-            <h3>רשויות ומנהלי חינוך</h3>
-            <p>
-              תוכנית דגל מוכרת, הניתנת ליישום רוחבי ברשות. מענה עמוק ליעדי משרד
-              החינוך.
-            </p>
-            <div class="persona-result">
-              <span><strong>תוצאה:</strong> שפה ערכית אחידה ברשות</span>
-            </div>
-          </div>
         </div>
+
+        <p class="persona-flag rev d2">
+          תכנית הדגל של מנהל חינוך בעירית תל אביב-יפו
+        </p>
+        <p class="ab-body persona-after rev d2">
+          התכנית מתאימה לבתי ספר יסודיים, לחטיבות ביניים ולתיכונים, למסגרות
+          חינוכיות-טיפוליות וגם לרשויות ולמנהלי.ות חינוך שמבקשים ליישם אותה
+          באופן רוחבי ולבנות שפה ערכית אחידה בין בתי הספר.
+        </p>
       </div>
     </section>
 
     <!-- ════════════ HOW IT WORKS ════════════ -->
-    <section class="ab-sec bg-grey">
+    <section class="ab-sec bg-white">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">איך זה עובד</h2>
         </div>
         <p class="ab-body rev">
-          16 המעלות בחינוך היא תוכנית מוכרת בגפ"ן (תוכנית 63554), המועברת
-          בסדנאות לצוותי הוראה, תלמידים והורים, ומותאמת לשכבת הגיל, לאופי בית
-          הספר ולצרכי הרשות.
+          תכנית 16 המעלות מועברת בסדנאות, בקבוצות של 12-22 משתתפים.ות, ומותאמת
+          לשכבת הגיל, לאופי בית הספר ולצרכי הרשות. אפשר לבחור את הדרך שמתאימה
+          לכם:
         </p>
-        <p class="ab-body rev d1">
-          המבנה המודולרי של התוכנית, המופעלת בקבוצות של 12-22 משתתפים, מאפשר
-          גמישות רבה והתאמה לצרכיו מבחינת לוחות הזמנים ומבחינת הרכב הקבוצה.
+        <p class="ab-body how-line rev d1">
+          <strong>הצוות לומד ומעביר:</strong> צוותי ההוראה עוברים את הסדנאות
+          בעצמם ומשלבים את התכנית בכיתות באמצעות מערכי שיעור. זו הדרך המומלצת
+          להטמעה.
+        </p>
+        <p class="ab-body how-line rev d1">
+          <strong>מנחים.ות מוסמכים.ות בכיתות:</strong> מנחים.ות מוסמכים.ות
+          מטעם עמותת ״בית חולמים״ מעבירים סדנאות ישירות לתלמידים.ות.
+        </p>
+        <p class="ab-body how-line rev d1">
+          <strong>שותפות עם ההורים:</strong> סדנאות להורים שיוצרות שפה משותפת
+          בין הבית לבית הספר.
+        </p>
+        <p class="ab-body how-line rev d1">
+          <strong>הטמעה לאורך השנה:</strong> אחרי הסדנאות הראשונות בונים יחד עם
+          הנהלת בית הספר שגרת תרגול שבועית קבועה.
         </p>
 
         <div class="steps-cta rev d2">
           <a href="program.html#stages" class="btn btn-blue"
-            >מידע מפורט על שלבי התוכנית ניתן לקרוא כאן</a
+            >מידע מפורט על שלבי התכנית ניתן לקרוא כאן</a
           >
         </div>
+      </div>
+    </section>
+
+    <!-- ════════════ הדרך שלנו בחינוך ════════════ -->
+    <section class="ab-sec bg-grey" id="our-way">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">הדרך שלנו בחינוך</h2>
+        </div>
+        <p class="ab-body rev">
+          עמותת בית חולמים היא הנציגה הרשמית של תכנית 16 המעלות בישראל מאז שנת
+          2020 ומוכרת במערכת גפ"ן מאז שנת תשפ"ג (תכנית מספר 63554).
+        </p>
+        <p class="ab-body rev d1">
+          אנחנו מביאים את התכנית לבתי ספר ולרשויות, ומלווים אותם מהסדנאות
+          הראשונות לצוותים ועד שגרה קבועה של תרגול, תוך שמירה על העומק ואמות
+          המידה הבינלאומיות של התכנית. המנחים.ות שלנו הם אנשי.ות מקצוע
+          מוסמכים.ות, עם רקע בחינוך, בפסיכולוגיה ובפיתוח רגשי-חברתי.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════ מה כבר נעשה בשטח ════════════ -->
+    <section class="ab-sec bg-white" id="in-the-field">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">מה כבר נעשה בשטח</h2>
+        </div>
+        <p class="ab-body rev">
+          תכנית 16 המעלות היא תכנית הדגל של מינהל החינוך בעירית תל אביב-יפו
+          והסדנאות מועברות לצוותי הורים וניהול בבתי ספר יסודיים ותיכונים ברחבי
+          העיר.
+        </p>
+        <p class="ab-body rev d1">
+          בנוסף, התכנית פעלה גם בעירית נתניה ובמשך כ ? שנים הועברו סדנאות
+          לתלמידים.ות ולמורים.ות.
+        </p>
+        <p class="ab-body rev d1">
+          המספרים מדברים בעד עצמם: עשרות בתי ספר, עשרות רבות של סדנאות, מאות של
+          מורים.ות ותלמידים.ות שהשתתפו בתכנית.
+        </p>
+        <p class="ab-body rev d2">
+          הניסיון הרב שצברנו בעבודה עם בתי ספר ורשויות שונות מאפשר לנו להתאים
+          את אופן היישום לשכבת הגיל, לאופי בית הספר ולצרכי הרשות.
+        </p>
+      </div>
+    </section>
+
+    <!-- ════════════ קבוצות תרגול ════════════ -->
+    <section class="ab-sec bg-grey" id="practice-groups">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">קבוצות תרגול</h2>
+        </div>
+        <p class="ab-body rev">
+          דרך נוספת להטמיע את 16 המעלות בחיי היומיום היא קבוצות תרגול מתמשכות.
+          בבתי ספר ובצוותי ניהול חינוכיים פועלות קבוצות תרגול סגורות שמתכנסות
+          אחת לשבוע או שבועיים, באופן קבוע ולאורך זמן, ושבהן צוותי החינוך ו/או
+          תלמידים.ות, מקיימים שיח משותף על המעלות ומתרגלים את הכלים המעשיים
+          שהתכנית מציעה לטיפוח קשיבות ולפיתוח חוסן רגשי-חברתי-ערכי.
+        </p>
+        <p class="ab-body rev d1">
+          מעוניינים להקים קבוצה כזו אצלכם או לשוחח עם מנהלים.ות ומורים.ות שכבר
+          מנחים.ות קבוצה כזו?
+          <a href="#contact-form" class="inline-link"
+            >השאירו פרטים ונחזור אליכם</a
+          >
+        </p>
       </div>
     </section>
 
@@ -1854,49 +2132,30 @@
           <div class="qf-card rev">
             <div class="qf-mark">"</div>
             <p class="qf-text">
-              איך מיישמים? איך מעבירים לילדים? ואז כתבתי בדף: לאהוב את עצמי
-              יותר, ולהעביר את זה הלאה
+              כמנהלת, חיפשתי דרך להוביל את בית הספר לא רק דרך יעדים ונהלים אלא גם דרך ערכים. אחרי שעברתי את כל שלבי התכנית והוכשרתי כמנחה, אני רואה איך ההתבוננות הפנימית של המבוגרים היא הבסיס לכל עבודה חינוכית.
             </p>
-            <div class="qf-role">גיא, תיכון י"א תל אביב</div>
+            <div class="qf-role">נעמה סקלי,<span class="qf-role-sub"> מנהלת בי"ס נעמי שמר, תל אביב-יפו. המנהלת הראשונה בישראל שהוסמכה כמנחה בתכנית 16 המעלות.</span></div>
           </div>
           <div class="qf-card rev d1">
             <div class="qf-mark">"</div>
             <p class="qf-text">
-              ההשתלמות מזכירה את שירו של אלתרמן 'עוד חוזר הניגון שזנחת לשווא...'
-              מי שמתחבר למעלות, חוזר לתזקיק של הניגון שלו. יש משהו במעלות, שזה
-              כמו פרקטיקה של לחזור לניגון
+              כשהתחלתי את תהליך ההסמכה כמנחה בתכנית, לא ידעתי לאן הוא ייקח אותי. גיליתי שהתרגול האישי שלי הוא מה שמאפשר לי להיות נוכחת יותר, גם בכיתה וגם מחוצה לה. היום אני מתרגלת עם תלמידיי את המעלות בקבוצת תרגול שבועית במסגרת שעה של "השכלה ההת". מהחוויה שלי ומהפידבקים שאני מקבלת מהתלמידים, המרחב הייחודי הזה מעניק להם הזדמנות להאט, להכיר אחד את השני יותר לעומק ולמצוא שלווה גם כאשר המציאות הפנימית סוערת.
             </p>
-            <div class="qf-role">סופיה טבנקין (י"א ת"א)</div>
+            <div class="qf-role">אובלו סמעון,<span class="qf-role-sub"> מחנכת כיתה י׳ בביה״ס עירוני י״א, תל אביב-יפו. המורה הראשונה שהוסמכה כמנחה בתכנית 16 המעלות.</span></div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════ ABOUT ════════════ -->
-    <section class="ab-sec bg-white" id="about">
-      <div class="wrap">
-        <div class="ab-hdr">
-          <h2 class="h3d rev">אודות בית חולמים</h2>
-        </div>
-        <div class="about-grid">
-          <div class="about-photo rev">
-            <img
-              src="assets/img/Sadna - DSC_3416.jpg"
-              alt="משתתפות ומשתתפים בסדנת 16 המעלות"
-            />
+          <div class="qf-card rev">
+            <div class="qf-mark">"</div>
+            <p class="qf-text">
+              בתוך היומיום העמוס, תרגול 16 המעלות הוא המקום שבו אני לומדת לעצור, להתבונן ולבחור איך להגיב. זה השפיע גם על העבודה שלי עם הורים: אני מקשיבה להם אחרת, ממהרת פחות להציע פתרון ונוכחת יותר למה שהם מביאים איתם. כשהורה מרגיש שמקשיבים לו, קל לו יותר להקשיב גם לילד שלו.
+            </p>
+            <div class="qf-role">שירן מרדלר,<span class="qf-role-sub"> מטה מרכז ההורות במנהל החינוך תל-אביב-יפו, מנחה בתכנית.</span></div>
           </div>
-          <div class="rev d1">
-            <p class="ab-body" style="margin: 0 0 1.2rem">
-              עמותת בית חולמים היא הנציגה הרשמית של תוכנית 16 המעלות בישראל
-              מ-2020. אנו מביאים את מסגרת הערכים האוניברסליים של התוכנית למערכת
-              החינוך הישראלית, תוך התאמתה לתרבות המקומית ושימור עומקה והקפדתה
-              הבינלאומיים.
+          <div class="qf-card rev d1">
+            <div class="qf-mark">"</div>
+            <p class="qf-text">
+              כמפקחת אני פוגשת בתי ספר רבים ומכירה את הצורך של צוותי חינוך בקשר, במשמעות ובמרחב לעצירה מהעומס שבשגרה. בסדנה הרגשתי בעצמי מה זה לקבל מרחב לעצור והבנתי כמה מעט מרחבים כאלה יש לאנשי חינוך וכמה חשוב שהמערכת תפתח מרחבים ותכנים כאלה.
             </p>
-            <p class="ab-body" style="margin: 0 0 1.8rem">
-              המנחות והמנחים שלנו הם.ן נשות ואנשי מקצוע מוסמכים.ות, עם רקע
-              בחינוך, פסיכולוגיה, בפיתוח רגשי-חברתי ועוד.
-            </p>
-            <a href="about.html" class="btn btn-blue">למידע נוסף על העמותה</a>
+            <div class="qf-role">שרון חסין,<span class="qf-role-sub"> מפקחת ממשרד החינוך שעברה את הסדנה.</span></div>
           </div>
         </div>
       </div>
@@ -1911,97 +2170,98 @@
         <div class="faq-list rev">
           <div class="faq-item">
             <button class="faq-q">
-              <span
-                >מה זה SEEL ובמה זה שונה מ-SEL ומתוכניות חינוך חברתי-רגשי
-                אחרות?</span
-              >
+              <span>האם התכנית מוכרת על-ידי משרד החינוך?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
-              <p>
-                כיום, המודל המקובל ביותר בעולם להגדרת מיומנויות SEL (Social and
-                Emotional Learning) הוא המודל של CASEL. הוא אומץ, בהתאמות שונות,
-                על ידי מערכות חינוך רבות בארצות הברית, קנדה, אירופה, אוסטרליה
-                ומדינות נוספות, ומגדיר חמש קבוצות מרכזיות של מיומנויות: מודעות
-                עצמית (Self-Awareness), ניהול עצמי (Self-Management), מודעות
-                חברתית (Social Awareness), מיומנויות יחסים (Relationship Skills)
-                וקבלת החלטות אחראית (Responsible Decision-Making).
-              </p>
-              <p style="margin-top: 1rem">
-                המונח SEEL מופיע בשנים האחרונות יותר ויותר, בעיקר בהקשרים של
-                Social, Emotional and Ethical Learning (למידה חברתית, רגשית
-                ואתית). ההבדל המרכזי הוא הוספת הממד של אתיקה וערכים. במסגרת זו
-                המיומנויות מחולקות לשלושה תחומים: מודעות (Awareness), חמלה
-                (Compassion) ומעורבות (Engagement), וכל אחד מהם נבחן בשלוש רמות:
-                כלפי עצמי, כלפי אחרים וכלפי מערכות (Systems).
-              </p>
+              <p>כן. התכנית מוכרת במערכת גפ"ן (תכנית 63554), ומשמשת כתכנית דגל במנהל החינוך בעירית תל אביב-יפו, לצד פעילות ברשויות נוספות.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>האם התוכנית מוכרת על-ידי משרד החינוך?</span>
+              <span>לאילו שכבות גיל מתאימה התכנית?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
-              <p>
-                כן. התוכנית מוכרת במערכת גפ"ן (תוכנית 63554), ומשמשת כתוכנית דגל
-                במנהל החינוך בעיריית תל אביב-יפו, לצד פעילות ברשויות נוספות.
-              </p>
+              <p>התכנית מותאמת לעבודה עם תלמידים.ות בכל שכבות הגיל, מבית הספר היסודי ועד התיכון, כאשר מתבצעות התאמות של הפעילויות לגילאים השונים. האופן המיטבי להעברת התכנית הוא שצוותי ההוראה לומדים את התכנית בעצמם ואז מכניסים אותה לכיתות הלימוד, אך ניתן גם להעביר את התכנית באופן סדנאי על-ידי מנחים.ות מוסמכים.ות של התכנית מטעם עמותת בית חולמים.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>לאילו שכבות גיל מתאימה התוכנית?</span>
+              <span>איך משלבים את התכנית בלוח השעות הקיים?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
-              <p>
-                התוכנית מותאמת לעבודה עם תלמידים בכל שכבות הגיל, מבית הספר
-                היסודי ועד התיכון, כאשר מתבצעות התאמות של הפעילויות לגילאים
-                השונים. האופן המיטבי להעברת התוכנית הוא שצוותי ההוראה לומדים את
-                התוכנית בעצמם ואז מכניסים אותה לכיתות הלימוד, אך ניתן גם להעביר
-                את התוכנית באופן סדנאי על-ידי מנחים.ות מוסמכים.ות של התוכנית
-                מטעם עמותת בית חולמים.
-              </p>
+              <p>התכנית מודולרית וניתנת להתאמה:</p>
+              <p style="margin-top: 0.8rem"><strong>לצוותי הוראה והורים:</strong><br />
+                שלב 1 - 4 מפגשים של 3 שעות או 2 מפגשים של 4 שעות.<br />
+                שלב 2 - 5 מפגשים של שעתיים וחצי.</p>
+              <p style="margin-top: 0.8rem"><strong>לתלמידים.ות:</strong><br />
+                קבוצות תרגול שבועיות</p>
+              <p style="margin-top: 0.8rem">לטובת הטמעה, אחרי התנסות בשלבים הראשונים של הסדנה מומלץ לייצר שגרות וסדירויות של שעה או שעתיים אקדמיות בלימוד שוטף לאורך השנה. ישנם מערכי שיעור שפותחו על-ידי הארגון הבינלאומי ועל-ידי עמותת בית חולמים. אנו עובדים יחד עם הנהלת בית הספר ובונים תכנית מותאמת לצרכי בית הספר.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>איך משלבים את התוכנית בלוח השעות הקיים?</span>
+              <span>מי מעביר את הסדנאות?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
-              <p>התוכנית מודולרית וניתנת להתאמה:</p>
-              <p style="margin-top: 0.8rem">
-                <strong>לצוותי הוראה והורים:</strong><br />
-                שלב 1 - 4 מפגשים של שעתיים וחצי או 2 מפגשים של 4 שעות.<br />
-                שלב 2 - 4-5 מפגשים של שעתיים וחצי (מלאות, לא אקדמיות).
-              </p>
-              <p style="margin-top: 0.8rem">
-                <strong>לתלמידות ותלמידים:</strong><br />
-                שלב 1 ב-6 מפגשים שבועיים של שעתיים אקדמיות.
-              </p>
-              <p style="margin-top: 0.8rem">
-                לטובת הטמעה, אחרי התנסות בשלבים הראשונים של הסדנה מומלץ לייצר
-                שגרות וסדירויות של שעה או שעתיים אקדמיות בלימוד שוטף לאורך השנה.
-                ישנם מערכי שיעור שפותחו על-ידי הארגון הבינלאומי ועל-ידי עמותת
-                בית חולמים. אנו עובדים יחד עם הנהלת בית הספר ובונים תוכנית
-                מותאמת לצרכי בית הספר.
-              </p>
+              <p>הסדנאות מועברות על-ידי מנחים.ות מוסמכים.ות מטעם עמותת בית חולמים. אפשר גם שצוות ההוראה יוכשר להעביר את התכנית בעצמו</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>איך מודדים תוצאות?</span>
+              <span>כמה זה עולה? איך מתחילים?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
-              <p>
-                בשנת 2026 הקימה העמותה פורום אקדמי עם בכירי.ות החוקרים.ות בתחום
-                (ראו בעמוד אודות), אשר בונים.ות מחקר לבחינת האפקטיביות של
-                התוכנית. המחקר ישלב בחינה כמותנית ואיכותנית של התוכנית על-ידי
-                שאלונים ועל-ידי כלים של מחקר איכותני.
-              </p>
+              <p><a href="#contact-form" class="inline-link">מוזמנים להשאיר פרטים בטופס ונחזור אליכם בהקדם לשיחת היכרות שבה נבין את הצרכים ונבנה יחד תכנית מותאמת.</a></p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>האם התכנית מוכרת לגמול השתלמות?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>כן, התכנית מוכרת במערכת גפ"ן מאז שנת תשפ"ג (תכנית מספר 63554). היא מוכרת לגמול השתלמות במרכז פסג"ה בתל אביב-יפו לאנשי.ות חינוך אשר עוברים את שלבים 1 ו-2 של התכנית ברצף.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>האם מוענקת תעודה של התכנית?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>כן, בסיום כל אחד משלבי התכנית, מוענקת לזכאים, תעודה בינלאומית מוכרת על-ידי FDCW (הארגון הבינלאומי שפיתח את התכנית) ועמותת ״בית חולמים״.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>האם ניתן לעבוד כמנחה של התכנית?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>כן, מי שהשלימו את 3 שלבי התכנית הראשונים, הביעו עניין לעבור הכשרה כמנחים.ות ונמצאו מתאימים.ות לכך, יכולים להצטרף להכשרה. מי שמשלימים את ההכשרה מצטרפים כעובדים בעמותה במודל העסקה של פרילנס עבור שכר שעתי ראוי.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>מה זה SEEL ובמה זה שונה מ-SEL ומתכניות חינוך רגשי-חברתי-ערכי אחרות?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>SEL (Social and Emotional Learning) הוא מודל שמגדיר חמש קבוצות של מיומנויות: מודעות עצמית, ניהול עצמי, מודעות חברתית, מיומנויות יחסים וקבלת החלטות אחראית. המודל המקובל ביותר הוא של CASEL, והוא אומץ במערכות חינוך רבות בעולם. SEEL מוסיף ממד של אתיקה וערכים, ומחלק את המיומנויות לשלושה תחומים: מודעות, חמלה ומעורבות, וכל אחד נבחן כלפי עצמי, כלפי אחרים וכלפי מערכות. תכנית 16 המעלות מלמדת מיומנויות SEEL דרך ארבעת נושאי הליבה ו-16 המעלות, בשילוב תרגול אישי וקבוצתי.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>מה ידוע על אפקטיביות התכנית?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>בשנת 2026 הקימה העמותה פורום אקדמי עם בכירי.ות החוקרים.ות בתחום (<a href="about.html" class="inline-link">ראו בעמוד אודות</a>), אשר בונים.ות מחקר לבחינת האפקטיביות של התכנית. המחקר ישלב בחינה כמותית ואיכותנית של התכנית על-ידי שאלונים ועל-ידי כלים של מחקר איכותני.</p>
             </div>
           </div>
         </div>
@@ -2013,11 +2273,12 @@
       <div class="wrap">
         <div class="contact-inner">
           <h2 class="h3d h3d-white rev">לתיאום שיחת היכרות</h2>
+          <p class="sub rev" style="margin-bottom: 0.8rem; font-weight: 800; font-size: 1.2rem; color: #fff">
+            רוצים להכניס את תכנית 16 המעלות לבית הספר או לרשות שלכם?
+          </p>
           <p class="sub rev" style="margin-bottom: 2.2rem">
-            מעוניינים.ות להביא את תכנית 16 המעלות לבית הספר או לרשות שלכם?
-            מלאו.נה את הפרטים הבאים לתיאום שיחת היכרות שבה נשיב על כל שאלה,
-            נלמד את הצרכים הייחודיים שלכם.ן ונבחן יחד איך להתאים עבורכם.ן את
-            התכנית
+            השאירו פרטים ונחזור אליכם לשיחת היכרות קצרה, בה נבין יחד את
+            הצרכים שלכם ונבנה תכנית מותאמת לצוות החינוכי, לתלמידים או להורים.
           </p>
 
           <form
@@ -2033,70 +2294,66 @@
 
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">שם <span class="req">*</span></label>
-                <input class="form-input" type="text" name="שם" required />
+                <label class="form-label">שם מלא <span class="req">*</span></label>
+                <input class="form-input" type="text" name="שם מלא" required />
               </div>
               <div class="form-field">
-                <label class="form-label">בית ספר / רשות</label>
-                <input class="form-input" type="text" name="בית ספר / רשות" />
+                <label class="form-label">תפקיד</label>
+                <select class="form-select" name="תפקיד">
+                  <option value="">בחרו תפקיד</option>
+                  <option>מנהל.ת בית ספר</option>
+                  <option>רכז.ת חברתי.ת</option>
+                  <option>פסיכולוג.ית חינוכי.ת / יועץ.ת</option>
+                  <option>מנהל.ת אגף חינוך</option>
+                  <option>מורה</option>
+                  <option>הורה</option>
+                </select>
               </div>
             </div>
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">תפקיד</label>
-                <input class="form-input" type="text" name="תפקיד" />
+                <label class="form-label">שם המוסד / הרשות / בית הספר <span class="req">*</span></label>
+                <input class="form-input" type="text" name="שם המוסד / הרשות / בית הספר" required />
               </div>
+              <div class="form-field">
+                <label class="form-label">טלפון ליצירת קשר <span class="req">*</span></label>
+                <input class="form-input" type="tel" name="טלפון" required />
+              </div>
+            </div>
+            <div class="form-row">
               <div class="form-field">
                 <label class="form-label">דוא"ל <span class="req">*</span></label>
                 <input class="form-input" type="email" name="דוא&quot;ל" required />
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label class="form-label">טלפון <span class="req">*</span></label>
-                <input class="form-input" type="tel" name="טלפון" required />
-              </div>
               <div class="form-field ms-field">
-                <label class="form-label">מה הביא אתכם אלינו?</label>
+                <label class="form-label">איך תרצו לשלב את התכנית?</label>
                 <button type="button" class="ms-trigger" id="msTrigger">
                   <span id="msTriggerText">בחרו אפשרות אחת או יותר</span>
                   <span class="dd-arrow">▾</span>
                 </button>
                 <div class="ms-panel" id="msPanel">
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="שילוב בתוכנית הלימודים" />שילוב
-                    בתוכנית הלימודים</label
+                    ><input type="checkbox" name="איך תרצו לשלב את התכנית" value="השתלמות / סדנאות לצוות ההוראה" />השתלמות
+                    / סדנאות לצוות ההוראה</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="הכשרת צוות הוראה" />הכשרת
-                    צוות הוראה</label
+                    ><input type="checkbox" name="איך תרצו לשלב את התכנית" value="סדנאות לתלמידים / קבוצות תרגול" />סדנאות
+                    לתלמידים / קבוצות תרגול</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="עבודה עם הורים" />עבודה
-                    עם הורים</label
+                    ><input type="checkbox" name="איך תרצו לשלב את התכנית" value="סדנאות להורים" />סדנאות
+                    להורים</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="יישום ברשות" />יישום
-                    ברשות</label
-                  >
-                  <label class="ms-opt"
-                    ><input type="checkbox" id="msOtherCheck" name="מה הביא אתכם אלינו" value="אחר" />אחר</label
+                    ><input type="checkbox" name="איך תרצו לשלב את התכנית" value="הטמעה עירונית" />הטמעה
+                    עירונית</label
                   >
                 </div>
               </div>
             </div>
             <div class="form-field full">
-              <textarea
-                class="form-textarea other-text"
-                id="msOtherText"
-                name="פירוט נוסף (אחר)"
-                maxlength="500"
-                placeholder="ספרו לנו בקצרה (עד 500 תווים)"
-              ></textarea>
-            </div>
-            <div class="form-field full">
-              <label class="form-label">הודעה</label>
-              <textarea class="form-textarea" name="הודעה"></textarea>
+              <label class="form-label">הערות נוספות</label>
+              <textarea class="form-textarea" name="הערות נוספות"></textarea>
             </div>
 
             <button type="submit" class="btn btn-gold form-submit">
@@ -2157,14 +2414,14 @@
             <ul class="footer-nav">
               <li><a href="index.html#hero">דף הבית</a></li>
               <li><a href="about.html">אודות</a></li>
-              <li><a href="program.html">תוכנית 16 המעלות</a></li>
+              <li><a href="program.html">תכנית 16 המעלות</a></li>
               <li>
                 <a href="index.html#activities">הפעילויות שלנו</a>
                 <ul class="footer-subnav">
                   <li><a href="education.html" class="active">16 המעלות בחינוך</a></li>
                   <li><a href="mental-health.html#mh-hero">16 המעלות בבריאות הנפש</a></li>
-                  <li><a href="business.html#biz-hero">16 המעלות בחברות</a></li>
-                  <li><a href="practice.html#prac-hero">קבוצות תרגול</a></li>
+                  <li><a href="business.html#biz-hero">16 המעלות בחברות וארגונים</a></li>
+                  <li><a href="practice.html#prac-hero">16 המעלות לקהל הרחב</a></li>
                 </ul>
               </li>
               <li><a href="learning.html#learn-hero">מרחב למידה ותרגול</a></li>
@@ -2372,7 +2629,8 @@
                 .map((c) => c.value)
                 .join(", ")
             : "בחרו אפשרות אחת או יותר";
-          msOtherText.style.display = msOtherCheck.checked ? "block" : "none";
+          if (msOtherText && msOtherCheck)
+            msOtherText.style.display = msOtherCheck.checked ? "block" : "none";
         }
         if (msTrigger) {
           msTrigger.addEventListener("click", () => {

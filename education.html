@@ -1727,14 +1727,19 @@
          two lines; on narrow screens the button is trimmed to keep it so */
       .btn,
       .steps-cta a,
-      .inline-link {
+      #practice-groups .inline-link {
         white-space: nowrap;
       }
       @media (max-width: 480px) {
         .btn {
-          padding-left: 1.3rem;
-          padding-right: 1.3rem;
-          font-size: 0.95rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          font-size: 0.85rem;
+        }
+      }
+      @media (max-width: 360px) {
+        .btn {
+          font-size: 0.74rem;
         }
       }
     </style>

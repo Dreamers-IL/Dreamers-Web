@@ -379,7 +379,7 @@
         padding-right: 1.4rem;
       }
 
-      /* The hero box is locked to the photo's own ratio (2752 / 1536), so the whole
+      /* The hero box is locked to the photo's own ratio (1395 / 785), so the whole
          picture shows on a wide screen. It starts below the fixed nav bar (the
          script sets --nav-h). On a phone the photo shrinks to the full width
          and shows whole at the top, and the copy keeps its size and overlays
@@ -393,7 +393,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        aspect-ratio: 2752 / 1536;
+        aspect-ratio: 1395 / 785;
         overflow: hidden;
         background: var(--blue-dk);
         text-align: right;
@@ -401,7 +401,7 @@
       .bh-bg {
         position: absolute;
         inset: 0;
-        background-image: url("assets/img/נדיבות - סבלנות.jpeg");
+        background-image: url("assets/img/hero בריאות הנפש_1395 × 785.9.jpg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -1634,7 +1634,7 @@
         }
         #mh-hero {
           aspect-ratio: auto;
-          min-height: calc(100vw * 1536 / 2752);
+          min-height: calc(100vw * 785 / 1395);
         }
         .bh-bg {
           background-size: 100% auto;

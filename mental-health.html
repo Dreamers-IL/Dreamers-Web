@@ -401,7 +401,7 @@
       .bh-bg {
         position: absolute;
         inset: 0;
-        background-image: url("assets/img/הצעה לתמונת הירו לבריאות הנפש.jpeg");
+        background-image: url("assets/img/נדיבות - סבלנות.jpeg");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -979,23 +979,6 @@
       .nowrap {
         white-space: nowrap;
       }
-      /* the source link: an upright chain the height of a capital letter,
-         sitting on the line like one more character */
-      .src-link {
-        display: inline-block;
-        margin-inline-start: 0.3em;
-        vertical-align: -0.2em;
-        transition: transform 0.25s, opacity 0.25s;
-      }
-      .src-link img {
-        display: inline-block;
-        height: 1.15em;
-        width: auto;
-      }
-      .src-link:hover {
-        transform: scale(1.18);
-        opacity: 0.75;
-      }
       .stat-title {
         position: relative;
         color: #fff;
@@ -1073,7 +1056,9 @@
           inset 0 2px 0 rgba(255, 255, 255, 0.95);
       }
       .persona-card h3 {
-        color: var(--blue);
+        color: var(--blue-dk);
+        /* above the card's white top sheen, which had washed the title out */
+        z-index: 1;
         font-size: 1.12rem;
         font-weight: 800;
         margin-bottom: 0.8rem;
@@ -1934,7 +1919,7 @@
         </div>
         <p class="bh-sub rev d2">
           תוכנית 16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
-          ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות.
+          ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות
         </p>
       </div>
     </header>
@@ -2062,24 +2047,13 @@
           העלייה במצוקה הנפשית, בחרדה ובטראומה אינה פוסחת על אף קהילה, ויוצרת
           פער חריף בין הצורך העולה במענה רגשי לבין המשאבים הקיימים.
         </p>
-
-        <!-- the source icon stands upright on the line, like a letter; on a
-             computer it opens a new tab, on a phone the script below keeps it
-             in the same tab so "back" returns here -->
         <div class="fact-box rev d1">
           <p>
             <strong>הביקוש למערכת:</strong> לפי נתוני בנק ישראל מ-2026 הביקוש
             לשירותי בריאות הנפש גדל עוד לפני המלחמה, וכי בעקבות המלחמה צפויה
             עלייה משמעותית נוספת במספר המטופלים והטיפולים. הדוח מציין גם תורים
             ארוכים במערכת הציבורית, בין היתר בשל מחסור
-            <span class="nowrap">במטפלים.<a
-              href="https://kamakama.gov.il/publications/pressreleases/16-3-26a/?utm_source=chatgpt.com"
-              class="src-link"
-              target="_blank"
-              rel="noopener"
-              aria-label="למקור הנתונים"
-              ><img src="assets/img/link-icon-vertical.png" alt=""
-            /></a></span>
+            במטפלים.
           </p>
         </div>
 
@@ -2707,18 +2681,6 @@
             });
           });
         }
-
-        /* The source link opens a new tab on a computer. On a phone it
-           stays in the same tab, so the browser's "back" returns here. */
-        const onPhone = () =>
-          window.matchMedia("(max-width: 768px), (hover: none) and (pointer: coarse)")
-            .matches;
-        document.querySelectorAll(".src-link").forEach((a) => {
-          a.addEventListener("click", () => {
-            if (onPhone()) a.removeAttribute("target");
-            else a.setAttribute("target", "_blank");
-          });
-        });
 
         const nav = document.getElementById("nav");
         const burger = nav.querySelector(".nav-burger");

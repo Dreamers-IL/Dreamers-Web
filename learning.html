@@ -382,13 +382,14 @@
       /* ═══ HERO ═══ */
       /* built like the companies hero: a photograph at full strength, the
          copy hugging the right edge, and a tint weighted to that side */
-      /* the hero's picture is the four family photos in one row, each in
-         its own ratio so every one shows whole and none is cropped. The row
-         sets the box's height (it scales with the screen width, so on a
-         phone the whole row simply gets smaller), and the copy sits over it
-         in the same grid cell: where the copy needs more height than the
-         row gives, the box grows and the dark blue shows below the photos.
-         The box starts below the fixed nav bar (the script sets --nav-h). */
+      /* the hero's picture is a carousel of four photos that slide in from
+         the right every 3 seconds. The slides share the photos' own ratio
+         (1395 x 634.5), which sets the box's height (it scales with the
+         screen width, so on a phone the whole picture simply gets smaller),
+         and the copy sits over it in the same grid cell: where the copy needs
+         more height than the picture gives, the box grows and the dark blue
+         shows below it. The box starts below the fixed nav bar (the script
+         sets --nav-h). */
       #learn-hero {
         position: relative;
         width: 100%;
@@ -402,16 +403,30 @@
       .bh-bg {
         grid-area: 1 / 1;
         align-self: start;
-        display: grid;
-        /* the photos' own width/height ratios: think, act, relate, meaning
-           (first = rightmost in RTL, the order of the site's virtues board) */
-        grid-template-columns: 1.0299fr 1.0328fr 1.0358fr 1.003fr;
+        position: relative;
         width: 100%;
+        aspect-ratio: 1395 / 634.5;
+        overflow: hidden;
+        direction: ltr;
       }
       .bh-bg img {
+        position: absolute;
+        inset: 0;
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
+        transform: translateX(100%);
+        will-change: transform;
+      }
+      .bh-bg img.on {
+        transform: translateX(0);
+      }
+      .bh-bg img.slide {
+        transition: transform 0.9s ease-in-out;
+      }
+      .bh-bg img.out {
+        transform: translateX(-100%);
       }
       /* only a side tint, deepening on the right under the title; no dark
          top band (the photo no longer sits under the nav) and no white fade
@@ -1356,11 +1371,11 @@
 
     <!-- ════════════ HERO ════════════ -->
     <header id="learn-hero">
-      <div class="bh-bg" aria-hidden="true">
-        <img src="assets/img/learning/carousel-think.png" alt="" />
-        <img src="assets/img/learning/carousel-act.png" alt="" />
-        <img src="assets/img/learning/carousel-relate.png" alt="" />
-        <img src="assets/img/learning/carousel-meaning.png" alt="" />
+      <div class="bh-bg" id="heroCarousel" aria-hidden="true">
+        <img src="assets/img/הירו לקרוסלה מרחב למידה 1_1395 × 634.5.jpg" alt="" class="on" />
+        <img src="assets/img/הירו לקרוסלה מרחב למידה 2_1395 × 634.53.jpg" alt="" />
+        <img src="assets/img/הירו לקרוסלה מרחב למידה 3_1395 × 634.52.jpg" alt="" />
+        <img src="assets/img/הירו לקרוסלה מרחב למידה 4_1395 × 634.54.jpg" alt="" />
       </div>
       <div class="bh-fade"></div>
       <div class="bh-content">
@@ -1708,6 +1723,26 @@
           { threshold: 0.1 },
         );
         document.querySelectorAll(".rev").forEach((el) => io.observe(el));
+
+        /* the hero carousel: every 3 seconds the next photo slides in from
+           the right while the current one leaves to the left */
+        (() => {
+          const slides = [...document.querySelectorAll("#heroCarousel img")];
+          if (slides.length < 2) return;
+          let cur = 0;
+          setInterval(() => {
+            if (document.hidden) return;
+            const out = slides[cur];
+            cur = (cur + 1) % slides.length;
+            const inn = slides[cur];
+            inn.classList.remove("slide", "on", "out");
+            void inn.offsetWidth;
+            inn.classList.add("slide", "on");
+            out.classList.add("slide", "out");
+            out.classList.remove("on");
+            setTimeout(() => out.classList.remove("slide", "out"), 1000);
+          }, 3000);
+        })();
 
         /* Hero sits just below the fixed nav bar, whatever its height */
         const setNavH = () =>

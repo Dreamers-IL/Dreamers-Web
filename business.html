@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>16 המעלות בחברות | בית חולמים - Dreamers Home</title>
+    <title>16 המעלות בחברות וארגונים | בית חולמים - Dreamers Home</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1752,6 +1752,188 @@
       }
 
 
+
+      /* ═══ 2026-10-31 (brief A 3) ═══ */
+      /* intro: text right, photo in the left third, as on the education page */
+      .edu-intro-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2.4rem;
+        align-items: center;
+        max-width: 1140px;
+        margin: 0 auto;
+      }
+      .edu-intro-text .ab-body {
+        margin: 0 0 1.3rem;
+        max-width: none;
+      }
+      .edu-intro-photo {
+        border-radius: 24px;
+        overflow: hidden;
+        height: 420px;
+        box-shadow: 0 35px 80px var(--shadow);
+      }
+      .edu-intro-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 60% center;
+      }
+      @media (max-width: 768px) {
+        .edu-intro-grid {
+          grid-template-columns: 1fr;
+        }
+        .edu-intro-photo {
+          height: 280px;
+        }
+      }
+      .inline-link {
+        color: var(--blue);
+        font-weight: 700;
+        text-decoration: underline;
+      }
+      /* centred copy: sentences of two or more balanced lines */
+      .ab-center-narrow {
+        max-width: 620px;
+        text-wrap: balance;
+      }
+      .ab-center-wide {
+        max-width: 900px;
+        text-wrap: balance;
+      }
+      /* the four needs of an organisation (why now) */
+      .axis-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.4rem;
+        max-width: 980px;
+        margin: 1.8rem auto 0;
+      }
+      .axis-tile {
+        background: linear-gradient(150deg, #ffffff 0%, #f4f8fb 100%);
+        border: 3px solid var(--blue);
+        border-radius: 18px;
+        padding: 1.5rem 1.6rem;
+        text-align: center;
+        box-shadow:
+          0 4px 10px rgba(0, 67, 120, 0.08),
+          0 14px 30px rgba(0, 67, 120, 0.12);
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s;
+      }
+      .axis-tile:hover {
+        transform: translateY(-8px) perspective(800px) rotateX(2deg);
+        box-shadow:
+          0 6px 14px rgba(0, 67, 120, 0.1),
+          0 24px 50px rgba(0, 67, 120, 0.2);
+      }
+      .axis-tile h4 {
+        color: var(--blue);
+        font-size: 1.06rem;
+        font-weight: 800;
+        margin-bottom: 0.6rem;
+      }
+      .axis-tile p {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.75;
+        color: var(--text-mid);
+      }
+      @media (max-width: 768px) {
+        .axis-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* "what you get" panels are turquoise on every audience card */
+      .persona-result,
+      .row-orgs .persona-result,
+      .row-people .persona-result {
+        background: #c3eaf0;
+      }
+      .row-people .persona-result:hover {
+        box-shadow: 0 8px 20px rgba(0, 67, 120, 0.2);
+      }
+      .persona-result {
+        min-height: 8.6rem;
+      }
+      /* how it works: four ways to work, two across */
+      .impl-grid.impl-grid-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 0.4rem;
+      }
+      @media (max-width: 620px) {
+        .impl-grid.impl-grid-4 {
+          grid-template-columns: 1fr;
+        }
+      }
+      /* our way: sub-headings and the closing ask */
+      .way-sub {
+        text-align: center;
+        color: var(--blue);
+        font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+        font-weight: 800;
+        margin: 2.6rem 0 1.2rem;
+      }
+      .way-ask {
+        text-align: center;
+        color: var(--blue);
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin: 2.4rem 0 1.2rem;
+      }
+      /* testimonials: four capsules, two across */
+      #quote-duo {
+        padding: 6rem 2rem;
+        background: var(--g-main);
+        position: relative;
+        overflow: hidden;
+      }
+      #quote-duo::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 60% 60% at 50% 50%,
+          rgba(72, 217, 211, 0.14),
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .quote-duo-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        max-width: 1080px;
+        margin: 0 auto;
+      }
+      .quote-duo-grid .qf-card {
+        max-width: none;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      .quote-duo-grid .qf-author {
+        margin-top: auto;
+      }
+      @media (max-width: 768px) {
+        .quote-duo-grid {
+          grid-template-columns: 1fr;
+        }
+        #quote-duo {
+          padding: 4.5rem 1.2rem;
+        }
+      }
+      /* two multi-select dropdowns on the same form */
+      .ms-trigger-text {
+        text-align: right;
+      }
+      .ms-trigger.ms-invalid {
+        outline: 2px solid #ff8a80;
+      }
+
       /* ═══ RESPONSIVE ═══ */
     </style>
       <style>
@@ -1824,7 +2006,7 @@
       <div class="bh-fade"></div>
       <div class="bh-content">
         <h1 class="h3d rev" style="margin: 0 0 1.6rem">
-          16 המעלות בחברות
+          16 המעלות בחברות וארגונים
         </h1>
         <div class="bh-headline rev d1">
           להנהיג בחוכמה ובאמפתיה<br />
@@ -1837,17 +2019,58 @@
       </div>
     </header>
 
-    <!-- ════════════ 16 המעלות בחברות ════════════ -->
+    <!-- ════════════ 16 המעלות בחברות וארגונים ════════════ -->
     <section class="ab-sec bg-white" id="virtues-companies">
       <div class="wrap">
         <div class="ab-hdr">
-          <h2 class="h3d rev">16 המעלות בחברות</h2>
+          <h2 class="h3d rev">16 המעלות בחברות וארגונים</h2>
         </div>
-        <p class="ab-body ab-body-center rev">
+
+        <div class="edu-intro-grid">
+          <div class="edu-intro-text">
+            <p class="ab-body rev">
+              בסביבה עסקית דינמית, משתנה ועתירת לחצים, החוסן האנושי והתשתית
+              הערכית של העובדים והעובדות, המנהלים והמנהלות, הם המנוע המרכזי
+              להצלחה, לחדשנות ולתפקוד מיטבי לאורך זמן. תוכנית 16 המעלות מציעה
+              לחברות ולארגונים גישה מבוססת ערכים המעניקה שפה וכלים מעשיים
+              לפיתוח חוסן אישי וצוותי, לניהול עומסים ולטיפוח תרבות ארגונית
+              המושתתת על אמון, חמלה ומערכות יחסים מיטיבות. התוכנית מעניקה
+              למנהלים ולצוותים עוגנים של קשיבות, מודעות וויסות רגשי, המחזקים את
+              מחוברות העובדים (Employees Engagement), משפרים את עבודת הממשקים
+              ומסייעים בבניית סביבת עבודה בריאה לאורך זמן.
+            </p>
+            <p class="ab-body rev d1">
+              לצפייה במפגש על 16 המעלות בחברות ועל נושא הליבה השני, "הדרך שבה
+              אנו פועלים", בהשתתפות יעל קמינסקי, פסיכולוגית קלינית ו-HR Expert
+              ב-WIX, מירן ברודבר, מומחה לחדשנות טכנולוגית ונועה מאייר, עו"ד
+              ויועצת עסקית ובהנחיית ניב אגם, מייסד ויו"ר העמותה, לחצו
+              <a
+                href="https://youtu.be/sar-dajVlUE?si=_RIaUWzuM6THj5LN"
+                target="_blank"
+                rel="noopener"
+                class="inline-link"
+                >כאן</a
+              >.
+            </p>
+          </div>
+          <div class="edu-intro-photo rev d1">
+            <img src="assets/img/תמונת חברות.jpg" alt="צוות מנהלים משוחח סביב שולחן ישיבות" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════ 16 המעלות ════════════ -->
+    <section class="ab-sec bg-grey" id="virtues-intro">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">תוכנית 16 המעלות</h2>
+        </div>
+        <p class="ab-body ab-body-center ab-center-narrow rev" style="max-width: 548px">
           התוכנית מבוססת על ארבעה נושאי ליבה אשר כוללים 16 ערכים אוניברסליים
           (מעלות) ומספקת כלים מעשיים להטמעתם בחיי היומיום ובסביבת העבודה.
         </p>
-        <p class="ab-body ab-body-center rev d1">
+        <p class="ab-body ab-body-center ab-center-narrow rev d1" style="max-width: 536px">
           הכלים המעשיים מעודדים התבוננות פנימית, מחזקים את ההבנה כי הפוטנציאל
           למנהיגות ערכית כבר קיים בתוך הארגון ומסייעים להביא למימושו.
         </p>
@@ -1867,15 +2090,15 @@
           </div>
         </div>
 
-        <p class="ab-body ab-body-center rev d3">
+        <p class="ab-body ab-body-center ab-center-narrow rev d3" style="max-width: 525px">
           החזון העומד בבסיס תוכנית 16 המעלות לחברות הוא ליצור יחד עולם עבודה חדש
           הכולל שפה ערכית משותפת ותרבות ארגונית אנושית ומיטיבה.
         </p>
-        <p class="ab-body ab-body-center rev d3">
+        <p class="ab-body ab-body-center ab-center-narrow rev d3" style="max-width: 401px">
           בעולם העבודה החדש הזה, אנשים פועלים מתוך מיקוד, רוגע וחוסן, ואף חווים
           אושר ומשמעות בעבודתם.
         </p>
-        <p class="ab-body ab-body-center rev d3">
+        <p class="ab-body ab-body-center ab-center-narrow rev d3" style="max-width: 352px">
           זהו עולם המאפשר חיבור אנושי וחמלה הדדית, גם בסביבה דינמית ובעומס שגרת
           היומיום.
         </p>
@@ -1887,27 +2110,19 @@
       </div>
     </section>
 
+
     <!-- ════════════ WHY NOW ════════════ -->
-    <section class="ab-sec bg-grey">
+    <section class="ab-sec bg-white" id="why-now">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">למה עכשיו</h2>
         </div>
-        <p class="ab-body ab-body-center rev">
-          ארגונים כיום ניצבים מול שיבושים בלתי פוסקים: כניסת הבינה המלאכותית,<br />
-          חוסר יציבות גיאופוליטית ושינויים תכופים בעולם העבודה המייצרים<br />
-          אי ודאות מתמשכת וחוסר ביטחון תעסוקתי.
-        </p>
-        <p class="ab-body ab-body-center rev d1">
-          השינויים מהירים יותר מקצב ההסתגלות של העובדות והעובדים ומובילים
-          לתופעות<br />
-          של חרדה, ניתוק רגשי, בדידות ושחיקה.
-        </p>
-        <p
-          class="ab-body ab-body-center rev d1"
-          style="font-weight: 700; color: var(--blue)"
-        >
-          התוצאה:
+        <p class="ab-body ab-body-center ab-center-wide rev">
+          עולם העבודה חווה בשנים האחרונות תהפוכות עמוקות ושיבושים בלתי פוסקים.
+          השילוב בין קצב שינויים מהיר, שחיקה מצטברת, כניסת הבינה המלאכותית
+          וחוסר יציבות גיאופוליטית, מעמיד אתגר חסר תקדים בפני מנהלים וצוותים
+          כאחד. השינויים מהירים יותר מקצב ההסתגלות של העובדות והעובדים ומובילים
+          לתופעות של חרדה, ניתוק רגשי, בדידות ושחיקה.
         </p>
         <div class="impact-grid rev d1">
           <div class="impact-tile">
@@ -1924,11 +2139,52 @@
           </div>
         </div>
 
-        <p class="ab-body ab-body-center rev d2" style="margin-top: 2.4rem">
-          תוכנית 16 המעלות לחברות מעניקה לארגונים שפה ערכית-רגשית משותפת,
-          המשנה את האופן שבו צוותים חושבים, פועלים ושואפים ליעדים ומבססת
-          תשתית אתית ואנושית שמגבירה את הפריון, האיזון והחוסן הארגוני גם
-          כשהמציאות סוערת.
+        <p class="ab-body ab-body-center ab-center-wide rev d1" style="margin-top: 2.6rem; font-weight: 700; color: var(--blue)">
+          כדי להתמודד בהצלחה עם מציאות זו, ארגונים נדרשים לתת מענה ממוקד בארבעה
+          צירים מרכזיים:
+        </p>
+        <div class="axis-grid rev d1">
+          <div class="axis-tile">
+            <h4>עומס ושחיקה ניהולית וצוותית</h4>
+            <p>
+              סביבת העבודה המודרנית מייצרת עומסים קבועים, עייפות ושחיקה
+              מצטברת. ארגונים נדרשים לספק לצוותים כלים מעשיים לוויסות,
+              להפחתת מתחים ולשמירה על החוסן האישי והצוותי ביומיום.
+            </p>
+          </div>
+          <div class="axis-tile">
+            <h4>אתגר מחוברות העובדים (Employee Engagement)</h4>
+            <p>
+              לפי מחקרי מכון Gallup, העלות של מחויבות נמוכה וחוסר מעורבות
+              עובדים מוערכת בכ-10 טריליון דולר בשנה למשק העולמי באובדן
+              תפוקה ופרודוקטיביות. ארגונים מבינים כיום כי שימור עובדים
+              ויצירת משמעות דורשים מענה עמוק יותר מתגמול חומרי בלבד.
+            </p>
+          </div>
+          <div class="axis-tile">
+            <h4>חשיבות היחסים בממשקי העבודה</h4>
+            <p>
+              עבודה בצוותים היברידיים ופתרון קונפליקטים במרחב הארגוני
+              מצריכים שיח פתוח ומקרב. תרבות ארגונית המבוססת על ערכים, אמון
+              וחמלה היא הבסיס לפתרון מורכבויות ולשיתוף פעולה אפקטיבי לאורך
+              זמן.
+            </p>
+          </div>
+          <div class="axis-tile">
+            <h4>מנהיגות קשובה ומודעת</h4>
+            <p>
+              מנהלים נדרשים כיום להוביל ברגישות ובמודעות גבוהה. מתן כלים
+              לפיתוח מנהיגות קשובה, מודעת וערכית מאפשר למנהלים ומנהלות
+              לבנות סביבה תומכת ומעצימה, המטפחת את הדיאלוג הארגוני ומקדמת
+              תוצאות.
+            </p>
+          </div>
+        </div>
+
+        <p class="ab-body ab-body-center ab-center-wide rev d2" style="margin-top: 2.6rem">
+          תוכנית 16 המעלות מעניקה לחברות ולארגונים מענה מקיף ומעשי לאתגרים
+          אלו באמצעות לימוד והטמעה של שפה ערכית-יישומית וכלים לחיזוק החוסן,
+          המנהיגות והתרבות הארגונית.
         </p>
 
         <div class="stat-frame rev d2">
@@ -1953,95 +2209,75 @@
       </div>
     </section>
 
+
     <!-- ════════════ WHO IT'S FOR ════════════ -->
-    <section class="ab-sec bg-white">
+    <section class="ab-sec bg-grey" id="who-for">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">למי מיועדת התוכנית</h2>
           <p class="sub sub-center rev">
-            בכל שלב של צמיחה, שינוי או ייצוב, ארגון זקוק לשפה ערכית אנושית
-            משותפת.<br />
-            תוכנית 16 המעלות ניתנת להתאמה במדויק לתרבות הארגונית וליעדים שלכם.
+            התוכנית מותאמת מודולרית למגזר העסקי והציבורי ומעניקה מענים ממוקדים
+            לכלל הדרגים והפונקציות בארגון.
           </p>
         </div>
         <div class="persona-grid">
-          <!-- Row 1 — ארגונים -->
           <div class="persona-card row-orgs rev">
-            <h3>ארגונים בתהליך שינוי</h3>
-            <p>
-              שימור והתאמה של התרבות הארגונית בזמן מיזוגים, משברים או צמיחה
-              מהירה לצד בניית חוסן ארגוני מבפנים.
-            </p>
+            <h3>דרג הנהלה ובכירים (C-Level &amp; Directors)</h3>
+            <p>מנהלות ומנהלים בכירים המובילים אסטרטגיה, תרבות ארגונית ותהליכי שינוי ונדרשים לקבל החלטות במציאות של אי-וודאות.</p>
             <div class="persona-result">
               <div class="pr-row">
-                <strong>תוצאה:</strong>
-                <span>הסתגלות אפקטיבית לשינויים ושימור עובדים לאורך זמן.</span>
+                <strong>מה מקבלים:</strong>
+                <span>כלים לפיתוח מנהיגות קשובה ומודעת, עוגנים לקבלת החלטות מבוססות-ערכים וכלים לביסוס תרבות ארגונית של אמון, חמלה וכבוד הדדי.</span>
               </div>
             </div>
           </div>
           <div class="persona-card row-orgs rev d1">
-            <h3>ארגונים מונחי-מטרה</h3>
-            <p>
-              עבור עמותות ומיזמים שבהם המטרה היא ה-DNA הארגוני, המעניקים לצוותים
-              שפה מעשית שהופכת ערכים גבוהים לשגרת עבודה מעשית, חיה ונושמת.
-            </p>
+            <h3>מנהלות ומנהלי משאבי אנוש, למידה ופיתוח ארגוני (HR, L&amp;D &amp; People)</h3>
+            <p>מובילי ההון האנושי בארגון, אחראי תחומים העוסקים ברווחת העובדים (Well-being), חיזוק מחוברות ומניעת שחיקה.</p>
             <div class="persona-result">
               <div class="pr-row">
-                <strong>תוצאה:</strong>
-                <span>הלימה מלאה בין ה'למה' שלכם לבין הפרקטיקה בשטח.</span>
+                <strong>מה מקבלים:</strong>
+                <span>תוכנית סדנאית והכשרתית מובנית לפיתוח עובדים, כלים מדידים לחיזוק החוסן והרווחה האישית ושפה ארגונית אחידה שתורמת לשימור העובדים.</span>
               </div>
             </div>
           </div>
           <div class="persona-card row-orgs rev d2">
-            <h3>צוותים גלובליים ורב-תרבותיים</h3>
-            <p>
-              ערכים אוניברסליים החוצים הבדלי תרבות וגיאוגרפיה. יצירת שפה משותפת
-              ומאחדת, השומרת על הייחוד והגיוון של כל חבר צוות.
-            </p>
+            <h3>מנהלי דרג ביניים וראשי צוותים</h3>
+            <p>מנהלים הנמצאים בקו הראשון מול הצוותים ונדרשים לתמרן בין יעדים עסקיים תובעניים לבין הובלה אנושית ופיתוח העובדים.</p>
             <div class="persona-result">
               <div class="pr-row">
-                <strong>תוצאה:</strong>
-                <span>לכידות ארגונית חוצת גבולות ורקעים.</span>
+                <strong>מה מקבלים:</strong>
+                <span>כלים מעשיים לניהול עומסים, מיומנויות לוויסות רגשי ולתקשורת אפקטיבית בממשקי עבודה מורכבים, ויכולת להוביל צוותים בחוסן ובסבלנות.</span>
               </div>
             </div>
           </div>
-
-          <!-- Row 2 — אנשים -->
-          <div class="persona-card row-people rev">
-            <h3>הנהלה בכירה</h3>
-            <p>
-              הובלה אפקטיבית בתנאי אי-ודאות תוך שמירה על רוח הארגון. בניית תרבות
-              ניהולית צומחת, הצולחת משברים ומחזקת את החוסן הארגוני.
-            </p>
+          <div class="persona-card row-orgs rev">
+            <h3>צוותים ועובדים</h3>
+            <p>עובדות ועובדים בסביבות עבודה דינמיות ועתירות מתח המבקשים לשפר את איזון החיים-עבודה ולחזק את תחושת המשמעות.</p>
             <div class="persona-result">
               <div class="pr-row">
-                <strong>תוצאה:</strong>
-                <span>בהירות אסטרטגית ויציבות רגשית ברגעי אמת.</span>
+                <strong>מה מקבלים:</strong>
+                <span>עוגנים יומיומיים להפחתת מתח ושחיקה, יצירת מרחב עבודה בטוח ומאפשר וכלים לטיפוח יחסים בינאישיים מיטיבים ומקדמים עם עמיתים ומנהלים.</span>
               </div>
             </div>
           </div>
           <div class="persona-card row-people rev d1">
-            <h3>מנהלים בדרג ביניים</h3>
-            <p>
-              ביסוס אמון ותקשורת, הפחתת חיכוכים וניהול קונפליקטים מתוך אמפתיה
-              וחוסן. העצמת המנהל/ת להובלת הצוות מתוך מנהיגות מעוררת השראה.
-            </p>
+            <h3>חברות טכנולוגיה, הייטק וסביבות עבודה צומחות</h3>
+            <p>ארגונים הפועלים בקצב מהיר, תחת קבועי זמן צפופים ותחרות גבוהה, הנדרשים לשמור על חדשנות לצד שמירה על רווחת העובדים.</p>
             <div class="persona-result">
               <div class="pr-row">
-                <strong>תוצאה:</strong>
-                <span>צוותים מלוכדים וחזקים יותר לצד ירידה בתחלופת עובדים.</span>
+                <strong>מה מקבלים:</strong>
+                <span>כלים להתמודדות עם עומסים גבוהים ושינויים תכופים, חיזוק החוסן האישי והצוותי וטיפוח סביבה המעודדת יצירתיות ושיתוף פעולה.</span>
               </div>
             </div>
           </div>
           <div class="persona-card row-people rev d2">
-            <h3>אנשי משאבי אנוש (HR)</h3>
-            <p>
-              ארגז כלים מודולרי להטמעה פשוטה בתכניות הפיתוח הקיימות בארגון.
-            </p>
+            <h3>ארגונים חברתיים ומהמגזר השלישי</h3>
+            <p>עמותות, ארגונים חברתיים ומיזמים שהמטרה והשליחות החברתית הן חלק בלתי נפרד מה-DNA הארגוני שלהם.</p>
             <div class="persona-result">
               <div class="pr-row">
-                <strong>תוצאה:</strong>
-                <span>חיזוק התרבות ומעורבות העובדים.</span>
+                <strong>מה מקבלים:</strong>
+                <span>התוכנית מספקת לצוותים שפה מעשית שהופכת ערכים לשגרת עבודה חיה ונושמת, מחזקת את החוסן מול שחיקה מקצועית ומעמיקה את תחושת השליחות.</span>
               </div>
             </div>
           </div>
@@ -2049,84 +2285,156 @@
       </div>
     </section>
 
+
     <!-- ════════════ HOW IT WORKS ════════════ -->
-    <section class="ab-sec bg-grey">
+    <section class="ab-sec bg-white" id="how-it-works">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">איך זה עובד</h2>
           <p class="sub sub-center rev">
-            16 המעלות לחברות היא תוכנית מודולרית המועברת בסדנאות בהנחיה אישית
-            או באוף-סייט של צוותים,<br />
-            ומותאמת לגודל הארגון, לתרבות הארגונית וליעדים הספציפים.
+            תוכנית 16 המעלות מועברת בסדנאות ובמפגשים חווייתיים, בקבוצות של
+            12–22 משתתפים, ומותאמת לאופי, לצרכים ולמאפיינים של כל חברה, ארגון
+            או צוות. התוכנית נבנית באופן מודולרי וגמיש וניתן לבחור את דרך
+            ההטמעה והעבודה המתאימה לכם ביותר:
           </p>
+        </div>
+
+        <div class="impl-grid impl-grid-4">
+          <div class="impl-card rev">
+            <h4>מפגש היכרות וחשיפה</h4>
+            <p>מתאים לצוותי הנהלה כאשר נשקל מהלך נרחב עם התוכנית בחברה. המפגש הינו בן שעתיים.</p>
+          </div>
+          <div class="impl-card rev d1">
+            <h4>תהליך עומק והכשרה לצוותים ולמנהלים</h4>
+            <p>תוכנית מעמיקה המיועדת לצוותי עבודה, לדרגי הנהלה ולראשי צוותים. התוכנית מקנה היכרות יסודית ומעמיקה עם שפת 16 המעלות, משלבת תרגול מעשי יומיומי, מבססת שפה רגשית-ערכית משותפת ומעניקה כלים לוויסות, לניהול עומסים ולתקשורת אפקטיבית בממשקי העבודה.</p>
+          </div>
+          <div class="impl-card rev d1">
+            <h4>תוכנית פיתוח מנהיגות קשובה ומודעת</h4>
+            <p>תהליך עומק המותאם למנהלים ושם דגש על פיתוח מיומנויות ניהול ומנהיגות מבוססות-ערכים. התוכנית מקנה למנהלים כלים להובלת צוותים ברגישות ובנחישות, לניהול דיאלוג אפקטיבי תחת עומס, ליצירת אמון בממשקי העבודה ולבניית סביבה ארגונית מעצימה, ערכית ומקדמת.</p>
+          </div>
+          <div class="impl-card rev d2">
+            <h4>תהליך הטמעה ארגונית וליווי רוחבי</h4>
+            <p>תוכנית שנתית / רב-שנתית לשינוי תרבותי שמתאימה לארגונים המבקשים להטמיע את שפת 16 המעלות ב-DNA הארגוני. התהליך כולל הכשרת נאמני/מובילי תרגול פנים-ארגוניים, סדנאות תקופתיות וערכות תרגול יומיומיות. התהליך מבטיח שהשפה והערכים יהפכו לחלק בלתי נפרד מהשגרות הארגוניות ומממשקי העבודה בארגון לאורך זמן.</p>
+          </div>
         </div>
 
         <div class="steps-cta rev">
           <a href="program.html#stages" class="btn btn-blue"
-            >מידע מפורט על שלבי התוכנית ניתן לקרוא כאן</a
-          >
-        </div>
-
-        <h3 class="impl-title rev">אפשרויות נוספות לעבוד עם התוכנית</h3>
-        <div class="impl-grid">
-          <div class="impl-card rev">
-            <h4>סדנת היכרות</h4>
-            <p>
-              מתאימה לצוותי הנהלה כאשר נשקל מהלך נרחב עם התוכנית בחברה. הסדנה
-              הינה בת שעתיים.
-            </p>
-          </div>
-          <div class="impl-card rev d1">
-            <h4>יישום ארגוני מלא</h4>
-            <p>
-              יישום מותאם אישית ורב-שכבתי בכל הארגון. כולל אפשרות להכשרת מנחים
-              פנים-ארגוניים.
-            </p>
-          </div>
-          <div class="impl-card rev d2">
-            <h4>שפות</h4>
-            <p>מועבר בעברית ובאנגלית.</p>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 3rem" class="rev">
-          <a href="#contact-form" class="btn btn-blue"
-            >צרו קשר לקבלת הצעה מותאמת אישית</a
+            >למידע נוסף על שלבי התוכנית</a
           >
         </div>
       </div>
     </section>
 
-    <!-- ════════════ FEATURED QUOTE ════════════ -->
-    <section id="quote-feature">
+
+    <!-- ════════════ הדרך שלנו בחברות ════════════ -->
+    <section class="ab-sec bg-grey" id="our-way">
+      <div class="wrap">
+        <div class="ab-hdr">
+          <h2 class="h3d rev">הדרך שלנו בחברות</h2>
+        </div>
+        <p class="ab-body ab-body-center ab-center-wide rev">
+          תוכנית 16 המעלות מוטמעת בשטח ומביאה עמה שינוי עמוק בתרבות הארגונית,
+          בחיזוק החוסן הניהולי ובביסוס שפה ערכית-יישומית בארגונים מהמגזר
+          העסקי והציבורי.
+        </p>
+
+        <h3 class="way-sub rev">מה כבר נעשה בשטח?</h3>
+        <p class="ab-body ab-body-center ab-center-wide rev">
+          מהניסיון שלנו, התוכנית מתאימה בצורה ישירה לעולם העסקי והארגוני על
+          אתגריו הנוכחיים ותורמת לחיבור של ערכים אנושיים עם מצוינות ניהולית
+          ותפקוד מיטבי.
+        </p>
+        <p class="ab-body ab-body-center ab-center-wide rev d1">
+          <strong>הכשרת מנהלים וצוותים:</strong> סיימנו בהצלחה תהליך הכשרה
+          משמעותי ומרגש של 20 מנהלות ומנהלים בחברת Ray-Q שעברו את שלב 1 ושלב 2
+          של התוכנית.
+        </p>
+
+        <h3 class="way-sub rev">קבוצות תרגול:</h3>
+        <p class="ab-body ab-body-center ab-center-wide rev">
+          כדי להבטיח שהכלים והשפה יהפכו לחלק בלתי נפרד מה-DNA הארגוני, התוכנית
+          תומכת בביסוס שגרות תרגול פנים-ארגוניות לאורך זמן. כחלק מתהליך
+          ההטמעה בחברה Ray-Q, נפתחה קבוצת תרגול קבועה הפועלת בתוך הארגון.
+          הקבוצה נפגשת אחת לשבועיים ומונחית באופן עצמאי על ידי מנהל בכיר בחברה
+          שהוכשר והוסמך כמנחה בתוכנית 16 המעלות. בקבוצה משתתפים המנהלים
+          והמנהלות שעברו את תהליך ההכשרה של שלב 1 ושלב 2. מודל זה מביא לידי
+          ביטוי את יציבות התוכנית ואת היכולת שלה לייצר מנהיגות פנימית מובילה
+          שמטמיעה את השפה לאורך זמן.
+        </p>
+
+        <p class="way-ask rev">מעוניינים להביא את התוכנית לחברה שלכם?</p>
+        <div class="rev" style="text-align: center">
+          <a href="#contact-form" class="btn btn-blue">השאירו פרטים ונחזור אליכם</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════ מה אומרים עלינו ════════════ -->
+    <section id="quote-duo">
       <div class="wrap">
         <div class="ab-hdr qf-hdr">
           <h2 class="h3d h3d-white rev">מה אומרים עלינו</h2>
         </div>
-        <div class="qf-card rev">
-          <div class="qf-mark">"</div>
-          <p class="qf-text">
-            מהפכת הבינה המלאכותית היא בעלת פוטנציאל בלתי נתפס, אך גם מייצרת
-            מציאות של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות העצומה של
-            טיפוח המרכיב האנושי. תוכנית כמו "16 המעלות" מסייעת לארגונים לגבש שפה
-            ערכית, אשר תורמת לביסוס שייכות ומערכות יחסים משמעותיות, חוסן אישי
-            וקבוצתי, ומאפשרת לארגונים גלובליים להתמודד בהצלחה עם אי-הוודאות של
-            ימינו.
-          </p>
-          <div class="qf-author">
-            <img
-              src="assets/img/יעל קמינסקי.jpeg"
-              alt="יעל קמינסקי"
-              class="qf-av"
-            />
-            <div>
-              <div class="qf-name">יעל קמינסקי</div>
-              <div class="qf-role">פסיכולוגית קלינית, HR Expert ב-WIX</div>
+        <div class="quote-duo-grid">
+          <div class="qf-card rev">
+            <div class="qf-mark">"</div>
+            <p class="qf-text">
+              מהפכת הבינה המלאכותית היא בעלת פוטנציאל בלתי נתפס, אך גם מייצרת מציאות של שינויים ארגוניים מרחיקי לכת ומחדדת את החשיבות העצומה של טיפוח המרכיב האנושי. תוכנית כמו "16 המעלות" מסייעת לארגונים לגבש שפה ערכית, אשר תורמת לביסוס שייכות ומערכות יחסים משמעותיות, חוסן אישי וקבוצתי, ומאפשרת לארגונים גלובליים להתמודד בהצלחה עם אי-הוודאות של ימינו.
+            </p>
+            <div class="qf-author">
+              <img
+                src="assets/img/יעל קמינסקי.jpeg"
+                alt="יעל קמינסקי"
+                class="qf-av"
+              />
+              <div>
+                <div class="qf-name">יעל קמינסקי</div>
+                <div class="qf-role">פסיכולוגית קלינית, HR Expert ב-WIX</div>
+              </div>
+            </div>
+          </div>
+          <div class="qf-card rev d1">
+            <div class="qf-mark">"</div>
+            <p class="qf-text">
+              המסע שלי בתוכנית 16 המעלות התחיל מהמקום האישי שלי כמנהל והרצון להוביל בקשב, בסבלנות וברוגע גם ברגעים של עומס ואתגר. ככל שהעמקתי, הבנתי עד כמה הכלים הללו חיוניים לשגרת העבודה של כולנו. הובלת קבוצת התרגול בחברה היא זכות גדולה עבורי. לראות מנהלים ועובדים עוצרים בשגרת היום הסוערת, מתרגלים יחד ומביאים את המעלות האלו אל ישיבות הצוות ואל ממשקי העבודה זה שינוי תרבותי אמיתי שמשפיע ישירות על התפקוד והחוסן של החברה.
+            </p>
+            <div class="qf-author">
+              <div>
+                <div class="qf-name">גיל דוידוביץ׳</div>
+                <div class="qf-role">סמנכ"ל תפעול וכספים, ריי קיו</div>
+              </div>
+            </div>
+          </div>
+          <div class="qf-card rev">
+            <div class="qf-mark">"</div>
+            <p class="qf-text">
+              כמנהלת משאבי אנוש, אני מחפשת תמיד תוכניות שלא רק יעוררו השראה ברגע הסדנה, אלא ייצרו אימפקט מדיד ולאורך זמן ברווחת העובדים ובמחוברות הארגונית. ההשתתפות שלי ושל צוות הניהול בתוכנית הייתה חוויה מעצימה ומרגשת. התוכנית מעניקה עוגנים יומיומיים לפיתוח חוסן אישי וצוותי, להפחתת שחיקה ולשיפור מערכות היחסים בממשקי העבודה. אנחנו ממשיכים בתרגול ובהטמעת השפה של התוכנית ביומיום שלנו והמשובים מהשטח פשוט מרגשים.
+            </p>
+            <div class="qf-author">
+              <div>
+                <div class="qf-name">עדינה</div>
+                <div class="qf-role">מנהלת משאבי אנוש, ריי קיו</div>
+              </div>
+            </div>
+          </div>
+          <div class="qf-card rev d1">
+            <div class="qf-mark">"</div>
+            <p class="qf-text">
+              בסביבה עסקית תחרותית וקצבית, קל מאוד להישאר ברמת המשימות והיעדים. תוכנית 16 המעלות העניקה לנו כהנהלה משהו עמוק ומשמעותי לא פחות, שפה ערכית משותפת וכלים מעשיים לניהול עומסים, לקשב ולקבלת החלטות מתוך תפיסה ערכית וחוסן. העובדה שסיימנו בהצלחה את שלבים 1 ו-2 של התוכנית הוכיחה לנו עד כמה החוסן האנושי והאישי של המנהלים הוא המנוע האמיתי של הצלחת החברה. זו לא עוד סדנת ניהול, זו השקעה בתרבות הארגונית ובבני אדם.
+            </p>
+            <div class="qf-author">
+              <div>
+                <div class="qf-name">ירון</div>
+                <div class="qf-role">מנכ"ל, חברת ריי קיו</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
 
     <!-- ════════════ ABOUT ════════════ -->
     <section class="ab-sec bg-white" id="about">
@@ -2162,6 +2470,7 @@
       </div>
     </section>
 
+
     <!-- ════════════ FAQ ════════════ -->
     <section class="ab-sec bg-grey" id="faq">
       <div class="wrap">
@@ -2171,71 +2480,85 @@
         <div class="faq-list rev">
           <div class="faq-item">
             <button class="faq-q">
-              <span>במה זה שונה מתכניות מנהיגות או אינטליגנציה רגשית אחרות?</span>
+              <span>למי מתאימות הסדנאות והתוכנית בחברות ובארגונים?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
-              <p>
-                רוב תכניות המנהיגות מתמקדות במיומנויות וביכולות. 16 המעלות בונה
-                את תשתית הערכים הבסיסית, השפה הערכית-רגשית המשותפת שהופכת את אותן
-                מיומנויות ליישומיות וברות-קיימא. התוכנית פועלת גם ברמה האישית וגם
-                ברמת התרבות הארגונית.
-              </p>
+              <p>התוכנית מותאמת לכלל הדרגים והפונקציות בארגון: דרגי הנהלה ובכירים, מנהלות ומנהלי משאבי אנוש ופיתוח ארגוני, מנהלי דרג ביניים וראשי צוותים וכן לכלל עובדי החברה. התוכנית מתאימה לחברות עסקיות, חברות טכנולוגיה והייטק, ארגוני המגזר השלישי וארגונים חברתיים.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>האם ניתן להתאים את התוכנית לתרבות הארגונית שלנו?</span>
+              <span>מה מבדל את תוכנית 16 המעלות מסדנאות ניהול או Well-being רגילות?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
-              <p>
-                כן. התוכנית מודולרית וניתנת להתאמה. אנו עובדים יחד עם ההנהלה,
-                צוותי משאבי האנוש והפיתוח הארגוני שלכם כדי לוודא שהתוכן מתחבר
-                להקשר הארגוני, לאתגרים ולשפה הייחודית שלכם.
-              </p>
+              <p>תוכנית 16 המעלות היא תוכנית למידה מבוססת ערכים. התוכנית מאפשרת לארגונים לעבור תהליך של הטמעת שפה יישומית אחידה וכלים יומיומיים המשלבים בין חוסן אישי וצוותי לבין מנהיגות קשובה, טיפוח אמון ומערכות יחסים בריאות בממשקי העבודה.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>כמה זמן אורכת התוכנית?</span>
+              <span>האם התוכנית מתאימה לצוותים גלובליים ולארגונים בינלאומיים?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
-              <p>
-                מסדנת היכרות ועד יישום ארגוני מלא. ההיקף המתאים תלוי בשאיפות,
-                בצרכים וביעדים שלכם. אנו ממליצים להתחיל בשיחת היכרות.
-              </p>
+              <p>כן. 16 המעלות עוסקת בערכים אנושיים אוניברסליים כגון כבוד, ענווה, נדיבות ואומץ, החוצים תרבויות ומגזרים. התוכנית, המצגות וחומרי התרגול זמינים ומועברים באופן מלא הן בעברית והן באנגלית ומותאמים לעבודה מול צוותים בינלאומיים ורב-תרבותיים.</p>
             </div>
           </div>
           <div class="faq-item">
             <button class="faq-q">
-              <span>איך מודדים תוצאות?</span>
+              <span>מי מנחה את הסדנאות והתהליכים בארגון?</span>
               <span class="faq-plus">+</span>
             </button>
             <div class="faq-a">
-              <p>
-                אנו מודדים את ההשפעה באמצעות שילוב של משוב מיידי ומעקב נתונים
-                ארוך טווח. הדבר כולל הערכות לפני ואחרי התוכנית, כלי משוב
-                למנהלים, וסקרי תחושה אופציונליים. בנוסף, אנו מזמינים ארגונים
-                שעברו את התוכנית להשתתף במחקר אקדמי רחב יותר על ההשפעה ארוכת
-                הטווח של התכניות שלנו, הנערך בשיתוף עם הפורום האקדמי שלנו.
-              </p>
+              <p>הסדנאות וההכשרות מועברות על ידי מנחות ומנחים מוסמכים מטעם FDCW, הארגון הבינלאומי שפיתח את התוכנית ומעמותת "בית חולמים", בעלי ניסיון עשיר בהנחיית קבוצות ועבודה עם קהלי יעד מגוונים.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>איך משלבים את התוכנית בשגרת העבודה העמוסה של הארגון?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>מתווה התוכנית גמיש ומודולרי ונבנה בהתאמה מלאה לצרכים, לקצב וללוחות הזמנים של הארגון.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>מה ידוע על אפקטיביות התוכנית?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>בשנת 2026 הקימה העמותה פורום אקדמי עם בכירי.ות החוקרים.ות בתחום (<a href="about.html" class="inline-link">ראו בעמוד אודות</a>), אשר בונים.ות מחקר לבחינת האפקטיביות של התוכנית. המחקר ישלב בחינה כמותית ואיכותנית של התוכנית על-ידי שאלונים ועל-ידי כלים של מחקר איכותני.</p>
+              <p>תוכנית 16 המעלות מיושמת בהצלחה בארץ כ-6 שנים ובעולם כבר מעל ל-21 שנים ב-22 מדינות וזוכה למשובים חמים ויוצאי דופן.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">
+              <span>איך מתקדמים ואיך בונים תוכנית מותאמת לארגון שלנו?</span>
+              <span class="faq-plus">+</span>
+            </button>
+            <div class="faq-a">
+              <p>מוזמנים להשאיר פרטים בטופס למטה. נחזור אליכם לשיחת היכרות קצרה, בה נבין יחד את הצרכים, האתגרים והמאפיינים של הארגון שלכם ונבנה מתווה עבודה מותאם אישית.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+
     <!-- ════════════ CONTACT FORM ════════════ -->
     <section id="contact-form">
       <div class="wrap">
         <div class="contact-inner">
-          <h2 class="h3d h3d-white rev">בואו נדבר</h2>
-          <p class="sub rev">
-            מוכנים להביא את 16 המעלות לארגון שלכם?<br />
-            קבעו שיחת היכרות. נלמד על הצרכים של הארגון שלכם ונבחן יחד איזו
-            תוכנית מתאימה עבורכם.
+          <h2 class="h3d h3d-white rev">לתיאום שיחת היכרות</h2>
+          <p class="sub rev" style="margin-bottom: 0.8rem; font-weight: 800; font-size: 1.2rem; color: #fff">
+            רוצים להכניס את תוכנית 16 המעלות לארגון שלכם?
+          </p>
+          <p class="sub rev" style="margin-bottom: 2.2rem">
+            השאירו פרטים ונחזור אליכם לשיחת היכרות קצרה, בה נבין יחד את
+            הצרכים והאתגרים של הארגון שלכם ונבנה תוכנית מותאמת להנהלה, לצוותים
+            או לכלל עובדי החברה.
           </p>
 
           <form
@@ -2244,61 +2567,40 @@
             action="https://formsubmit.co/laor.alon.1@gmail.com"
             method="POST"
           >
-            <input type="hidden" name="_subject" value="פנייה חדשה מדף עסקים — 16 המעלות" />
+            <input type="hidden" name="_subject" value="פנייה חדשה מדף חברות וארגונים - 16 המעלות" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
 
             <div class="form-row">
               <div class="form-field">
-                <label class="form-label">שם <span class="req">*</span></label>
-                <input class="form-input" type="text" name="שם" required />
+                <label class="form-label">שם מלא <span class="req">*</span></label>
+                <input class="form-input" type="text" name="שם מלא" required />
               </div>
-              <div class="form-field">
-                <label class="form-label">ארגון / חברה <span class="req">*</span></label>
-                <input class="form-input" type="text" name="ארגון / חברה" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label class="form-label">תפקיד <span class="req">*</span></label>
-                <input class="form-input" type="text" name="תפקיד" required />
-              </div>
-              <div class="form-field">
-                <label class="form-label">דוא"ל <span class="req">*</span></label>
-                <input class="form-input" type="email" name="דוא&quot;ל" required />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label class="form-label">טלפון (אופציונלי)</label>
-                <input class="form-input" type="tel" name="טלפון" />
-              </div>
-              <div class="form-field ms-field">
-                <label class="form-label">מה הביא אתכם אלינו?</label>
-                <button type="button" class="ms-trigger" id="msTrigger">
-                  <span id="msTriggerText">בחרו אפשרות אחת או יותר</span>
+              <div class="form-field ms-field" data-required="1">
+                <label class="form-label">תפקיד / זיקה לתחום <span class="req">*</span></label>
+                <button type="button" class="ms-trigger">
+                  <span class="ms-trigger-text">בחרו אפשרות אחת או יותר</span>
                   <span class="dd-arrow">▾</span>
                 </button>
-                <div class="ms-panel" id="msPanel">
+                <div class="ms-panel">
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="פיתוח מנהיגות" />פיתוח
-                    מנהיגות</label
+                    ><input type="checkbox" name="תפקיד / זיקה לתחום" value="מנכ&quot;ל/ית" />מנכ&quot;ל/ית</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="תרבות וערכים" />תרבות
-                    וערכים</label
+                    ><input type="checkbox" name="תפקיד / זיקה לתחום" value="סמנכ&quot;ל/ית" />סמנכ&quot;ל/ית</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="חוסן צוותי" />חוסן
-                    צוותי</label
+                    ><input type="checkbox" name="תפקיד / זיקה לתחום" value="מנהל.ת HR" />מנהל.ת HR</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" name="מה הביא אתכם אלינו" value="תוכנית למשאבי אנוש" />תוכנית
-                    למשאבי אנוש</label
+                    ><input type="checkbox" name="תפקיד / זיקה לתחום" value="מנהל.ת למידה ופיתוח ארגוני" />מנהל.ת למידה ופיתוח ארגוני</label
                   >
                   <label class="ms-opt"
-                    ><input type="checkbox" id="msOtherCheck" name="מה הביא אתכם אלינו" value="אחר" />אחר</label
+                    ><input type="checkbox" name="תפקיד / זיקה לתחום" value="מנהל.ת רווחה, ראש צוות" />מנהל.ת רווחה, ראש צוות</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="תפקיד / זיקה לתחום" value="אחר" id="msOtherCheck" />אחר</label
                   >
                 </div>
               </div>
@@ -2312,21 +2614,59 @@
                 placeholder="ספרו לנו בקצרה (עד 500 תווים)"
               ></textarea>
             </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">שם החברה / הארגון <span class="req">*</span></label>
+                <input class="form-input" type="text" name="שם החברה / הארגון" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label">טלפון ליצירת קשר <span class="req">*</span></label>
+                <input class="form-input" type="tel" name="טלפון" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">דוא"ל <span class="req">*</span></label>
+                <input class="form-input" type="email" name="דוא&quot;ל" required />
+              </div>
+              <div class="form-field ms-field">
+                <label class="form-label">איך תרצו לשלב את התוכנית?</label>
+                <button type="button" class="ms-trigger">
+                  <span class="ms-trigger-text">בחרו אפשרות אחת או יותר</span>
+                  <span class="dd-arrow">▾</span>
+                </button>
+                <div class="ms-panel">
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="איך תרצו לשלב את התכנית" value="הרצאת חשיפה / יום עיון / כנס ארגוני" />הרצאת חשיפה / יום עיון / כנס ארגוני</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="איך תרצו לשלב את התכנית" value="סדנאות ממוקדות לצוותים או למנהלי ביניים" />סדנאות ממוקדות לצוותים או למנהלי ביניים</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="איך תרצו לשלב את התכנית" value="תוכנית פיתוח מנהיגות קשובה ומודעת לדרג הניהולי" />תוכנית פיתוח מנהיגות קשובה ומודעת לדרג הניהולי</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="checkbox" name="איך תרצו לשלב את התכנית" value="תהליך הטמעה ארגונית, קבוצות תרגול ושינוי תרבותי" />תהליך הטמעה ארגונית, קבוצות תרגול ושינוי תרבותי</label
+                  >
+                </div>
+              </div>
+            </div>
             <div class="form-field full" style="margin-top: 1.1rem">
-              <label class="form-label">הודעה (אופציונלי)</label>
-              <textarea class="form-textarea" name="הודעה"></textarea>
+              <label class="form-label">הערות נוספות</label>
+              <textarea class="form-textarea" name="הערות נוספות"></textarea>
             </div>
 
             <button type="submit" class="btn btn-gold form-submit">
-              שליחה
+              שליחת פניה
             </button>
             <p class="form-note">
-              בלחיצה על "שליחה" הפנייה תישלח אלינו במייל ונחזור אליכם בהקדם.
+              בלחיצה על "שליחת פניה" הפנייה תישלח אלינו במייל ונחזור אליכם בהקדם.
             </p>
           </form>
         </div>
       </div>
     </section>
+
 
     <!-- ════════════ FOOTER ════════════ -->
     <footer id="footer">
@@ -2574,43 +2914,55 @@
           });
         });
 
-        /* Multi-select dropdown */
-        const msTrigger = document.getElementById("msTrigger");
-        const msPanel = document.getElementById("msPanel");
-        const msTriggerText = document.getElementById("msTriggerText");
+        /* Multi-select dropdowns (more than one on the form) */
         const msOtherCheck = document.getElementById("msOtherCheck");
         const msOtherText = document.getElementById("msOtherText");
-        if (msTrigger) {
-          msTrigger.addEventListener("click", () => {
-            msPanel.classList.toggle("open");
-          });
-          document.addEventListener("click", (e) => {
-            if (!msPanel.contains(e.target) && e.target !== msTrigger) {
-              msPanel.classList.remove("open");
-            }
-          });
-          msPanel.querySelectorAll('input[type="checkbox"]').forEach((cb) => {
-            cb.addEventListener("change", () => {
-              const checked = msPanel.querySelectorAll(
-                'input[type="checkbox"]:checked',
-              );
-              msTriggerText.textContent = checked.length
-                ? Array.from(checked)
-                    .map((c) => c.value)
-                    .join(", ")
-                : "בחרו אפשרות אחת או יותר";
-              msOtherText.style.display = msOtherCheck.checked
-                ? "block"
-                : "none";
+        const MS_EMPTY = "בחרו אפשרות אחת או יותר";
+        const msFields = document.querySelectorAll(".ms-field");
+        const msRefresh = (field) => {
+          const checked = field.querySelectorAll('input[type="checkbox"]:checked');
+          field.querySelector(".ms-trigger-text").textContent = checked.length
+            ? Array.from(checked).map((c) => c.value).join(", ")
+            : MS_EMPTY;
+          field.querySelector(".ms-trigger").classList.remove("ms-invalid");
+          if (msOtherCheck && msOtherText) {
+            msOtherText.style.display = msOtherCheck.checked ? "block" : "none";
+          }
+        };
+        msFields.forEach((field) => {
+          const trigger = field.querySelector(".ms-trigger");
+          const panel = field.querySelector(".ms-panel");
+          trigger.addEventListener("click", () => {
+            msFields.forEach((f) => {
+              if (f !== field) f.querySelector(".ms-panel").classList.remove("open");
             });
+            panel.classList.toggle("open");
           });
-        }
+          field.querySelectorAll('input[type="checkbox"]').forEach((cb) =>
+            cb.addEventListener("change", () => msRefresh(field))
+          );
+        });
+        document.addEventListener("click", (e) => {
+          msFields.forEach((f) => {
+            if (!f.contains(e.target)) f.querySelector(".ms-panel").classList.remove("open");
+          });
+        });
 
         /* Contact form — async submit via FormSubmit AJAX endpoint */
         const bizForm = document.getElementById("bizForm");
         if (bizForm) {
           bizForm.addEventListener("submit", async (e) => {
             e.preventDefault();
+            /* the role dropdown is a required field: at least one choice */
+            const missing = Array.from(
+              bizForm.querySelectorAll('.ms-field[data-required="1"]')
+            ).find((f) => !f.querySelector('input[type="checkbox"]:checked'));
+            if (missing) {
+              const t = missing.querySelector(".ms-trigger");
+              t.classList.add("ms-invalid");
+              t.focus();
+              return;
+            }
             const btn = bizForm.querySelector(".form-submit");
             const originalText = btn.textContent;
             btn.textContent = "שולח...";
@@ -2624,8 +2976,7 @@
               if (res.ok) {
                 btn.textContent = "נשלח בהצלחה ✓";
                 bizForm.reset();
-                msTriggerText.textContent = "בחרו אפשרות אחת או יותר";
-                msOtherText.style.display = "none";
+                msFields.forEach(msRefresh);
               } else {
                 throw new Error("Submit failed");
               }

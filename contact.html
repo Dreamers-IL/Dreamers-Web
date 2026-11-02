@@ -633,6 +633,7 @@
         display: none;
       }
 
+
       /* ═══ FOOTER — identical to the home page ═══ */
       footer {
         background: url("assets/img/Gradient blue.png") center / cover no-repeat
@@ -859,12 +860,23 @@
           text-align: center;
         }
       }
+      @media (max-width: 640px) {
+        /* same phone gutter as the about page's form: drop .wrap's side
+           padding so the form is as wide as there */
+        #contact-form .wrap {
+          padding: 0;
+        }
+      }
       @media (max-width: 520px) {
         .ab-sec {
           padding: 4.5rem 1.1rem;
         }
+        #contact-form {
+          padding-inline: 1.1rem;
+        }
         .contact-form {
-          padding: 1.6rem;
+          margin: 0 -1.1rem;
+          padding: 1.6rem 1.2rem;
         }
       }
       /* No text block may end on a line holding a single word.

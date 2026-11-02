@@ -1228,8 +1228,11 @@
       .contact-inner {
         position: relative;
         z-index: 2;
-        max-width: 760px;
+        max-width: 820px;
         margin: 0 auto;
+        text-align: right;
+      }
+      .contact-inner > .h3d {
         text-align: center;
       }
       .contact-inner .sub {
@@ -1268,8 +1271,25 @@
         color: var(--gold-lt);
       }
       .form-input,
-      .form-textarea,
-      /* multi-choice dropdown for "מה הביא אתכם אלינו?" */
+      .form-textarea {
+        width: 100%;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text);
+        font-family: "Heebo", sans-serif;
+        font-size: 0.94rem;
+      }
+      .form-textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+      .form-input:focus,
+      .form-textarea:focus {
+        outline: 2px solid var(--teal);
+      }
+
       .ms-field {
         position: relative;
       }
@@ -1278,7 +1298,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 0.6rem;
         padding: 0.85rem 1.1rem;
         border-radius: 12px;
         border: 1px solid rgba(255, 255, 255, 0.25);
@@ -1286,13 +1305,7 @@
         color: var(--text);
         font-family: "Heebo", sans-serif;
         font-size: 0.94rem;
-        text-align: right;
         cursor: pointer;
-      }
-      #msTriggerText {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
       }
       .ms-panel {
         display: none;
@@ -1332,25 +1345,6 @@
         margin-top: 0.7rem;
         display: none;
       }
-      .form-select {
-        width: 100%;
-        padding: 0.85rem 1.1rem;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        background: rgba(255, 255, 255, 0.94);
-        color: var(--text);
-        font-family: "Heebo", sans-serif;
-        font-size: 0.94rem;
-      }
-      .form-textarea {
-        resize: vertical;
-        min-height: 90px;
-      }
-      .form-input:focus,
-      .form-textarea:focus,
-      .form-select:focus {
-        outline: 2px solid var(--teal);
-      }
       .form-note {
         font-size: 0.76rem;
         color: rgba(255, 255, 255, 0.65);
@@ -1361,6 +1355,37 @@
         width: 100%;
         justify-content: center;
       }
+      .form-status {
+        margin-top: 1rem;
+        font-size: 0.88rem;
+        color: var(--teal-lt);
+        display: none;
+      }
+      #msTriggerText {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      /* native select (education "תפקיד"): same box as .form-input, with the
+         same "▾" cue as .ms-trigger so it reads identically */
+      .form-select {
+        width: 100%;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.94)
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0h8L4 5z' fill='%23334'/%3E%3C/svg%3E")
+          no-repeat left 1.1rem center;
+        color: var(--text);
+        font-family: "Heebo", sans-serif;
+        font-size: 0.94rem;
+        appearance: none;
+        -webkit-appearance: none;
+      }
+      .form-select:focus {
+        outline: 2px solid var(--teal);
+      }
+
 
       /* ═══ FOOTER — identical to the home page ═══ */
       footer {
@@ -1594,6 +1619,13 @@
           text-align: center;
         }
       }
+      @media (max-width: 640px) {
+        /* same phone gutter as the about page's form: drop .wrap's side
+           padding so the form is as wide as there */
+        #contact-form .wrap {
+          padding: 0;
+        }
+      }
       @media (max-width: 520px) {
         .ab-sec {
           padding: 3rem 1.1rem;
@@ -1605,8 +1637,12 @@
           grid-template-rows: none;
           grid-template-columns: 1fr;
         }
+        #contact-form {
+          padding-inline: 1.1rem;
+        }
         .contact-form {
-          padding: 1.6rem;
+          margin: 0 -1.1rem;
+          padding: 1.6rem 1.2rem;
         }
         .fact-box {
           padding: 1.5rem 1.1rem 1.3rem;

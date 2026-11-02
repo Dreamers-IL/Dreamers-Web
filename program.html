@@ -534,7 +534,7 @@
 
       /* ═══ CONTACT ═══ */
       #contact-form {
-        padding: 4.2rem 2rem;
+        padding: 6.5rem 2rem;
         background: var(--g-main);
         position: relative;
         overflow: hidden;
@@ -686,6 +686,7 @@
         color: var(--teal-lt);
         display: none;
       }
+
 
       /* ═══ FOOTER — identical to the home page ═══ */
       footer {
@@ -1835,6 +1836,13 @@
         .footer-bottom {
           justify-content: center;
           text-align: center;
+        }
+      }
+      @media (max-width: 640px) {
+        /* same phone gutter as the about page's form: drop .wrap's side
+           padding so the form is as wide as there */
+        #contact-form .wrap {
+          padding: 0;
         }
       }
       @media (max-width: 520px) {

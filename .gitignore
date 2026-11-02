@@ -32,3 +32,4 @@ assets/Videos/Archive/
 # Local shortcuts and personal machine reports, not part of the site
 *.lnk
 disk-health-reports/
+tools/auto-sync.log

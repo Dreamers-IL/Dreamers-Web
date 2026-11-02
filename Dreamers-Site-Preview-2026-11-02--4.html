@@ -20252,6 +20252,32 @@
         display: block;
         width: 100%;
       }
+      .rp-keys {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.7rem;
+      }
+      .rp-keys button {
+        flex: 1;
+        padding: 0.5rem 0.3rem;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        font: inherit;
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .rp-keys button:hover {
+        background: rgba(255, 255, 255, 0.24);
+      }
+      .rp-help {
+        margin-top: 0.6rem;
+        font-size: 0.8rem;
+        line-height: 1.5;
+        color: rgba(255, 255, 255, 0.75);
+      }
       .rp-close {
         position: absolute;
         top: 0.55rem;
@@ -20915,6 +20941,15 @@
       <div class="rp-title" id="rpTitle"></div>
       <div class="rp-meta" id="rpMeta"></div>
       <audio id="rpAudio" controls preload="none"></audio>
+      <div class="rp-keys">
+        <button type="button" id="rpBack" aria-label="חזרה 10 שניות אחורה">10 שניות אחורה</button>
+        <button type="button" id="rpToggle" aria-label="ניגון או השהיה">ניגון / השהיה</button>
+        <button type="button" id="rpFwd" aria-label="קדימה 10 שניות">10 שניות קדימה</button>
+      </div>
+      <p class="rp-help">
+        לניגון או להשהיה לחצו על כפתור ההשמעה או על "ניגון / השהיה".
+        להרצה אחורה או קדימה לחצו על "10 שניות אחורה" או "10 שניות קדימה", או גררו את פס ההתקדמות.
+      </p>
       <p class="rp-text" id="rpText" hidden></p>
     </div>
 
@@ -21189,6 +21224,17 @@
         rpAudio.addEventListener("pause", () => markPlaying(false));
         rpAudio.addEventListener("ended", () => markPlaying(false));
         document.getElementById("rpClose").addEventListener("click", closePlayer);
+        document.getElementById("rpBack").addEventListener("click", () => {
+          rpAudio.currentTime = Math.max(0, rpAudio.currentTime - 10);
+        });
+        document.getElementById("rpFwd").addEventListener("click", () => {
+          const end = rpAudio.duration || Infinity;
+          rpAudio.currentTime = Math.min(end, rpAudio.currentTime + 10);
+        });
+        document.getElementById("rpToggle").addEventListener("click", () => {
+          if (rpAudio.paused) rpAudio.play().catch(() => {});
+          else rpAudio.pause();
+        });
 
         /* Single-choice dropdown: "מה מעניין אותך?" */
         const msTrigger = document.getElementById("msTrigger");

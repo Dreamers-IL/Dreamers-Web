@@ -516,8 +516,41 @@
         background: rgba(255, 255, 255, 0.06);
         border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 26px;
-        padding: 2.6rem;
+        padding: 2.6rem 2.6rem 4.4rem;
         backdrop-filter: blur(12px);
+        position: relative;
+      }
+      /* the return icon, in the form box's bottom-left corner. The icon is
+         black, so it sits on a light round button to show on the blue */
+      .return-btn {
+        position: absolute;
+        left: 1.1rem;
+        bottom: 1.1rem;
+        width: 46px;
+        height: 46px;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 6px 16px rgba(0, 20, 45, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .return-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 10px 22px rgba(0, 20, 45, 0.4);
+      }
+      .return-btn:focus-visible {
+        outline: 3px solid var(--teal);
+        outline-offset: 2px;
+      }
+      .return-btn img {
+        width: 26px;
+        height: auto;
+        display: block;
       }
       .form-row {
         display: grid;
@@ -1013,7 +1046,7 @@
                 <input class="form-input" type="tel" name="טלפון" required />
               </div>
               <div class="form-field ms-field">
-                <label class="form-label">מה הביא אותך אלינו?</label>
+                <label class="form-label">מה תרצה לדעת?</label>
                 <button type="button" class="ms-trigger" id="msTrigger">
                   <span id="msTriggerText">בחרו אפשרות אחת או יותר</span>
                   <span class="dd-arrow">▾</span>
@@ -1028,8 +1061,8 @@
                 class="form-textarea other-text"
                 id="msOtherText"
                 name="פירוט נוסף (אחר)"
-                maxlength="500"
-                placeholder="ספרו לנו בקצרה (עד 500 תווים)"
+                maxlength="200"
+                placeholder="ספרו לנו בקצרה (עד 200 תווים)"
               ></textarea>
             </div>
             <div class="form-field full" style="margin-top: 1.1rem">
@@ -1043,6 +1076,17 @@
             <p class="form-note">
               בלחיצה על "שליחה" הפנייה תישלח אלינו במייל ונחזור אליכם בהקדם.
             </p>
+            <!-- back to the exact place the visitor came from (see
+                 assets/js/contact-return.js) -->
+            <button
+              type="button"
+              class="return-btn"
+              id="returnBtn"
+              aria-label="חזרה למקום שממנו הגעתם"
+              title="חזרה למקום שממנו הגעתם"
+            >
+              <img src="assets/img/Return.png" alt="" />
+            </button>
           </form>
         </div>
       </div>
@@ -1180,6 +1224,8 @@
           practice: "קבוצות תרגול",
           learning: "מרחב למידה ותרגול",
           "mental-health": "16 המעלות בבריאות הנפש",
+          program: "תוכנית 16 המעלות",
+          about: "אודות",
         };
 
         function detectSource() {
@@ -1199,9 +1245,10 @@
         }
 
         const OPTIONS = [
-          "פרטים לגבי סדנת שלב 1 הקרובה",
+          "מידע נוסף על התוכנית",
+          "מידת ההתאמה שלי לתוכנית",
           "התאמת התוכנית לארגון שלי",
-          "מידע נוסף על שלבי התוכנית",
+          "פרטים לגבי הסדנאות הקרובות",
           "אחר",
         ];
         const msPanel = document.getElementById("msPanel");
@@ -1215,7 +1262,7 @@
           label.className = "ms-opt";
           const cb = document.createElement("input");
           cb.type = "checkbox";
-          cb.name = "מה הביא אותך אלינו";
+          cb.name = "מה תרצה לדעת";
           cb.value = opt;
           if (opt === "אחר") cb.id = "msOtherCheck";
           label.appendChild(cb);
@@ -1283,5 +1330,6 @@
     </script>
     <script src="assets/js/no-orphans.js?v=2" defer></script>
     <script src="assets/js/accessibility-widget.js" defer></script>
+    <script src="assets/js/contact-return.js" defer></script>
   </body>
 </html>

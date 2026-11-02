@@ -383,7 +383,7 @@
       /* built like the companies hero: a photograph at full strength, the
          copy hugging the right edge, and a tint weighted to that side */
       /* the hero's picture is a carousel of four photos that slide in from
-         the right every 3 seconds. The slides share the photos' own ratio
+         the right every 4 seconds. The slides share the photos' own ratio
          (1395 x 634.5), which sets the box's height (it scales with the
          screen width, so on a phone the whole picture simply gets smaller),
          and the copy sits over it in the same grid cell: where the copy needs
@@ -422,11 +422,9 @@
       .bh-bg img.on {
         transform: translateX(0);
       }
-      .bh-bg img.slide {
-        transition: transform 0.9s ease-in-out;
-      }
-      .bh-bg img.out {
-        transform: translateX(-100%);
+      /* a click on the picture freezes it; another click sets it going */
+      #learn-hero {
+        cursor: pointer;
       }
       /* only a side tint, deepening on the right under the title; no dark
          top band (the photo no longer sits under the nav) and no white fade
@@ -1724,24 +1722,73 @@
         );
         document.querySelectorAll(".rev").forEach((el) => io.observe(el));
 
-        /* the hero carousel: every 3 seconds the next photo slides in from
-           the right while the current one leaves to the left */
+        /* the hero carousel: every 4 seconds the next photo slides in from
+           the right while the current one leaves to the left. The slide
+           takes 1.8 s (half the speed it had at 0.9 s). A click on the hero
+           freezes the movement where it is; it goes on at the next click, or
+           when the reader leaves the hero for another part of the page.
+           Another page simply starts it afresh. */
         (() => {
+          const hero = document.getElementById("learn-hero");
           const slides = [...document.querySelectorAll("#heroCarousel img")];
-          if (slides.length < 2) return;
+          if (!hero || slides.length < 2) return;
+          const GAP = 4000;
+          const SLIDE = 1800;
           let cur = 0;
-          setInterval(() => {
-            if (document.hidden) return;
-            const out = slides[cur];
-            cur = (cur + 1) % slides.length;
-            const inn = slides[cur];
-            inn.classList.remove("slide", "on", "out");
-            void inn.offsetWidth;
-            inn.classList.add("slide", "on");
-            out.classList.add("slide", "out");
-            out.classList.remove("on");
-            setTimeout(() => out.classList.remove("slide", "out"), 1000);
-          }, 3000);
+          let timer = null;
+          let due = 0;
+          let remaining = GAP;
+          let frozen = false;
+          let anims = [];
+
+          /* slide one photo between its resting places: waiting on the right
+             (100%), showing (0), gone to the left (-100%) */
+          const move = (img, from, to) => {
+            const a = img.animate(
+              [{ transform: `translateX(${from}%)` }, { transform: `translateX(${to}%)` }],
+              { duration: SLIDE, easing: "ease-in-out", fill: "forwards" },
+            );
+            anims.push(a);
+            a.onfinish = () => {
+              anims = anims.filter((x) => x !== a);
+              img.classList.toggle("on", to === 0);
+              a.cancel();
+            };
+          };
+          const schedule = (ms) => {
+            clearTimeout(timer);
+            due = Date.now() + ms;
+            timer = setTimeout(step, ms);
+          };
+          const step = () => {
+            if (!document.hidden) {
+              const out = slides[cur];
+              cur = (cur + 1) % slides.length;
+              move(slides[cur], 100, 0);
+              move(out, 0, -100);
+            }
+            schedule(GAP);
+          };
+          const freeze = () => {
+            frozen = true;
+            clearTimeout(timer);
+            remaining = Math.max(0, due - Date.now());
+            anims.forEach((a) => a.pause());
+          };
+          const resume = () => {
+            frozen = false;
+            anims.forEach((a) => a.play());
+            schedule(remaining);
+          };
+          hero.addEventListener("click", () => (frozen ? resume() : freeze()));
+          new IntersectionObserver(
+            (es) =>
+              es.forEach((e) => {
+                if (!e.isIntersecting && frozen) resume();
+              }),
+            { threshold: 0 },
+          ).observe(hero);
+          schedule(GAP);
         })();
 
         /* Hero sits just below the fixed nav bar, whatever its height */
@@ -1910,5 +1957,6 @@
     </script>
     <script src="assets/js/no-orphans.js?v=2" defer></script>
     <script src="assets/js/accessibility-widget.js" defer></script>
+    <script src="assets/js/contact-return.js" defer></script>
   </body>
 </html>

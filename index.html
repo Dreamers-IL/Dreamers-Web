@@ -1991,7 +1991,7 @@
             </p>
             <p class="mission-body">
               המטרה שלנו היא לסייע לאנשים מכל שכבות החברה לטפח את מעלותיהם
-              הפנימיות ולהגשים את הפוטנציאל האנושי העצום הטמון בהםן כדי לחיות
+              הפנימיות ולהגשים את הפוטנציאל האנושי העצום הטמון בהם.ן כדי לחיות
               חיים שלווים, משמעותיים ומאושרים יותר.
             </p>
           </div>
@@ -2118,7 +2118,7 @@
           <h2 class="h3d rev" style="text-align: center">קולות מהשטח</h2>
         </div>
         <div class="carousel-outer">
-          <button class="car-arrow" id="carNext" aria-label="הבא">
+          <button class="car-arrow" id="carNext" aria-label="הקודם">
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <div class="carousel-viewport">
@@ -2303,7 +2303,7 @@
             <!-- end carousel-track -->
           </div>
           <!-- end carousel-viewport -->
-          <button class="car-arrow" id="carPrev" aria-label="הקודם">
+          <button class="car-arrow" id="carPrev" aria-label="הבא">
             <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
@@ -2581,8 +2581,11 @@
           // shifting right by the difference brings the page into view
           const delta = first ? cards[0].offsetLeft - first.offsetLeft : 0;
           track.style.transform = `translateX(${delta}px)`;
-          prevBtn.disabled = currentPage === 0;
-          nextBtn.disabled = currentPage === totalPages - 1;
+          // the first card sits on the right and the reader moves to the
+          // left, so the LEFT button (prevBtn) goes forward and the right
+          // one (nextBtn) goes back
+          prevBtn.disabled = currentPage === totalPages - 1;
+          nextBtn.disabled = currentPage === 0;
           dotsWrap.querySelectorAll(".car-dot").forEach((d, i) =>
             d.classList.toggle("active", i === currentPage),
           );
@@ -2602,8 +2605,8 @@
           track.style.transition = prevTransition;
         }
 
-        prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
-        nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
+        prevBtn.addEventListener("click", () => goToPage(currentPage + 1));
+        nextBtn.addEventListener("click", () => goToPage(currentPage - 1));
         layout();
         let carResizeTimer;
         window.addEventListener("resize", () => {
@@ -2628,5 +2631,6 @@
     </script>
     <script src="assets/js/no-orphans.js?v=2" defer></script>
     <script src="assets/js/accessibility-widget.js" defer></script>
+    <script src="assets/js/contact-return.js" defer></script>
   </body>
 </html>

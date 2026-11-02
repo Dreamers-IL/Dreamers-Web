@@ -226,7 +226,7 @@ def build_page(name):
     s = re.sub(r'\s*<source src="[^"]+\.webm" type="video/webm" />\n?', "", s)
 
     # inline the two local scripts as real script blocks
-    for js in ["assets/js/no-orphans.js", "assets/js/accessibility-widget.js"]:
+    for js in ["assets/js/no-orphans.js", "assets/js/accessibility-widget.js", "assets/js/contact-return.js"]:
         # the page may carry a cache-busting suffix on the src
         tag = next((t for t in ('<script src="%s" defer></script>' % js,
                                 '<script src="%s?v=2" defer></script>' % js)

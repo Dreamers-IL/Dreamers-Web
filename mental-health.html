@@ -379,12 +379,21 @@
         padding-right: 1.4rem;
       }
 
+      /* The hero box is locked to the photo's own ratio (2752 / 1536), so the whole
+         picture shows on a wide screen. It starts below the fixed nav bar (the
+         script sets --nav-h). On a phone the photo shrinks to the full width
+         and shows whole at the top, and the copy keeps its size and overlays
+         it, the box growing when the copy is taller than the photo. */
       /* ═══ HERO ═══ */
       /* built like the companies hero: a photograph at full strength, the
          copy hugging the right edge, and a tint weighted to that side */
       #mh-hero {
         position: relative;
-        padding: 12rem 0 6rem;
+        margin-top: var(--nav-h, 0px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        aspect-ratio: 2752 / 1536;
         overflow: hidden;
         background: var(--blue-dk);
         text-align: right;
@@ -395,39 +404,34 @@
         background-image: url("assets/img/הצעה לתמונת הירו לבריאות הנפש.jpeg");
         background-size: cover;
         background-position: center;
+        background-repeat: no-repeat;
       }
       /* the aurora sweeps in from the left, so that half stays clear and the
          tint deepens on the right, under the copy; the foot dissolves into
          the white section below */
+      /* only a side tint, deepening on the right under the copy; no dark
+         top band and no white fade at the foot, so the whole picture stays
+         visible */
       .bh-fade {
         position: absolute;
         inset: 0;
-        background:
-          linear-gradient(
-            to left,
-            rgba(0, 20, 45, 0.82) 0%,
-            rgba(0, 20, 45, 0.62) 45%,
-            rgba(0, 20, 45, 0.3) 75%,
-            rgba(0, 20, 45, 0.12) 100%
-          ),
-          linear-gradient(
-            180deg,
-            rgba(0, 20, 45, 0.34) 0%,
-            rgba(0, 20, 45, 0.05) 26%,
-            rgba(0, 20, 45, 0.05) 84%,
-            rgba(255, 255, 255, 0) 90%,
-            rgba(255, 255, 255, 0.6) 97%,
-            #fff 100%
-          );
+        background: linear-gradient(
+          to left,
+          rgba(0, 20, 45, 0.6) 0%,
+          rgba(0, 20, 45, 0.38) 40%,
+          rgba(0, 20, 45, 0.1) 70%,
+          rgba(0, 20, 45, 0) 100%
+        );
       }
       /* same width and padding as .wrap, so the hero copy lines up on the
          same right edge as every section below it */
       .bh-content {
         position: relative;
         z-index: 2;
+        width: 100%;
         max-width: 1240px;
         margin: 0 auto;
-        padding: 0 2rem;
+        padding: 2rem;
       }
       #mh-hero .h3d {
         color: #fff;
@@ -525,18 +529,46 @@
       /* ═══ THE 16 VIRTUES — flip cards ═══ */
       /* the same board as the programme page: the printed chart, with every
          tile turning over on hover to show what the virtue means */
-      /* ─── the 4 value-family image cards (same as the home page) ─── */
+      /* ═══ 16 המעלות, same treatment as the home page's intro ═══ */
+      .program-pitch {
+        font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+        font-weight: 800;
+        color: var(--blue-dk);
+        text-align: center;
+        max-width: 780px;
+        line-height: 1.6;
+        margin: 1.1rem auto 3rem;
+      }
+      .intro-body {
+        font-size: 1.07rem;
+        line-height: 1.9;
+        color: var(--text-mid);
+        margin-bottom: 1.3rem;
+      }
+      .intro-body-center {
+        text-align: center;
+      }
+      .intro-body-wide {
+        max-width: 920px;
+        margin: 2.6rem auto 0;
+        text-align: center;
+      }
       .pgrid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
-        margin: 2.8rem 0;
+        margin-top: 2.8rem;
         position: relative;
       }
       .pc {
         border-radius: 26px;
         position: relative;
         overflow: hidden;
+        cursor: default;
+        transform-style: preserve-3d;
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.4s ease;
       }
       .pc-img {
         padding: 0;
@@ -547,6 +579,33 @@
         width: 100%;
         height: auto;
         border-radius: 26px;
+      }
+      .intro-join-box {
+        margin-top: 2.5rem;
+        padding: 1.8rem 2rem;
+        border-radius: 18px;
+      }
+      .intro-join-box-bold {
+        max-width: 720px;
+        margin: 2.4rem auto 0;
+        padding: 1.6rem 2.2rem;
+        text-align: center;
+        background: var(--g-main);
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 20px 45px rgba(0, 67, 120, 0.32);
+      }
+      .ijb-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--text-mid);
+        font-weight: 500;
+      }
+      .ijb-text-bold {
+        color: #fff;
+        font-size: 1.18rem;
+        font-weight: 800;
+        line-height: 1.6;
       }
       @media (max-width: 1024px) {
         .pgrid {
@@ -1589,10 +1648,15 @@
           transform: rotate(180deg);
         }
         #mh-hero {
-          padding: 9rem 0 4rem;
+          aspect-ratio: auto;
+          min-height: calc(100vw * 1536 / 2752);
+        }
+        .bh-bg {
+          background-size: 100% auto;
+          background-position: center top;
         }
         .bh-content {
-          padding: 0 1.4rem;
+          padding: 1.6rem 1.4rem;
         }
         .vb-grid {
           /* two families to a column, each still whole */
@@ -1917,22 +1981,68 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- ════════════ תוכנית 16 המעלות ════════════ -->
+    <section class="ab-sec bg-grey" id="virtues-intro">
+      <div class="wrap">
+        <h2 class="h3d rev" style="text-align: center">תוכנית 16 המעלות</h2>
+        <p class="program-pitch rev d1">
+          16 המעלות היא תוכנית בינלאומית לפיתוח חוסן רגשי-חברתי<br />
+          ולטיפוח ערכים אוניברסליים וחיים בעלי משמעות
+        </p>
+
+        <p class="intro-body intro-body-center intro-body-wide rev d1">
+          התוכנית מבוססת על ארבעה נושאי ליבה.<br />
+          היא מספקת כלים מעשיים להטמעתם בחיי היומיום.<br />
+          בכל נושא 4 ערכים ובסך הכל 16 מעלות אוניברסליות אשר מייצרות שפה<br />
+          לקידום של שלום פנימי וחיצוני בקרב יחידים, משפחות, קהילות, ובחברה
+          כולה.
+        </p>
+
         <div class="pgrid rev d2" id="virtues">
           <div class="pc pc-img" id="pc0">
-            <img src="assets/img/1.png" loading="lazy" decoding="async" alt="הדרך בה אנו חושבים: ענווה, סבלנות, שביעות רצון, חדווה" />
+            <img
+              src="assets/img/1.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו חושבים: ענווה, סבלנות, שביעות רצון, חדווה"
+            />
           </div>
           <div class="pc pc-img" id="pc1">
-            <img src="assets/img/2.png" loading="lazy" decoding="async" alt="הדרך בה אנו פועלים: טוב לב, יושרה, נדיבות, דיבור מיטיב" />
+            <img
+              src="assets/img/2.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו פועלים: טוב לב, יושרה, נדיבות, דיבור מיטיב"
+            />
           </div>
           <div class="pc pc-img" id="pc2">
-            <img src="assets/img/3.png" loading="lazy" decoding="async" alt="הדרך בה אנו מתייחסים לזולת: כבוד, סליחה, הכרת תודה, נאמנות" />
+            <img
+              src="assets/img/3.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו מתייחסים לזולת: כבוד, סליחה, הכרת תודה, נאמנות"
+            />
           </div>
           <div class="pc pc-img" id="pc3">
-            <img src="assets/img/4.png" loading="lazy" decoding="async" alt="הדרך בה אנו מוצאים משמעות: שאיפות, עקרונות, שירות, אומץ" />
+            <img
+              src="assets/img/4.png"
+              loading="lazy"
+              decoding="async"
+              alt="הדרך בה אנו מוצאים משמעות: שאיפות, עקרונות, שירות, אומץ"
+            />
           </div>
         </div>
 
-        <div class="rev d3" style="margin-top: 2.4rem; text-align: center">
+        <div class="intro-join-box intro-join-box-bold rev d3">
+          <p class="ijb-text ijb-text-bold">
+            עמותת בית חולמים היא הנציגה הרשמית של התוכנית בישראל
+          </p>
+        </div>
+
+        <div style="margin-top: 1.8rem; text-align: center" class="rev d3">
           <a href="program.html" class="btn btn-blue"
             >למידע נוסף על תוכנית 16 המעלות</a
           >
@@ -1941,7 +2051,7 @@
     </section>
 
     <!-- ════════════ WHY NOW ════════════ -->
-    <section class="ab-sec bg-grey">
+    <section class="ab-sec bg-white">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">למה עכשיו</h2>
@@ -2029,7 +2139,7 @@
     </section>
 
     <!-- ════════════ WHO IT'S FOR ════════════ -->
-    <section class="ab-sec bg-white">
+    <section class="ab-sec bg-grey">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">למי מיועדת התוכנית</h2>
@@ -2088,7 +2198,7 @@
     </section>
 
     <!-- ════════════ HOW IT WORKS ════════════ -->
-    <section class="ab-sec bg-grey">
+    <section class="ab-sec bg-white">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">איך זה עובד</h2>
@@ -2130,7 +2240,7 @@
     </section>
 
     <!-- ════════════ הדרך שלנו בבריאות הנפש ════════════ -->
-    <section class="ab-sec bg-white" id="our-way">
+    <section class="ab-sec bg-grey" id="our-way">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">הדרך שלנו בבריאות הנפש</h2>
@@ -2146,7 +2256,7 @@
     </section>
 
     <!-- ════════════ מה כבר נעשה בשטח ════════════ -->
-    <section class="ab-sec bg-grey" id="field">
+    <section class="ab-sec bg-white" id="field">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">מה כבר נעשה בשטח</h2>
@@ -2184,7 +2294,7 @@
     </section>
 
     <!-- ════════════ קבוצות תרגול ════════════ -->
-    <section class="ab-sec bg-white" id="practice-groups">
+    <section class="ab-sec bg-grey" id="practice-groups">
       <div class="wrap">
         <div class="ab-hdr">
           <h2 class="h3d rev">קבוצות תרגול</h2>
@@ -2637,6 +2747,12 @@
         });
 
         /* Scroll reveal */
+        /* Hero sits just below the fixed nav bar, whatever its height */
+        const setNavH = () =>
+          document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+        setNavH();
+        window.addEventListener("resize", setNavH);
+
         const io = new IntersectionObserver(
           (es) =>
             es.forEach((e) => {

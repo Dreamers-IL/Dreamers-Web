@@ -853,16 +853,18 @@
       }
 
       /* ═══ HERO ═══ */
-      /* One photograph, edge to edge, with the copy set over it. It used to
-         be two layers, the sharp photo held to its own proportions over a
-         blown-up blurred copy of itself, and the line where one gave way to
-         the other showed. There is nothing to line up now. The header is
-         given room to be tall enough that the bird stays whole in the crop
-         at the widths a laptop and a desktop actually open at. */
+      /* One photograph, edge to edge, with the copy set over it. */
+      /* the whole photograph shows at every width: the box takes the photo's
+         own proportions and starts below the fixed nav, so nothing is cropped.
+         A phone just shrinks the photo (see the media query). */
       #prog-hero {
         position: relative;
-        padding: 13rem 0 4.5rem;
-        min-height: min(88vh, 820px);
+        margin-top: var(--nav-h, 80px);
+        padding: 3rem 0;
+        aspect-ratio: 1474 / 1067;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         overflow: hidden;
         background: var(--blue-dk);
         text-align: right;
@@ -870,21 +872,8 @@
       .ph-bg {
         position: absolute;
         inset: 0;
-        /* framed a little above centre and shifted left, so the bird's
-           head clears the headline that sits on the right in RTL */
-        background: url("assets/img/שחף 2-1.png") 30% 20% / cover no-repeat;
-      }
-      /* At this width the hero is wide and short enough that "cover" alone
-         leaves no horizontal room to pan (the image's rendered width just
-         matches the container's, since the container is far wider than it
-         is tall), so the beak used to sit flush against the headline text.
-         A size beyond cover creates that room, and the position then pulls
-         the beak clear of the text with a real gap between them. */
-      @media (min-width: 769px) {
-        .ph-bg {
-          background: url("assets/img/שחף 2-1.png") 66% 21% / 124% auto
-            no-repeat;
-        }
+        background: url("assets/img/שחף 2-1.png") top center / 100% auto
+          no-repeat;
       }
       /* the copy sits on the right, so the tint deepens on that side and
          leaves the open sky and the bird on the left clear */
@@ -916,6 +905,7 @@
       .ph-content {
         position: relative;
         z-index: 2;
+        width: 100%;
         max-width: 1240px;
         margin: 0 auto;
         padding: 0 2rem;
@@ -1661,17 +1651,15 @@
       }
       @media (max-width: 768px) {
         #prog-hero {
-          padding: 9.5rem 0 3.2rem;
-          min-height: min(78vh, 620px);
+          padding: 3rem 0 2rem;
+          aspect-ratio: auto;
+          min-height: calc(100vw * 1067 / 1474);
         }
         .ph-content {
           padding: 0 1.4rem;
         }
         /* On a phone the header is taller than it is wide, so the crop is
            moved onto the bird rather than the open sky beside it */
-        .ph-bg {
-          background-position: 38% 38%;
-        }
         .ph-tint {
           background: linear-gradient(
             180deg,
@@ -2534,6 +2522,12 @@
       (function () {
 
         const nav = document.getElementById("nav");
+        /* the hero starts below the fixed bar, so it needs the bar's height */
+        const setNavH = () =>
+          document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+        setNavH();
+        window.addEventListener("resize", setNavH);
+        if (window.ResizeObserver) new ResizeObserver(setNavH).observe(nav);
         const burger = nav.querySelector(".nav-burger");
         burger.addEventListener("click", () => {
           const open = nav.classList.toggle("nav-open");

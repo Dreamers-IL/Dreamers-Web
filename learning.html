@@ -382,35 +382,36 @@
       /* ═══ HERO ═══ */
       /* built like the companies hero: a photograph at full strength, the
          copy hugging the right edge, and a tint weighted to that side */
-      /* the box is locked to the photo's own ratio (1860 / 846), the same
-         way the practice page's hero is, so background-size: cover never
-         has to crop anything - the whole picture always shows, per the
-         site owner's 2026-09-23-1 request */
-      /* It also starts below the fixed nav bar instead of underneath it
-         (the script sets --nav-h from the bar's real height), since the
-         bar would otherwise hide the top of the photo. */
-      /* The copy (title, headline, pitch) is in the flow now, as on the
-         business page, and centred in the box. Where it needs more height
-         than the photo's ratio gives (a phone), the box grows to fit it and
-         cover crops the photo's sides. */
+      /* the hero's picture is the four family photos in one row, each in
+         its own ratio so every one shows whole and none is cropped. The row
+         sets the box's height (it scales with the screen width, so on a
+         phone the whole row simply gets smaller), and the copy sits over it
+         in the same grid cell: where the copy needs more height than the
+         row gives, the box grows and the dark blue shows below the photos.
+         The box starts below the fixed nav bar (the script sets --nav-h). */
       #learn-hero {
         position: relative;
         width: 100%;
         margin-top: var(--nav-h, 0px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        aspect-ratio: 1860 / 846;
+        display: grid;
+        grid-template-columns: 100%;
         overflow: hidden;
         background: var(--blue-dk);
         text-align: right;
       }
       .bh-bg {
-        position: absolute;
-        inset: 0;
-        background-image: url("assets/img/Meditation 1.png");
-        background-size: cover;
-        background-position: center;
+        grid-area: 1 / 1;
+        align-self: start;
+        display: grid;
+        /* the photos' own width/height ratios: think, act, relate, meaning
+           (first = rightmost in RTL, the order of the site's virtues board) */
+        grid-template-columns: 1.0299fr 1.0328fr 1.0358fr 1.003fr;
+        width: 100%;
+      }
+      .bh-bg img {
+        display: block;
+        width: 100%;
+        height: auto;
       }
       /* only a side tint, deepening on the right under the title; no dark
          top band (the photo no longer sits under the nav) and no white fade
@@ -420,10 +421,10 @@
         inset: 0;
         background: linear-gradient(
           to left,
-          rgba(0, 20, 45, 0.6) 0%,
-          rgba(0, 20, 45, 0.38) 40%,
-          rgba(0, 20, 45, 0.1) 70%,
-          rgba(0, 20, 45, 0) 100%
+          rgba(0, 20, 45, 0.72) 0%,
+          rgba(0, 20, 45, 0.5) 40%,
+          rgba(0, 20, 45, 0.22) 70%,
+          rgba(0, 20, 45, 0.1) 100%
         );
       }
       /* same width and padding as .wrap, so the hero copy lines up on the
@@ -431,6 +432,8 @@
          and bottom-anchored now that the box's height comes from the image's
          own ratio rather than from this content's flow */
       .bh-content {
+        grid-area: 1 / 1;
+        align-self: center;
         position: relative;
         z-index: 2;
         width: 100%;
@@ -568,151 +571,175 @@
         }
       }
 
-      /* ═══ VIRTUE-FAMILY CAROUSEL ═══ */
-      /* one photo on screen at a time, its family title above it; every
-         2 seconds the next one slides in from the left while the current
-         one leaves to the right (the direction the site owner asked for).
-         All four slides share one grid cell, so the stage takes the height
-         of the tallest without any fixed number. */
-      .lc-stage {
-        display: grid;
-        max-width: 400px;
+      /* ═══ text sections ═══ */
+      .ls-lead {
+        max-width: 800px;
         margin: 0 auto;
-        overflow: hidden;
-      }
-      .lc-slide {
-        grid-area: 1 / 1;
         text-align: center;
-        transform: translateX(-100%);
-        opacity: 0;
-        transition:
-          transform 0.8s cubic-bezier(0.65, 0, 0.35, 1),
-          opacity 0.8s ease;
+        font-size: 1.12rem;
+        line-height: 1.95;
+        color: var(--text-mid);
+        text-wrap: balance;
       }
-      .lc-slide.is-current {
-        transform: none;
-        opacity: 1;
+      .ls-center-title {
+        text-align: center;
       }
-      .lc-slide.is-leaving {
-        transform: translateX(100%);
-        opacity: 0;
-      }
-      /* parks a slide at the left edge without animating it there */
-      .lc-slide.no-anim {
-        transition: none;
-      }
-      .lc-slide h3 {
-        font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+      /* sub-heading in the page's bold blue */
+      .ls-sub {
+        text-align: center;
+        max-width: 820px;
+        margin: 0 auto 1.8rem;
+        font-size: clamp(1.25rem, 2.2vw, 1.6rem);
         font-weight: 800;
-        line-height: 1.35;
-        margin-bottom: 1.1rem;
+        line-height: 1.5;
         color: var(--blue);
+        text-wrap: balance;
       }
-      .lc-slide[data-family="think"] h3 {
-        color: var(--v-think);
+
+      /* ═══ the two recorded meditations ═══ */
+      .md-row {
+        display: flex;
+        justify-content: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        margin: 0 auto 2.6rem;
       }
-      .lc-slide[data-family="act"] h3 {
-        color: var(--v-act);
+      .md-row .vg-btn {
+        min-width: 260px;
+        padding: 1.1rem 1.6rem;
+        font-size: 1.2rem;
       }
-      .lc-slide[data-family="relate"] h3 {
-        color: var(--v-relate);
+      .md-call {
+        text-align: center;
       }
-      .lc-slide[data-family="meaning"] h3 {
-        color: var(--v-meaning);
+      .md-call p {
+        font-size: clamp(1.15rem, 2vw, 1.4rem);
+        font-weight: 800;
+        color: var(--blue);
+        margin-bottom: 1.2rem;
       }
-      .lc-slide img {
+      /* two lines of air above this block, then text on the right and the
+         photo on the left */
+      .ls-photo-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3.5rem;
+        align-items: center;
+        max-width: 1100px;
+        margin: 4rem auto 0;
+      }
+      .ls-photo-row p {
+        font-size: 1.12rem;
+        line-height: 1.95;
+        color: var(--text-mid);
+      }
+      .ls-photo-row img {
         width: 100%;
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
+        height: auto;
         border-radius: 22px;
         box-shadow:
           0 4px 10px rgba(0, 67, 120, 0.1),
           0 18px 40px var(--shadow);
       }
-      @media (prefers-reduced-motion: reduce) {
-        .lc-slide,
-        .lc-slide.is-leaving {
-          transform: none;
+      @media (max-width: 860px) {
+        .ls-photo-row {
+          grid-template-columns: 1fr;
+          gap: 2rem;
         }
       }
 
-      /* ═══ "הרהורים מעמיקים על המעלות" ═══ */
-      /* the title, the four family headers and the mindfulness title are one
-         static picture; every virtue box is its own button laid over it at
-         the spot it holds in the original artwork, so each can be clicked,
-         lit and moved on its own. Positions are percentages of the board,
-         so the whole thing scales as one piece on every screen. */
-      .rf-board {
-        position: relative;
-        max-width: 1000px;
-        margin: 0 auto;
-        container-type: inline-size;
+      /* ═══ the 16 virtues: four columns, each one family ═══ */
+      /* live markup (not a picture) so that on a phone the columns stack
+         one under another; the first in the markup is the rightmost */
+      .vg-board {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+        max-width: 980px;
+        margin: 2.6rem auto 0;
       }
-      /* the explanation line under each of the two titles in the artwork
-         ("הרהורים מעמיקים על המעלות", "מדיטציית מיינדפולנס"): 40% smaller
-         than those titles (about 56px on the picture's own 1220px width,
-         so 34px there = 2.8% of the board), centred beneath them. The
-         picture (reflections-static-2.png) has a clear 60px strip under
-         each title for this line; the original, without the strips, is
-         reflections-static.png in git history. */
-      .rf-note {
-        position: absolute;
-        right: 0;
-        left: 0;
-        margin: 0;
+      .vg-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .vg-col[data-family="think"] {
+        --c: var(--v-think);
+      }
+      .vg-col[data-family="act"] {
+        --c: var(--v-act);
+      }
+      .vg-col[data-family="relate"] {
+        --c: var(--v-relate);
+      }
+      .vg-col[data-family="meaning"] {
+        --c: var(--v-meaning);
+      }
+      .vg-head {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 4.4rem;
+        padding: 0.7rem 0.6rem;
+        border-radius: 12px;
+        background: var(--c, var(--blue));
+        color: #fff;
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
+        font-weight: 800;
+        line-height: 1.25;
         text-align: center;
-        font-size: max(11px, 2.8cqw);
-        font-weight: 500;
+        box-shadow: 0 4px 10px rgba(0, 40, 70, 0.18);
+      }
+      .vg-btn {
+        position: relative;
+        overflow: hidden;
+        padding: 0.85rem 0.5rem;
+        border: 3px solid var(--c, var(--blue));
+        border-radius: 12px;
+        background: var(--v-card);
+        color: var(--blue-dk);
+        font-family: "Heebo", sans-serif;
+        font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+        font-weight: 700;
         line-height: 1.3;
-        color: var(--blue);
-      }
-      .rf-static {
-        width: 100%;
-        height: auto;
-      }
-      .rf-box {
-        position: absolute;
-        padding: 0;
-        border: 0;
-        background: none;
         cursor: pointer;
-        border-radius: 8%;
         transition:
           transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
-          filter 0.3s;
+          box-shadow 0.3s;
       }
-      .rf-box img {
-        width: 100%;
-        height: 100%;
+      /* the faint play mark behind the name */
+      .vg-btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 12%;
+        transform: translateY(-50%);
+        border-style: solid;
+        border-width: 0.65em 0 0.65em 1.05em;
+        border-color: transparent transparent transparent rgba(0, 41, 82, 0.1);
       }
-      .rf-box:hover {
+      .vg-btn span {
+        position: relative;
+      }
+      .vg-btn:hover {
         transform: translateY(-3px);
-        filter: drop-shadow(0 6px 10px rgba(0, 67, 120, 0.22));
+        box-shadow: 0 8px 16px rgba(0, 67, 120, 0.2);
       }
-      .rf-box:focus-visible {
+      .vg-btn:focus-visible {
         outline: 3px solid var(--teal);
         outline-offset: 2px;
       }
-      /* the box whose recording is playing right now */
-      .rf-box.is-playing {
-        filter: drop-shadow(0 0 10px rgba(72, 217, 211, 0.95));
-        animation: rf-pulse 1.8s ease-in-out infinite;
+      /* the recording that is playing right now */
+      .vg-btn.is-playing {
+        background: #fff;
+        box-shadow:
+          0 0 0 3px rgba(72, 217, 211, 0.7),
+          0 0 14px rgba(72, 217, 211, 0.9);
       }
-      @keyframes rf-pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.04);
-        }
+      .vg-btn.is-wobble {
+        animation: vg-wobble 0.5s ease-in-out;
       }
-      /* a box with no recording yet: a short wobble, so the click still
-         registers */
-      .rf-box.is-wobble {
-        animation: rf-wobble 0.5s ease-in-out;
-      }
-      @keyframes rf-wobble {
+      @keyframes vg-wobble {
         0%,
         100% {
           transform: rotate(0);
@@ -724,51 +751,261 @@
           transform: rotate(4deg);
         }
       }
-      /* stop control: small and quiet in the bottom-left corner (the
-         accessibility button already holds bottom-right), and only there
-         while something is playing */
-      .rf-stop {
+      @media (max-width: 700px) {
+        /* one family at a time, each under the one before it */
+        .vg-board {
+          grid-template-columns: 1fr;
+          max-width: 420px;
+          gap: 2rem;
+        }
+      }
+
+      /* ═══ the in-page player: a card floating at the foot of the screen ═══ */
+      .rp-card {
         position: fixed;
+        left: 50%;
         bottom: 24px;
-        left: 24px;
-        z-index: 950;
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        background: rgba(0, 41, 82, 0.78);
-        box-shadow: 0 6px 18px rgba(0, 41, 82, 0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
+        z-index: 960;
+        width: min(560px, calc(100% - 32px));
+        padding: 1rem 1.2rem 1.1rem;
+        border-radius: 18px;
+        background: rgba(0, 41, 82, 0.96);
+        color: #fff;
+        box-shadow: 0 14px 40px rgba(0, 20, 45, 0.45);
+        border: 1px solid rgba(255, 255, 255, 0.18);
         opacity: 0;
         visibility: hidden;
-        transform: translateY(10px);
+        transform: translate(-50%, 14px);
         transition:
           opacity 0.3s,
           transform 0.3s,
-          visibility 0.3s,
-          background 0.3s;
+          visibility 0.3s;
       }
-      .rf-stop.show {
+      .rp-card.show {
         opacity: 1;
         visibility: visible;
-        transform: none;
+        transform: translate(-50%, 0);
       }
-      .rf-stop:hover {
-        background: rgba(0, 41, 82, 0.95);
+      .rp-title {
+        font-size: 1.2rem;
+        font-weight: 800;
+        line-height: 1.3;
+        padding-inline-end: 2.2rem;
       }
-      .rf-stop:focus-visible {
+      .rp-meta {
+        font-size: 0.88rem;
+        color: var(--teal-lt);
+        margin-bottom: 0.7rem;
+      }
+      .rp-text {
+        margin-top: 0.7rem;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .rp-text[hidden] {
+        display: none;
+      }
+      .rp-card audio {
+        display: block;
+        width: 100%;
+      }
+      .rp-close {
+        position: absolute;
+        top: 0.55rem;
+        inset-inline-end: 0.7rem;
+        width: 2rem;
+        height: 2rem;
+        border: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+        font-size: 1.3rem;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .rp-close:hover {
+        background: rgba(255, 255, 255, 0.28);
+      }
+      .rp-close:focus-visible {
         outline: 3px solid var(--teal);
         outline-offset: 2px;
       }
-      .rf-stop span {
-        display: block;
-        width: 14px;
-        height: 14px;
-        border-radius: 2px;
+      @media (max-width: 700px) {
+        /* clear of the accessibility button at the bottom corner */
+        .rp-card {
+          bottom: 92px;
+        }
+      }
+
+      /* ═══ CONTACT (copied from the program page's "בואו נדבר") ═══ */
+      #contact-form {
+        padding: 6.5rem 2rem;
+        background: var(--g-main);
+        position: relative;
+        overflow: hidden;
+      }
+      #contact-form::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 70% 60% at 50% 0%,
+          rgba(245, 166, 35, 0.12),
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .contact-inner {
+        position: relative;
+        z-index: 2;
+        max-width: 820px;
+        margin: 0 auto;
+        text-align: right;
+      }
+      .contact-inner > .h3d {
+        text-align: center;
+      }
+      .contact-inner .sub {
+        margin: 0 auto 2.6rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .contact-form {
+        text-align: right;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 26px;
+        padding: 2.6rem;
+        backdrop-filter: blur(12px);
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.1rem;
+        margin-bottom: 1.1rem;
+      }
+      .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .form-field.full {
+        grid-column: 1 / -1;
+      }
+      .form-label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .form-label .req {
+        color: var(--gold-lt);
+      }
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text);
+        font-family: "Heebo", sans-serif;
+        font-size: 0.94rem;
+      }
+      .form-textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+      .form-input:focus,
+      .form-textarea:focus {
+        outline: 2px solid var(--teal);
+      }
+
+      .ms-field {
+        position: relative;
+      }
+      .ms-trigger {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.85rem 1.1rem;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.94);
+        color: var(--text);
+        font-family: "Heebo", sans-serif;
+        font-size: 0.94rem;
+        cursor: pointer;
+      }
+      .ms-panel {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        left: 0;
         background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+        padding: 0.6rem;
+        z-index: 20;
+      }
+      .ms-panel.open {
+        display: block;
+      }
+      .ms-opt {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.65rem 0.7rem;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        color: var(--text);
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .ms-opt:hover {
+        background: rgba(72, 217, 211, 0.15);
+      }
+      .ms-opt input {
+        accent-color: var(--blue);
+        width: 16px;
+        height: 16px;
+      }
+      .other-text {
+        margin-top: 0.7rem;
+        display: none;
+      }
+      .form-note {
+        font-size: 0.76rem;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 0.4rem;
+      }
+      .form-submit {
+        margin-top: 0.6rem;
+        width: 100%;
+        justify-content: center;
+      }
+      .form-status {
+        margin-top: 1rem;
+        font-size: 0.88rem;
+        color: var(--teal-lt);
+        display: none;
+      }
+
+      #contact-form {
+        scroll-margin-top: var(--nav-h, 0px);
+      }
+      /* the single-choice form field: same dropdown look, one answer */
+      .form-error {
+        display: none;
+        margin-top: 0.3rem;
+        color: var(--gold-lt);
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+      .form-error.show {
+        display: block;
       }
 
       /* ═══ FOOTER — identical to the home page ═══ */
@@ -975,13 +1212,6 @@
         .bh-content {
           padding: 1.6rem 1.4rem;
         }
-        /* the copy needs more height than the photo's ratio gives here, so
-           the box follows the copy instead, never shorter than the photo
-           (overflow: hidden stops aspect-ratio from growing on its own) */
-        #learn-hero {
-          aspect-ratio: auto;
-          min-height: calc(100vw * 846 / 1860);
-        }
         .footer-top {
           flex-direction: column;
           align-items: center;
@@ -991,9 +1221,29 @@
           text-align: center;
         }
       }
+      @media (max-width: 768px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        /* the section's own side padding is enough on a phone, as on
+           about.html */
+        #contact-form .wrap {
+          padding: 0;
+        }
+      }
       @media (max-width: 520px) {
         .ab-sec {
           padding: 3rem 1.1rem;
+        }
+        /* same phone treatment as about.html's form */
+        #contact-form {
+          padding-inline: 1.1rem;
+        }
+        .contact-form {
+          margin: 0 -1.1rem;
+          padding: 1.6rem 1.2rem;
         }
       }
       /* No text block may end on a line holding a single word.
@@ -1080,7 +1330,12 @@
 
     <!-- ════════════ HERO ════════════ -->
     <header id="learn-hero">
-      <div class="bh-bg"></div>
+      <div class="bh-bg" aria-hidden="true">
+        <img src="assets/img/learning/carousel-think.png" alt="" />
+        <img src="assets/img/learning/carousel-act.png" alt="" />
+        <img src="assets/img/learning/carousel-relate.png" alt="" />
+        <img src="assets/img/learning/carousel-meaning.png" alt="" />
+      </div>
       <div class="bh-fade"></div>
       <div class="bh-content">
         <h1 class="h3d rev" style="margin: 0 0 1.6rem">16 המעלות</h1>
@@ -1091,6 +1346,20 @@
         </p>
       </div>
     </header>
+
+    <!-- ════════════ מרחב למידה ותרגול של 16 המעלות ════════════ -->
+    <section class="ab-sec bg-white" id="learn-title">
+      <div class="wrap">
+        <h2 class="h3d ls-center-title rev">מרחב למידה ותרגול של 16 המעלות</h2>
+        <p class="ls-lead rev d1">
+          מרחב הלמידה הדיגיטלי הזה יאפשר לכם להמשיך ולהעמיק את תהליך הלמידה
+          וההטמעה של 16 המעלות בחיי היומיום שלכם בין וגם אחרי המפגשים
+          והסדנאות. תמצאו כאן מגוון תרגולים מונחים כמו מדיטציות ריכוז והרפיה
+          והרהורים מעמיקים על כל אחת מהמעלות אשר תוכלו לתרגל בכל זמן ובקצב
+          שלכם.
+        </p>
+      </div>
+    </section>
 
     <!-- ════════════ מרחב הלמידה ════════════ -->
     <!-- text in a box on the right, the photo on the left, and a line
@@ -1113,7 +1382,7 @@
           </div>
           <div class="li-photo rev d1">
             <img
-              src="assets/img/learning/learning-space-cards.jpg"
+              src="assets/img/learning-space-cards.jpg"
               alt="קלפי 16 המעלות, כוס תה וטלפון עם מדיטציה מוקלטת על שולחן עץ"
             />
           </div>
@@ -1124,68 +1393,165 @@
       </div>
     </section>
 
-    <!-- ════════════ קרוסלת המעלות ════════════ -->
-    <section class="ab-sec bg-white">
+    <!-- ════════════ מדיטציות מוקלטות + הצטרפות ════════════ -->
+    <section class="ab-sec bg-white" id="meditations">
       <div class="wrap">
-        <div class="lc-stage rev" id="lcStage" aria-roledescription="carousel">
-          <figure class="lc-slide is-current" data-family="think">
-            <h3>הדרך בה אנו חושבים.ות</h3>
-            <img src="assets/img/learning/carousel-think.png" alt="הדרך בה אנו חושבים.ות" />
-          </figure>
-          <figure class="lc-slide" data-family="act" aria-hidden="true">
-            <h3>הדרך בה אנו פועלות.ים</h3>
-            <img src="assets/img/learning/carousel-act.png" alt="הדרך בה אנו פועלות.ים" />
-          </figure>
-          <figure class="lc-slide" data-family="relate" aria-hidden="true">
-            <h3>הדרך בה אנו מתייחסות.ים לזולת</h3>
-            <img src="assets/img/learning/carousel-relate.png" alt="הדרך בה אנו מתייחסות.ים לזולת" />
-          </figure>
-          <figure class="lc-slide" data-family="meaning" aria-hidden="true">
-            <h3>הדרך בה אנו מוצאים.ות משמעות</h3>
-            <img src="assets/img/learning/carousel-meaning.png" alt="הדרך בה אנו מוצאים.ות משמעות" />
-          </figure>
+        <h2 class="ls-sub rev">
+          מדיטציות מיינדפולנס מוקלטות לריכוז והרפיה לתרגול עצמי או בקבוצה
+        </h2>
+        <div class="md-row rev d1">
+          <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/ריכוז.mp4" data-name="מדיטציית ריכוז" data-family-name="מדיטציית מיינדפולנס מוקלטת"><span>מדיטציית ריכוז</span></button>
+          <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/הרפיה.mp4" data-name="מדיטציית הרפייה" data-family-name="מדיטציית מיינדפולנס מוקלטת"><span>מדיטציית הרפייה</span></button>
+        </div>
+        <div class="md-call rev d2">
+          <p>עדיין לא חלק מהקהילה שלנו?</p>
+          <a href="#contact-form" class="btn btn-blue">למידע על הסדנאות וקבוצות התרגול הקרובות</a>
+        </div>
+
+        <div class="ls-photo-row">
+          <p class="rev">
+            כאן תמצאו חומרי לימוד והקלטות של הרהורים מעמיקים על כל אחת
+            מהמעלות. החומרים מונגשים בצורה נוחה וקלה לשימוש כך שיוכלו לתמוך
+            בתהליך הלמידה שלכם ולהעמיק אותו.
+          </p>
+          <img
+            class="rev d1"
+            src="assets/img/אשה עושה מדיטציה בבית.jpeg"
+            alt="אישה מתרגלת מדיטציה בבית"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
 
-    <!-- ════════════ הרהורים מעמיקים על המעלות ════════════ -->
+    <!-- ════════════ הרהורים מעמיקים ════════════ -->
     <section class="ab-sec bg-grey" id="reflections">
       <div class="wrap">
-        <div class="rf-board rev">
-          <img
-            class="rf-static"
-            src="assets/img/learning/reflections-static-2.png"
-            alt="הרהורים מעמיקים על המעלות: הדרך בה אנו חושבות, פועלות, מתייחסות לזולת ומוצאות משמעות. מדיטציית מיינדפולנס."
-          />
-          <!-- a line of explanation under each baked-in title, set in the
-               strip the artwork leaves open for it -->
-          <p class="rf-note" style="top: 5.907%">מדיטציות אנליטיות על כל אחת מהמעלות</p>
-          <p class="rf-note" style="top: 83.291%">מדיטציות ריכוז והרפיה (10 דקות)</p>
-          <!-- each box: its own picture, placed where it sits in the
-               original artwork; data-audio is the recording it plays -->
-          <button type="button" class="rf-box" style="left: 75.738%; top: 27.342%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/ענווה.m4a" aria-label="ענווה - השמעה"><img src="assets/img/learning/box-humility.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 75.738%; top: 38.903%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/סבלנות.m4a" aria-label="סבלנות - השמעה"><img src="assets/img/learning/box-patience.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 75.738%; top: 50.464%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/שביעות רצון.m4a" aria-label="שביעות רצון - השמעה"><img src="assets/img/learning/box-contentment.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 75.738%; top: 62.11%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/חדווה.m4a" aria-label="חדווה - השמעה"><img src="assets/img/learning/box-joy.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 50.902%; top: 27.342%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/טוב לב.m4a" aria-label="טוב לב - השמעה"><img src="assets/img/learning/box-kindness.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 50.902%; top: 38.903%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/TMP/יושרה.m4a" aria-label="יושרה - השמעה"><img src="assets/img/learning/box-integrity.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 50.902%; top: 50.464%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/נדיבות.m4a" aria-label="נדיבות - השמעה"><img src="assets/img/learning/box-generosity.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 50.902%; top: 62.11%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/דיבור מיטיב.m4a" aria-label="דיבור מיטיב - השמעה"><img src="assets/img/learning/box-right-speech.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 25.82%; top: 27.342%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/כבוד.m4a" aria-label="כבוד - השמעה"><img src="assets/img/learning/box-respect.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 25.82%; top: 38.903%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/סליחה.m4a" aria-label="סליחה - השמעה"><img src="assets/img/learning/box-forgiveness.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 25.82%; top: 50.464%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/הכרת תודה.m4a" aria-label="הכרת תודה - השמעה"><img src="assets/img/learning/box-gratitude.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 25.82%; top: 62.11%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/נאמנות.m4a" aria-label="נאמנות - השמעה"><img src="assets/img/learning/box-loyalty.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 0.984%; top: 27.342%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/שאיפות.m4a" aria-label="שאיפות - השמעה"><img src="assets/img/learning/box-aspirations.png" alt="" /></button>
-          <!-- no recording for עקרונות yet: the click only wobbles the box -->
-          <button type="button" class="rf-box" style="left: 0.984%; top: 38.903%; width: 22.705%; height: 9.62%" aria-label="עקרונות"><img src="assets/img/learning/box-principles.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 0.984%; top: 50.464%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/שרות.m4a" aria-label="שירות - השמעה"><img src="assets/img/learning/box-service.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 0.984%; top: 62.11%; width: 22.705%; height: 9.62%" data-audio="assets/Audio/Folder 1/אומץ.m4a" aria-label="אומץ - השמעה"><img src="assets/img/learning/box-courage.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 51.885%; top: 90.38%; width: 31.066%; height: 8.607%" data-audio="assets/Audio/Folder 1/ריכוז.mp4" aria-label="ריכוז - השמעה"><img src="assets/img/learning/box-focus.png" alt="" /></button>
-          <button type="button" class="rf-box" style="left: 18.443%; top: 90.38%; width: 31.066%; height: 8.607%" data-audio="assets/Audio/Folder 1/הרפיה.mp4" aria-label="הרפיה - השמעה"><img src="assets/img/learning/box-relax.png" alt="" /></button>
+        <h2 class="h3d ls-center-title rev">הרהורים מעמיקים</h2>
+        <p class="ls-lead rev d1">
+          ההרהורים הם דרך להעמיק את ההבנה שלנו במעלות ולהפוך חכמה הנרכשת
+          מלימוד תאורטי לחכמה הנרכשת דרך חוויה והתנסות ישירה.
+        </p>
+        <div class="vg-board rev d2">
+          <div class="vg-col" data-family="think">
+            <div class="vg-head">הדרך בה אנו חושבים.ות</div>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/ענווה.m4a" data-name="ענווה" data-family-name="הדרך בה אנו חושבים.ות"><span>ענווה</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/סבלנות.m4a" data-name="סבלנות" data-family-name="הדרך בה אנו חושבים.ות"><span>סבלנות</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/שביעות רצון.m4a" data-name="שביעות רצון" data-family-name="הדרך בה אנו חושבים.ות"><span>שביעות רצון</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/חדווה.m4a" data-name="חדווה" data-family-name="הדרך בה אנו חושבים.ות"><span>חדווה</span></button>
+          </div>
+          <div class="vg-col" data-family="act">
+            <div class="vg-head">הדרך בה אנו פועלות.ים</div>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/טוב לב.m4a" data-name="טוב לב" data-family-name="הדרך בה אנו פועלות.ים"><span>טוב לב</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/TMP/יושרה.m4a" data-name="יושרה" data-family-name="הדרך בה אנו פועלות.ים"><span>יושרה</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/נדיבות.m4a" data-name="נדיבות" data-family-name="הדרך בה אנו פועלות.ים"><span>נדיבות</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/דיבור מיטיב.m4a" data-name="דיבור מיטיב" data-family-name="הדרך בה אנו פועלות.ים"><span>דיבור מיטיב</span></button>
+          </div>
+          <div class="vg-col" data-family="relate">
+            <div class="vg-head">הדרך בה אנו מתייחסות.ים לזולת</div>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/כבוד.m4a" data-name="כבוד" data-family-name="הדרך בה אנו מתייחסות.ים לזולת"><span>כבוד</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/סליחה.m4a" data-name="סליחה" data-family-name="הדרך בה אנו מתייחסות.ים לזולת"><span>סליחה</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/הכרת תודה.m4a" data-name="הכרת תודה" data-family-name="הדרך בה אנו מתייחסות.ים לזולת"><span>הכרת תודה</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/נאמנות.m4a" data-name="נאמנות" data-family-name="הדרך בה אנו מתייחסות.ים לזולת"><span>נאמנות</span></button>
+          </div>
+          <div class="vg-col" data-family="meaning">
+            <div class="vg-head">הדרך בה אנו מוצאים.ות משמעות</div>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/שאיפות.m4a" data-name="שאיפות" data-family-name="הדרך בה אנו מוצאים.ות משמעות"><span>שאיפות</span></button>
+            <!-- no recording for עקרונות yet: the click only wobbles the button -->
+            <button type="button" class="vg-btn" data-name="עקרונות" data-family-name="הדרך בה אנו מוצאים.ות משמעות"><span>עקרונות</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/שרות.m4a" data-name="שירות" data-family-name="הדרך בה אנו מוצאים.ות משמעות"><span>שירות</span></button>
+            <button type="button" class="vg-btn" data-audio="assets/Audio/Folder 1/אומץ.m4a" data-name="אומץ" data-family-name="הדרך בה אנו מוצאים.ות משמעות"><span>אומץ</span></button>
+          </div>
         </div>
       </div>
     </section>
-    <button type="button" class="rf-stop" id="rfStop" aria-label="עצירת ההשמעה" title="עצירה"><span></span></button>
+
+    <!-- the player: opens in the page when a recording is picked, with the
+         browser's own audio controls (play, pause, seek bar) -->
+    <div class="rp-card" id="rpCard" role="region" aria-label="נגן הקלטה" aria-live="polite">
+      <button type="button" class="rp-close" id="rpClose" aria-label="סגירת הנגן">&times;</button>
+      <div class="rp-title" id="rpTitle"></div>
+      <div class="rp-meta" id="rpMeta"></div>
+      <audio id="rpAudio" controls preload="none"></audio>
+      <p class="rp-text" id="rpText" hidden></p>
+    </div>
+
+    <!-- ════════════ CONTACT FORM ════════════ -->
+    <section id="contact-form">
+      <div class="wrap">
+        <div class="contact-inner">
+          <h2 class="h3d h3d-white rev">רוצים להצטרף אלינו לדרך?</h2>
+          <p class="sub rev" style="margin-bottom: 2.2rem">
+            מוזמנים להשאיר פרטים בטופס למטה, סמנו את אופן ההשתתפות המבוקש
+            ונחזור אליכם בהקדם עם כל הפרטים והעדכונים.
+          </p>
+
+          <form
+            class="contact-form rev"
+            id="learnForm"
+            action="https://formsubmit.co/laor.alon.1@gmail.com"
+            method="POST"
+          >
+            <input type="hidden" name="_subject" value="פנייה חדשה ממרחב למידה ותרגול" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="text" name="_honey" style="display: none" tabindex="-1" autocomplete="off" />
+
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">שם מלא <span class="req">*</span></label>
+                <input class="form-input" type="text" name="שם מלא" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label"
+                  >טלפון ליצירת קשר <span class="req">*</span></label
+                >
+                <input class="form-input" type="tel" name="טלפון" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label">דוא"ל <span class="req">*</span></label>
+                <input class="form-input" type="email" name="דוא&quot;ל" required />
+              </div>
+              <div class="form-field ms-field">
+                <label class="form-label">מה מעניין אותך? <span class="req">*</span></label>
+                <button type="button" class="ms-trigger" id="msTrigger">
+                  <span id="msTriggerText">בחרו אפשרות אחת</span>
+                  <span class="dd-arrow">▾</span>
+                </button>
+                <div class="ms-panel" id="msPanel">
+                  <label class="ms-opt"
+                    ><input type="radio" name="מה מעניין אותך" value="הצטרפות לקבוצת תרגול" />הצטרפות
+                    לקבוצת תרגול</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="radio" name="מה מעניין אותך" value="הרשמה / עדכון לגבי סדנאות פרטיות קרובות" />הרשמה
+                    / עדכון לגבי סדנאות פרטיות קרובות</label
+                  >
+                  <label class="ms-opt"
+                    ><input type="radio" name="מה מעניין אותך" value="הבאת התכנית לארגון שלי" />הבאת
+                    התכנית לארגון שלי</label
+                  >
+                </div>
+                <span class="form-error" id="msError" role="alert">נא לבחור אפשרות אחת</span>
+              </div>
+            </div>
+            <div class="form-field full" style="margin-top: 1.1rem">
+              <label class="form-label">הערות נוספות</label>
+              <textarea class="form-textarea" name="הערות נוספות"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold form-submit">
+              שליחת פניה
+            </button>
+            <p class="form-note">
+              בלחיצה על "שליחת פניה" הפנייה תישלח אלינו במייל ונחזור אליכם בהקדם.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
 
     <!-- ════════════ FOOTER ════════════ -->
     <footer id="footer">
@@ -1314,37 +1680,16 @@
         setNavH();
         window.addEventListener("resize", setNavH);
 
-        /* Virtue-family carousel: the next slide every 2 seconds, sliding in
-           from the left while the current one leaves to the right */
-        const lcSlides = Array.from(document.querySelectorAll(".lc-slide"));
-        let lcIndex = 0;
-        setInterval(() => {
-          const cur = lcSlides[lcIndex];
-          lcIndex = (lcIndex + 1) % lcSlides.length;
-          const next = lcSlides[lcIndex];
-          /* park the incoming slide at the left edge first, with no
-             animation, so it always enters from the same side */
-          next.classList.add("no-anim");
-          next.classList.remove("is-leaving", "is-current");
-          void next.offsetWidth;
-          next.classList.remove("no-anim");
-          cur.classList.remove("is-current");
-          cur.classList.add("is-leaving");
-          cur.setAttribute("aria-hidden", "true");
-          next.classList.add("is-current");
-          next.removeAttribute("aria-hidden");
-        }, 2000);
-
-        /* Reflection boxes: a click plays that box's recording in the
-           page's own player, once. Only one recording ever plays: a click
-           on another box stops the current one and starts the new one, and
-           repeat clicks on the same box within 4 seconds count as one. */
-        const player = new Audio();
-        player.preload = "none";
-        const stopBtn = document.getElementById("rfStop");
-        let playingBox = null;
-        let lastBox = null;
-        let lastClick = 0;
+        /* Recordings: a click opens the player card in the page and starts
+           that recording; the card carries the browser's own audio controls
+           (pause, seek bar). Only one recording is ever loaded: picking
+           another replaces it, and picking the same one again toggles it. */
+        const rpCard = document.getElementById("rpCard");
+        const rpAudio = document.getElementById("rpAudio");
+        const rpTitle = document.getElementById("rpTitle");
+        const rpMeta = document.getElementById("rpMeta");
+        const rpText = document.getElementById("rpText");
+        let currentBtn = null;
 
         /* the offline preview bundle keeps the recordings in its outer
            shell and hands them over on request; on the live site the
@@ -1357,47 +1702,129 @@
           return encodeURI(path);
         }
 
-        function stopPlayback() {
-          player.pause();
-          player.removeAttribute("src");
-          player.load();
-          if (playingBox) playingBox.classList.remove("is-playing");
-          playingBox = null;
-          stopBtn.classList.remove("show");
+        function markPlaying(on) {
+          if (currentBtn) currentBtn.classList.toggle("is-playing", on);
+        }
+        function closePlayer() {
+          rpAudio.pause();
+          markPlaying(false);
+          rpAudio.removeAttribute("src");
+          rpAudio.load();
+          rpCard.classList.remove("show");
+          currentBtn = null;
         }
 
-        document.querySelectorAll(".rf-box").forEach((box) => {
-          box.addEventListener("click", () => {
-            const now = Date.now();
-            const repeat = box === lastBox && now - lastClick < 4000;
-            lastBox = box;
-            lastClick = now;
-            if (repeat) return;
-
-            const path = box.dataset.audio;
+        document.querySelectorAll(".vg-btn").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const path = btn.dataset.audio;
             if (!path) {
-              box.classList.remove("is-wobble");
-              void box.offsetWidth;
-              box.classList.add("is-wobble");
+              btn.classList.remove("is-wobble");
+              void btn.offsetWidth;
+              btn.classList.add("is-wobble");
               return;
             }
-            stopPlayback();
-            player.src = audioUrl(path);
-            playingBox = box;
-            box.classList.add("is-playing");
-            stopBtn.classList.add("show");
-            player.play().catch(() => {});
+            if (btn === currentBtn) {
+              if (rpAudio.paused) rpAudio.play().catch(() => {});
+              else rpAudio.pause();
+              return;
+            }
+            markPlaying(false);
+            currentBtn = btn;
+            rpTitle.textContent = btn.dataset.name || "";
+            rpMeta.textContent = btn.dataset.familyName || "";
+            const txt = btn.dataset.text || "";
+            rpText.textContent = txt;
+            rpText.hidden = !txt;
+            rpAudio.src = audioUrl(path);
+            rpCard.classList.add("show");
+            rpAudio.play().catch(() => {});
           });
-          box.addEventListener("animationend", (e) => {
-            if (e.animationName === "rf-wobble") box.classList.remove("is-wobble");
+          btn.addEventListener("animationend", (e) => {
+            if (e.animationName === "vg-wobble") btn.classList.remove("is-wobble");
           });
         });
-        player.addEventListener("ended", stopPlayback);
-        stopBtn.addEventListener("click", () => {
-          stopPlayback();
-          /* a fresh click right after stopping should play again */
-          lastBox = null;
+        rpAudio.addEventListener("play", () => markPlaying(true));
+        rpAudio.addEventListener("pause", () => markPlaying(false));
+        rpAudio.addEventListener("ended", () => markPlaying(false));
+        document.getElementById("rpClose").addEventListener("click", closePlayer);
+
+        /* Single-choice dropdown: "מה מעניין אותך?" */
+        const msTrigger = document.getElementById("msTrigger");
+        const msPanel = document.getElementById("msPanel");
+        const msTriggerText = document.getElementById("msTriggerText");
+        const msError = document.getElementById("msError");
+        const msPlaceholder = "בחרו אפשרות אחת";
+        function msSync() {
+          const checked = msPanel.querySelector('input[type="radio"]:checked');
+          msTriggerText.textContent = checked ? checked.value : msPlaceholder;
+          if (checked) msError.classList.remove("show");
+        }
+        msTrigger.addEventListener("click", () => {
+          msPanel.classList.toggle("open");
         });
+        document.addEventListener("click", (e) => {
+          if (!msPanel.contains(e.target) && !msTrigger.contains(e.target)) {
+            msPanel.classList.remove("open");
+          }
+        });
+        msPanel.querySelectorAll('input[type="radio"]').forEach((r) => {
+          r.addEventListener("change", () => {
+            msSync();
+            msPanel.classList.remove("open");
+          });
+        });
+
+        /* A button that leads to the form can pre-select what it is about */
+        document.addEventListener("click", (e) => {
+          const el = e.target.closest("[data-interest]");
+          if (!el) return;
+          const want = el.getAttribute("data-interest");
+          const radio = Array.from(
+            msPanel.querySelectorAll('input[type="radio"]'),
+          ).find((r) => r.value === want);
+          if (radio) {
+            radio.checked = true;
+            msSync();
+          }
+        });
+
+        const learnForm = document.getElementById("learnForm");
+        if (learnForm) {
+          learnForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            if (!learnForm.querySelector('input[type="radio"]:checked')) {
+              msError.classList.add("show");
+              msPanel.classList.add("open");
+              msTrigger.scrollIntoView({ behavior: "smooth", block: "center" });
+              return;
+            }
+            const btn = learnForm.querySelector(".form-submit");
+            const originalText = btn.textContent;
+            btn.textContent = "שולח...";
+            btn.disabled = true;
+            try {
+              const res = await fetch(learnForm.action, {
+                method: "POST",
+                body: new FormData(learnForm),
+                headers: { Accept: "application/json" },
+              });
+              if (res.ok) {
+                btn.textContent = "נשלח בהצלחה ✓";
+                learnForm.reset();
+                msSync();
+              } else {
+                throw new Error("Submit failed");
+              }
+            } catch (err) {
+              btn.textContent = "שגיאה - נסו שוב או כתבו ל-Info@dreamers.org.il";
+            } finally {
+              btn.disabled = false;
+              setTimeout(() => {
+                btn.textContent = originalText;
+              }, 4000);
+            }
+          });
+        }
       })();
     </script>
     <script src="assets/js/no-orphans.js?v=2" defer></script>

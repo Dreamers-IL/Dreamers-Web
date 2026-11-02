@@ -382,10 +382,17 @@
       /* ═══ HERO ═══ */
       /* built like the companies hero: a photograph at full strength, the
          copy hugging the right edge, and a tint weighted to that side */
+      /* the whole photograph shows at every width: the box takes the photo's
+         own proportions and starts below the fixed nav, so nothing is cropped
+         off the top. A phone just shrinks the photo (see the media query). */
       #prac-hero {
         position: relative;
-        padding: 12rem 0 3.5rem;
-        min-height: 36rem;
+        margin-top: var(--nav-h, 80px);
+        padding: 2.5rem 0;
+        aspect-ratio: 1672 / 941;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         overflow: hidden;
         background: var(--blue-dk);
         text-align: right;
@@ -394,8 +401,9 @@
         position: absolute;
         inset: 0;
         background-image: url("assets/img/בריאות הנפש 1.png");
-        background-size: cover;
-        background-position: center;
+        background-size: 100% auto;
+        background-position: top center;
+        background-repeat: no-repeat;
       }
       /* the aurora sweeps in from the left, so that half stays clear and the
          tint deepens on the right, under the copy; the foot dissolves into
@@ -426,6 +434,7 @@
       .bh-content {
         position: relative;
         z-index: 2;
+        width: 100%;
         max-width: 1240px;
         margin: 0 auto;
         padding: 0 2rem;
@@ -1615,8 +1624,9 @@
           transform: rotate(180deg);
         }
         #prac-hero {
-          padding: 9rem 0 2.5rem;
-          min-height: 0;
+          padding: 3rem 0 2rem;
+          aspect-ratio: auto;
+          min-height: calc(100vw * 941 / 1672);
         }
         .bh-content {
           padding: 0 1.4rem;
@@ -2627,6 +2637,7 @@
           document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
         setNavH();
         window.addEventListener("resize", setNavH);
+        if (window.ResizeObserver) new ResizeObserver(setNavH).observe(nav);
 
         /* Scroll reveal */
         const io = new IntersectionObserver(

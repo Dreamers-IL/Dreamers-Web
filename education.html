@@ -382,10 +382,17 @@
       /* ═══ HERO ═══ */
       /* built like the companies hero: a photograph at full strength, the
          copy hugging the right edge, and a tint weighted to that side */
+      /* the whole photograph shows at every width: the box takes the photo's
+         own proportions and starts below the fixed nav, so nothing is cropped
+         off the top. A phone just shrinks the photo (see the media query). */
       #edu-hero {
         position: relative;
-        padding: 12rem 0 3.5rem;
-        min-height: 36rem;
+        margin-top: var(--nav-h, 80px);
+        padding: 2.5rem 0;
+        aspect-ratio: 8006 / 4507;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         overflow: hidden;
         background: var(--blue-dk);
         text-align: right;
@@ -394,8 +401,9 @@
         position: absolute;
         inset: 0;
         background-image: url("assets/img/Sky with Starts.jpg");
-        background-size: cover;
-        background-position: center 58%;
+        background-size: 100% auto;
+        background-position: top center;
+        background-repeat: no-repeat;
       }
       /* the aurora sweeps in from the left, so that half stays clear and the
          tint deepens on the right, under the copy; the foot dissolves into
@@ -426,6 +434,7 @@
       .bh-content {
         position: relative;
         z-index: 2;
+        width: 100%;
         max-width: 1240px;
         margin: 0 auto;
         padding: 0 2rem;
@@ -436,7 +445,7 @@
         position: absolute;
         z-index: 2;
         left: max(2rem, calc((100% - 1240px) / 2 + 2rem));
-        top: 9.5rem;
+        top: 3rem;
         width: min(24vw, 340px);
         aspect-ratio: 1 / 1;
         border-radius: 26px;
@@ -1659,8 +1668,9 @@
           transform: rotate(180deg);
         }
         #edu-hero {
-          padding: 9rem 0 2.5rem;
-          min-height: 0;
+          padding: 3rem 0 2rem;
+          aspect-ratio: auto;
+          min-height: calc(100vw * 4507 / 8006);
         }
         .bh-content {
           padding: 0 1.4rem;
@@ -2629,6 +2639,12 @@
         }
 
         const nav = document.getElementById("nav");
+        /* the hero starts below the fixed bar, so it needs the bar's height */
+        const setNavH = () =>
+          document.documentElement.style.setProperty("--nav-h", nav.offsetHeight + "px");
+        setNavH();
+        window.addEventListener("resize", setNavH);
+        if (window.ResizeObserver) new ResizeObserver(setNavH).observe(nav);
         const burger = nav.querySelector(".nav-burger");
         burger.addEventListener("click", () => {
           const open = nav.classList.toggle("nav-open");
